@@ -105,6 +105,33 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        // stage_homepage
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'stage_homepage');
+            }
+
+            return array (  '_controller' => 'StageBundle\\Controller\\DefaultController::indexAction',  '_route' => 'stage_homepage',);
+        }
+
+        // shop_homepage
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'shop_homepage');
+            }
+
+            return array (  '_controller' => 'ShopBundle\\Controller\\DefaultController::indexAction',  '_route' => 'shop_homepage',);
+        }
+
+        // user_homepage
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'user_homepage');
+            }
+
+            return array (  '_controller' => 'UserBundle\\Controller\\DefaultController::indexAction',  '_route' => 'user_homepage',);
+        }
+
         // homepage
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
@@ -142,8 +169,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
             // fos_user_security_logout
             if ($pathinfo === '/logout') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                     goto not_fos_user_security_logout;
                 }
 
@@ -299,6 +326,84 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ChangePasswordController::changePasswordAction',  '_route' => 'fos_user_change_password',);
         }
         not_fos_user_change_password:
+
+        if (0 === strpos($pathinfo, '/api')) {
+            if (0 === strpos($pathinfo, '/api/conten')) {
+                // api_get_contenu
+                if (0 === strpos($pathinfo, '/api/contenu') && preg_match('#^/api/contenu(?:\\.(?P<_format>json|xml|html))?$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_api_get_contenu;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'api_get_contenu')), array (  '_controller' => 'AppBundle\\Controller\\ApiController::getContenuAction',  '_format' => 'json',));
+                }
+                not_api_get_contenu:
+
+                // api_get_conten
+                if (0 === strpos($pathinfo, '/api/contens') && preg_match('#^/api/contens/(?P<id>[^/\\.]++)(?:\\.(?P<_format>json|xml|html))?$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_api_get_conten;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'api_get_conten')), array (  '_controller' => 'AppBundle\\Controller\\ApiController::getContenAction',  '_format' => 'json',));
+                }
+                not_api_get_conten:
+
+            }
+
+            if (0 === strpos($pathinfo, '/api/index')) {
+                // api_user_index
+                if (preg_match('#^/api/index(?:\\.(?P<_format>json|xml|html))?$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_api_user_index;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'api_user_index')), array (  '_controller' => 'UserBundle\\Controller\\DefaultController::indexAction',  '_format' => 'json',));
+                }
+                not_api_user_index:
+
+                // api_stage_index
+                if (preg_match('#^/api/index(?:\\.(?P<_format>json|xml|html))?$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_api_stage_index;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'api_stage_index')), array (  '_controller' => 'StageBundle\\Controller\\DefaultController::indexAction',  '_format' => 'json',));
+                }
+                not_api_stage_index:
+
+            }
+
+            if (0 === strpos($pathinfo, '/api/shop')) {
+                // api_shop_index
+                if (0 === strpos($pathinfo, '/api/shop/index') && preg_match('#^/api/shop/index(?:\\.(?P<_format>json|xml|html))?$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_api_shop_index;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'api_shop_index')), array (  '_controller' => 'ShopBundle\\Controller\\DefaultController::indexAction',  '_format' => 'json',));
+                }
+                not_api_shop_index:
+
+                // api_shop_get_produit
+                if (0 === strpos($pathinfo, '/api/shop/produit') && preg_match('#^/api/shop/produit(?:\\.(?P<_format>json|xml|html))?$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_api_shop_get_produit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'api_shop_get_produit')), array (  '_controller' => 'ShopBundle\\Controller\\DefaultController::getProduitAction',  '_format' => 'json',));
+                }
+                not_api_shop_get_produit:
+
+            }
+
+        }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }

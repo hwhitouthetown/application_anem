@@ -1,0 +1,5 @@
+#app/routing_rest.yml
+app :
+  type: rest
+  resource:     "AppBundle:Api"
+  name_prefix:  api_

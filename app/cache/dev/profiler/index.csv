@@ -1,1 +1,16 @@
-b9b2e4,127.0.0.1,GET,http://127.0.0.1:8000/login,1479895304,,200
+ffe41c,::1,GET,http://localhost/application_anem/web/app_dev.php/api/contenu,1479900291,e9d519,200
+e9d519,::1,GET,http://localhost/application_anem/web/app_dev.php/api/contenu,1479900292,,500
+e367b9,::1,GET,http://localhost/application_anem/web/app_dev.php/api/contenu,1479900366,0c4c6c,200
+0c4c6c,::1,GET,http://localhost/application_anem/web/app_dev.php/api/contenu,1479900366,,404
+9ab235,::1,GET,http://localhost/application_anem/web/app_dev.php/api/contenu,1479900428,,200
+b17365,::1,GET,http://localhost/application_anem/web/app_dev.php/api/contenu,1479900502,,200
+a36901,::1,GET,http://localhost/application_anem/web/app_dev.php/api/contenu,1479901133,7de01e,200
+7de01e,::1,GET,http://localhost/application_anem/web/app_dev.php/api/contenu,1479901133,,500
+dcc440,::1,GET,http://localhost/application_anem/web/app_dev.php/api/contenu,1479901186,,200
+c92ed1,::1,GET,http://localhost/application_anem/web/app_dev.php/api/contenu,1479901288,,200
+52752d,::1,GET,http://localhost/application_anem/web/app_dev.php/api/shop/produit,1479901307,2017e2,200
+2017e2,::1,GET,http://localhost/application_anem/web/app_dev.php/api/shop/produit,1479901307,,404
+783d19,::1,GET,http://localhost/application_anem/web/app_dev.php/api/shop/produit,1479901463,,200
+c1c9ad,::1,GET,http://localhost/application_anem/web/app_dev.php/api/contenu,1479901576,,200
+845c69,::1,GET,http://localhost/application_anem/web/app_dev.php/api/contens/1,1479901727,,200
+f2012f,::1,GET,http://localhost/application_anem/web/app_dev.php/api/shop/produit,1479901747,,200

@@ -11,17 +11,20 @@
 
 namespace FOS\UserBundle\Model;
 
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
- * Storage agnostic user object
+ * Storage agnostic user object.
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
 abstract class User implements UserInterface, GroupableInterface
 {
+    /**
+     * @var mixed
+     */
     protected $id;
 
     /**
@@ -45,12 +48,12 @@ abstract class User implements UserInterface, GroupableInterface
     protected $emailCanonical;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $enabled;
 
     /**
-     * The salt to use for hashing
+     * The salt to use for hashing.
      *
      * @var string
      */
@@ -76,7 +79,7 @@ abstract class User implements UserInterface, GroupableInterface
     protected $lastLogin;
 
     /**
-     * Random string sent to the user email address in order to verify it
+     * Random string sent to the user email address in order to verify it.
      *
      * @var string
      */
@@ -93,14 +96,9 @@ abstract class User implements UserInterface, GroupableInterface
     protected $groups;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $locked;
-
-    /**
-     * @var boolean
-     */
-    protected $expired;
 
     /**
      * @var \DateTime
@@ -113,25 +111,24 @@ abstract class User implements UserInterface, GroupableInterface
     protected $roles;
 
     /**
-     * @var boolean
-     */
-    protected $credentialsExpired;
-
-    /**
      * @var \DateTime
      */
     protected $credentialsExpireAt;
 
+    /**
+     * User constructor.
+     */
     public function __construct()
     {
         $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
         $this->enabled = false;
         $this->locked = false;
-        $this->expired = false;
         $this->roles = array();
-        $this->credentialsExpired = false;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function addRole($role)
     {
         $role = strtoupper($role);
@@ -147,12 +144,7 @@ abstract class User implements UserInterface, GroupableInterface
     }
 
     /**
-     * Serializes the user.
-     *
-     * The serialized data have to contain the fields used during check for
-     * changes and the id.
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function serialize()
     {
@@ -161,9 +153,7 @@ abstract class User implements UserInterface, GroupableInterface
             $this->salt,
             $this->usernameCanonical,
             $this->username,
-            $this->expired,
             $this->locked,
-            $this->credentialsExpired,
             $this->enabled,
             $this->id,
             $this->expiresAt,
@@ -174,25 +164,26 @@ abstract class User implements UserInterface, GroupableInterface
     }
 
     /**
-     * Unserializes the user.
-     *
-     * @param string $serialized
+     * {@inheritdoc}
      */
     public function unserialize($serialized)
     {
         $data = unserialize($serialized);
-        // add a few extra elements in the array to ensure that we have enough keys when unserializing
-        // older data which does not include all properties.
-        $data = array_merge($data, array_fill(0, 2, null));
+
+        if (9 === count($data)) {
+            unset($data[4], $data[6]);
+
+            // add a few extra elements in the array to ensure that we have enough keys when unserializing
+            // older data which does not include all properties.
+            $data = array_merge($data, array_fill(0, 4, null));
+        }
 
         list(
             $this->password,
             $this->salt,
             $this->usernameCanonical,
             $this->username,
-            $this->expired,
             $this->locked,
-            $this->credentialsExpired,
             $this->enabled,
             $this->id,
             $this->expiresAt,
@@ -203,7 +194,7 @@ abstract class User implements UserInterface, GroupableInterface
     }
 
     /**
-     * Removes sensitive data from the user.
+     * {@inheritdoc}
      */
     public function eraseCredentials()
     {
@@ -211,48 +202,64 @@ abstract class User implements UserInterface, GroupableInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getUsername()
     {
         return $this->username;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getUsernameCanonical()
     {
         return $this->usernameCanonical;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getSalt()
     {
         return $this->salt;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getEmail()
     {
         return $this->email;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getEmailCanonical()
     {
         return $this->emailCanonical;
     }
 
     /**
-     * Gets the encrypted password.
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getPassword()
     {
         return $this->password;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getPlainPassword()
     {
         return $this->plainPassword;
@@ -268,15 +275,16 @@ abstract class User implements UserInterface, GroupableInterface
         return $this->lastLogin;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getConfirmationToken()
     {
         return $this->confirmationToken;
     }
 
     /**
-     * Returns the user roles
-     *
-     * @return array The roles
+     * {@inheritdoc}
      */
     public function getRoles()
     {
@@ -293,28 +301,18 @@ abstract class User implements UserInterface, GroupableInterface
     }
 
     /**
-     * Never use this to check if this user has access to anything!
-     *
-     * Use the SecurityContext, or an implementation of AccessDecisionManager
-     * instead, e.g.
-     *
-     *         $securityContext->isGranted('ROLE_USER');
-     *
-     * @param string $role
-     *
-     * @return boolean
+     * {@inheritdoc}
      */
     public function hasRole($role)
     {
         return in_array(strtoupper($role), $this->getRoles(), true);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function isAccountNonExpired()
     {
-        if (true === $this->expired) {
-            return false;
-        }
-
         if (null !== $this->expiresAt && $this->expiresAt->getTimestamp() < time()) {
             return false;
         }
@@ -322,17 +320,19 @@ abstract class User implements UserInterface, GroupableInterface
         return true;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function isAccountNonLocked()
     {
         return !$this->locked;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function isCredentialsNonExpired()
     {
-        if (true === $this->credentialsExpired) {
-            return false;
-        }
-
         if (null !== $this->credentialsExpireAt && $this->credentialsExpireAt->getTimestamp() < time()) {
             return false;
         }
@@ -340,19 +340,9 @@ abstract class User implements UserInterface, GroupableInterface
         return true;
     }
 
-    public function isCredentialsExpired()
-    {
-        return !$this->isCredentialsNonExpired();
-    }
-
     public function isEnabled()
     {
         return $this->enabled;
-    }
-
-    public function isExpired()
-    {
-        return !$this->isAccountNonExpired();
     }
 
     public function isLocked()
@@ -360,11 +350,17 @@ abstract class User implements UserInterface, GroupableInterface
         return !$this->isAccountNonLocked();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function isSuperAdmin()
     {
         return $this->hasRole(static::ROLE_SUPER_ADMIN);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function removeRole($role)
     {
         if (false !== $key = array_search(strtoupper($role), $this->roles, true)) {
@@ -375,6 +371,9 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setUsername($username)
     {
         $this->username = $username;
@@ -382,6 +381,9 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setUsernameCanonical($usernameCanonical)
     {
         $this->usernameCanonical = $usernameCanonical;
@@ -401,18 +403,6 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
-    /**
-     * @param boolean $boolean
-     *
-     * @return User
-     */
-    public function setCredentialsExpired($boolean)
-    {
-        $this->credentialsExpired = $boolean;
-
-        return $this;
-    }
-
     public function setEmail($email)
     {
         $this->email = $email;
@@ -420,6 +410,9 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setEmailCanonical($emailCanonical)
     {
         $this->emailCanonical = $emailCanonical;
@@ -427,23 +420,12 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setEnabled($boolean)
     {
-        $this->enabled = (Boolean) $boolean;
-
-        return $this;
-    }
-
-    /**
-     * Sets this user to expired.
-     *
-     * @param Boolean $boolean
-     *
-     * @return User
-     */
-    public function setExpired($boolean)
-    {
-        $this->expired = (Boolean) $boolean;
+        $this->enabled = (bool) $boolean;
 
         return $this;
     }
@@ -460,6 +442,9 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setPassword($password)
     {
         $this->password = $password;
@@ -467,6 +452,9 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setSuperAdmin($boolean)
     {
         if (true === $boolean) {
@@ -478,6 +466,9 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setPlainPassword($password)
     {
         $this->plainPassword = $password;
@@ -485,6 +476,9 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setLastLogin(\DateTime $time = null)
     {
         $this->lastLogin = $time;
@@ -492,6 +486,9 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setLocked($boolean)
     {
         $this->locked = $boolean;
@@ -499,6 +496,9 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setConfirmationToken($confirmationToken)
     {
         $this->confirmationToken = $confirmationToken;
@@ -506,6 +506,9 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setPasswordRequestedAt(\DateTime $date = null)
     {
         $this->passwordRequestedAt = $date;
@@ -523,12 +526,18 @@ abstract class User implements UserInterface, GroupableInterface
         return $this->passwordRequestedAt;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function isPasswordRequestNonExpired($ttl)
     {
         return $this->getPasswordRequestedAt() instanceof \DateTime &&
                $this->getPasswordRequestedAt()->getTimestamp() + $ttl > time();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setRoles(array $roles)
     {
         $this->roles = array();
@@ -541,15 +550,16 @@ abstract class User implements UserInterface, GroupableInterface
     }
 
     /**
-     * Gets the groups granted to the user.
-     *
-     * @return Collection
+     * {@inheritdoc}
      */
     public function getGroups()
     {
         return $this->groups ?: $this->groups = new ArrayCollection();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getGroupNames()
     {
         $names = array();
@@ -561,15 +571,16 @@ abstract class User implements UserInterface, GroupableInterface
     }
 
     /**
-     * @param string $name
-     *
-     * @return boolean
+     * {@inheritdoc}
      */
     public function hasGroup($name)
     {
         return in_array($name, $this->getGroupNames());
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function addGroup(GroupInterface $group)
     {
         if (!$this->getGroups()->contains($group)) {
@@ -579,6 +590,9 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function removeGroup(GroupInterface $group)
     {
         if ($this->getGroups()->contains($group)) {
@@ -588,6 +602,9 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return (string) $this->getUsername();

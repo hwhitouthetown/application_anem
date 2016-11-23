@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Implique" table="Implique">
+    <indexes>
+      <index name="idCompetence" columns="idCompetence,idStage"/>
+      <index name="idStage" columns="idStage"/>
+      <index name="IDX_92FC1E8D16207695" columns="idCompetence"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="idcompetence" target-entity="Competence">
+      <join-columns>
+        <join-column name="idCompetence" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idstage" target-entity="Stage">
+      <join-columns>
+        <join-column name="idStage" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

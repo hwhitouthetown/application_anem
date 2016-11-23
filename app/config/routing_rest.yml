@@ -1,0 +1,14 @@
+#app/routing_rest.yml
+Rest_App :
+  type : rest
+  resource: "@AppBundle/Resources/config/routing_rest.yml"
+Rest_User :
+  type : rest
+  resource: "@UserBundle/Resources/config/routing_rest.yml"
+Rest_Stage :
+  type : rest
+  resource: "@StageBundle/Resources/config/routing_rest.yml"
+Rest_Shop :
+  type : rest
+  resource: "@ShopBundle/Resources/config/routing_rest.yml"
+  prefix : shop/

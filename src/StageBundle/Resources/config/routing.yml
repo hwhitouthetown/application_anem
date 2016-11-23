@@ -1,0 +1,3 @@
+stage_homepage:
+    path:     /
+    defaults: { _controller: StageBundle:Default:index }

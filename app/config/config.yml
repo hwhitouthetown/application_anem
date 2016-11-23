@@ -2,6 +2,9 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: "@UserBundle/Resources/config/services.yml" }
+    - { resource: "@ShopBundle/Resources/config/services.yml" }
+    - { resource: "@StageBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -9,10 +12,6 @@ parameters:
     locale: en
 
 framework:
-
-    serializer:
-        enabled: true    
-
     #esi:             ~
     #translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
@@ -73,5 +72,12 @@ swiftmailer:
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
-    user_class: AppBundle\Entity\User    
+    user_class: AppBundle\Entity\User   
+fos_rest:
+    param_fetcher_listener: true
+    body_listener: true
+    format_listener: true
+
+    routing_loader:
+        default_format: json 
 

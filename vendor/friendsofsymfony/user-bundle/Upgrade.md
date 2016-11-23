@@ -4,6 +4,175 @@ Upgrade instruction
 This document describes the changes needed when upgrading because of a BC
 break. For the full list of changes, please look at the Changelog file.
 
+## 2.0.0-alpha3 to 2.0.0-alpha4
+
+Methods and properties removed from `FOS\UserBundle\Model\User`
+
+- `$expired`
+- `$credentialsExpired`
+- `setExpired()` (use `setExpiresAt(\DateTime::now()` instead)
+- `setCredentialsExpired()` (use `setCredentialsExpireAt(\DateTime::now()` instead)
+
+You need to drop the fields `expired` and `credentials_expired` from your database
+schema, because they aren't mapped anymore.
+
+### LoginManager
+
+The signature of the LoginManager constructor has changed.
+
+Before:
+
+```php
+class LoginManager
+{
+    public function __construct(
+        TokenStorageInterface $tokenStorage,
+        UserCheckerInterface $userChecker,
+        SessionAuthenticationStrategyInterface $sessionStrategy,
+        ContainerInterface $container
+    );
+}
+```
+
+After:
+
+```php
+class LoginManager
+{
+    public function __construct(
+        TokenStorageInterface $tokenStorage,
+        UserCheckerInterface $userChecker,
+        SessionAuthenticationStrategyInterface $sessionStrategy,
+        RequestStack $requestStack,
+        RememberMeServicesInterface $rememberMeService = null
+    );
+}
+```
+
+### Templates
+
+Following Symfony coding standards template names are now lowercase. Please
+rename if you use custom templates.
+
+Before:
+
+```php
+public function checkEmailAction()
+{
+    return $this->render('FOSUserBundle:Registration:checkEmail.html.twig');
+}
+```
+
+After:
+
+```php
+public function checkEmailAction()
+{
+    return $this->render('FOSUserBundle:Registration:check_email.html.twig');
+}
+```
+
+### UserListener
+
+The signature of the UserListener constructor has changed and now requires an
+implementation of `PasswordUpdaterInterface` and `CanonicalFieldsUpdater`.
+
+Before:
+
+```php
+class UserListener
+{
+    public function __construct(ContainerInterface $container);
+}
+
+```
+
+After:
+
+```php
+class UserListener
+{
+    public function __construct(
+        PasswordUpdaterInterface $passwordUpdater,
+        CanonicalFieldsUpdater $canonicalFieldsUpdater
+    );
+}
+```
+
+### UserManager
+
+The public methods `refreshUser`, `loadUserByUsername` and `supportsClass` have been
+removed. Please use the UserProvider instead.
+
+Before:
+
+```php
+$userManager->refreshUser($user);
+$userManager->loadUserByUsername($username);
+$userManager->supportsClass($class);
+
+```
+
+After:
+
+```php
+$userProvider->refreshUser($user);
+$userProvider->loadUserByUsername($username);
+$userProvider->supportsClass($class);
+
+```
+
+The signature of the UserManager constructor has changed and now requires an
+implementation of `PasswordUpdaterInterface` and `CanonicalFieldsUpdater`.
+
+Before:
+
+```php
+class UserManager
+{
+    public function __construct(
+        EncoderFactoryInterface $encoderFactory,
+        CanonicalizerInterface $usernameCanonicalizer,
+        CanonicalizerInterface $emailCanonicalizer
+    );
+}
+```
+
+After:
+
+```php
+class UserManager
+{
+    public function __construct(
+        PasswordUpdaterInterface $passwordUpdater,
+        CanonicalFieldsUpdater $canonicalFieldsUpdater
+    );
+}
+```
+
+### Validator
+
+The signature of the Validator Initializer constructor has changed and now
+requires an implementation of `CanonicalFieldsUpdater`.
+
+Before:
+
+```php
+class Initializer
+{
+    public function __construct(UserManagerInterface $userManager);
+}
+```
+
+After:
+
+```php
+class Initializer
+{
+    public function __construct(CanonicalFieldsUpdater $canonicalFieldsUpdater);
+}
+```
+
 ## 1.3 to 2.0.0-alpha1
 
 ### User Provider

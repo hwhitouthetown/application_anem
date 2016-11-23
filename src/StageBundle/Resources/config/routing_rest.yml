@@ -1,0 +1,5 @@
+#app/routing_rest.yml
+stages :
+  type: rest
+  resource:     "StageBundle:Default"
+  name_prefix:  api_stage_

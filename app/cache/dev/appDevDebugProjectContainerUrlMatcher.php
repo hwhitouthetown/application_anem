@@ -123,15 +123,6 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'ShopBundle\\Controller\\DefaultController::indexAction',  '_route' => 'shop_homepage',);
         }
 
-        // user_homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'user_homepage');
-            }
-
-            return array (  '_controller' => 'UserBundle\\Controller\\DefaultController::indexAction',  '_route' => 'user_homepage',);
-        }
-
         if (0 === strpos($pathinfo, '/co')) {
             if (0 === strpos($pathinfo, '/com')) {
                 if (0 === strpos($pathinfo, '/commande')) {
@@ -390,183 +381,87 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'homepage');
+        if (0 === strpos($pathinfo, '/entreprise')) {
+            // entreprise
+            if (rtrim($pathinfo, '/') === '/entreprise') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_entreprise;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'entreprise');
+                }
+
+                return array (  '_controller' => 'AppBundle\\Controller\\EntrepriseController::indexAction',  '_route' => 'entreprise',);
             }
+            not_entreprise:
 
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
-        }
-
-        if (0 === strpos($pathinfo, '/e')) {
-            if (0 === strpos($pathinfo, '/entreprise')) {
-                // entreprise
-                if (rtrim($pathinfo, '/') === '/entreprise') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_entreprise;
-                    }
-
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'entreprise');
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\EntrepriseController::indexAction',  '_route' => 'entreprise',);
+            // entreprise_new
+            if ($pathinfo === '/entreprise/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_entreprise_new;
                 }
-                not_entreprise:
 
-                // entreprise_new
-                if ($pathinfo === '/entreprise/new') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_entreprise_new;
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\EntrepriseController::newAction',  '_route' => 'entreprise_new',);
-                }
-                not_entreprise_new:
-
-                // entreprise_show
-                if (preg_match('#^/entreprise/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_entreprise_show;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'entreprise_show')), array (  '_controller' => 'AppBundle\\Controller\\EntrepriseController::showAction',));
-                }
-                not_entreprise_show:
-
-                // entreprise_edit
-                if (preg_match('#^/entreprise/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_entreprise_edit;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'entreprise_edit')), array (  '_controller' => 'AppBundle\\Controller\\EntrepriseController::editAction',));
-                }
-                not_entreprise_edit:
-
-                // entreprise_delete
-                if (preg_match('#^/entreprise/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if ($this->context->getMethod() != 'DELETE') {
-                        $allow[] = 'DELETE';
-                        goto not_entreprise_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'entreprise_delete')), array (  '_controller' => 'AppBundle\\Controller\\EntrepriseController::deleteAction',));
-                }
-                not_entreprise_delete:
-
-                // entreprise_by_id_delete
-                if (0 === strpos($pathinfo, '/entreprise/delete') && preg_match('#^/entreprise/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_entreprise_by_id_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'entreprise_by_id_delete')), array (  '_controller' => 'AppBundle\\Controller\\EntrepriseController::deleteByIdAction',));
-                }
-                not_entreprise_by_id_delete:
-
-                // entreprise_bulk_action
-                if ($pathinfo === '/entreprise/bulk-action/') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_entreprise_bulk_action;
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\EntrepriseController::bulkAction',  '_route' => 'entreprise_bulk_action',);
-                }
-                not_entreprise_bulk_action:
-
+                return array (  '_controller' => 'AppBundle\\Controller\\EntrepriseController::newAction',  '_route' => 'entreprise_new',);
             }
+            not_entreprise_new:
 
-            if (0 === strpos($pathinfo, '/etudiant')) {
-                // etudiant
-                if (rtrim($pathinfo, '/') === '/etudiant') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_etudiant;
-                    }
-
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'etudiant');
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\EtudiantController::indexAction',  '_route' => 'etudiant',);
+            // entreprise_show
+            if (preg_match('#^/entreprise/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_entreprise_show;
                 }
-                not_etudiant:
 
-                // etudiant_new
-                if ($pathinfo === '/etudiant/new') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_etudiant_new;
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\EtudiantController::newAction',  '_route' => 'etudiant_new',);
-                }
-                not_etudiant_new:
-
-                // etudiant_show
-                if (preg_match('#^/etudiant/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_etudiant_show;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'etudiant_show')), array (  '_controller' => 'AppBundle\\Controller\\EtudiantController::showAction',));
-                }
-                not_etudiant_show:
-
-                // etudiant_edit
-                if (preg_match('#^/etudiant/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_etudiant_edit;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'etudiant_edit')), array (  '_controller' => 'AppBundle\\Controller\\EtudiantController::editAction',));
-                }
-                not_etudiant_edit:
-
-                // etudiant_delete
-                if (preg_match('#^/etudiant/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if ($this->context->getMethod() != 'DELETE') {
-                        $allow[] = 'DELETE';
-                        goto not_etudiant_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'etudiant_delete')), array (  '_controller' => 'AppBundle\\Controller\\EtudiantController::deleteAction',));
-                }
-                not_etudiant_delete:
-
-                // etudiant_by_id_delete
-                if (0 === strpos($pathinfo, '/etudiant/delete') && preg_match('#^/etudiant/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_etudiant_by_id_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'etudiant_by_id_delete')), array (  '_controller' => 'AppBundle\\Controller\\EtudiantController::deleteByIdAction',));
-                }
-                not_etudiant_by_id_delete:
-
-                // etudiant_bulk_action
-                if ($pathinfo === '/etudiant/bulk-action/') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_etudiant_bulk_action;
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\EtudiantController::bulkAction',  '_route' => 'etudiant_bulk_action',);
-                }
-                not_etudiant_bulk_action:
-
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'entreprise_show')), array (  '_controller' => 'AppBundle\\Controller\\EntrepriseController::showAction',));
             }
+            not_entreprise_show:
+
+            // entreprise_edit
+            if (preg_match('#^/entreprise/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_entreprise_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'entreprise_edit')), array (  '_controller' => 'AppBundle\\Controller\\EntrepriseController::editAction',));
+            }
+            not_entreprise_edit:
+
+            // entreprise_delete
+            if (preg_match('#^/entreprise/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'DELETE') {
+                    $allow[] = 'DELETE';
+                    goto not_entreprise_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'entreprise_delete')), array (  '_controller' => 'AppBundle\\Controller\\EntrepriseController::deleteAction',));
+            }
+            not_entreprise_delete:
+
+            // entreprise_by_id_delete
+            if (0 === strpos($pathinfo, '/entreprise/delete') && preg_match('#^/entreprise/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_entreprise_by_id_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'entreprise_by_id_delete')), array (  '_controller' => 'AppBundle\\Controller\\EntrepriseController::deleteByIdAction',));
+            }
+            not_entreprise_by_id_delete:
+
+            // entreprise_bulk_action
+            if ($pathinfo === '/entreprise/bulk-action/') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_entreprise_bulk_action;
+                }
+
+                return array (  '_controller' => 'AppBundle\\Controller\\EntrepriseController::bulkAction',  '_route' => 'entreprise_bulk_action',);
+            }
+            not_entreprise_bulk_action:
 
         }
 
@@ -741,684 +636,87 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        if (0 === strpos($pathinfo, '/membre')) {
-            // membre
-            if (rtrim($pathinfo, '/') === '/membre') {
+        if (0 === strpos($pathinfo, '/user')) {
+            // user
+            if (rtrim($pathinfo, '/') === '/user') {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_membre;
+                    goto not_user;
                 }
 
                 if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'membre');
+                    return $this->redirect($pathinfo.'/', 'user');
                 }
 
-                return array (  '_controller' => 'AppBundle\\Controller\\MembreController::indexAction',  '_route' => 'membre',);
+                return array (  '_controller' => 'AppBundle\\Controller\\UserController::indexAction',  '_route' => 'user',);
             }
-            not_membre:
+            not_user:
 
-            // membre_new
-            if ($pathinfo === '/membre/new') {
+            // user_new
+            if ($pathinfo === '/user/new') {
                 if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_membre_new;
+                    goto not_user_new;
                 }
 
-                return array (  '_controller' => 'AppBundle\\Controller\\MembreController::newAction',  '_route' => 'membre_new',);
+                return array (  '_controller' => 'AppBundle\\Controller\\UserController::newAction',  '_route' => 'user_new',);
             }
-            not_membre_new:
+            not_user_new:
 
-            // membre_show
-            if (preg_match('#^/membre/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            // user_show
+            if (preg_match('#^/user/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_membre_show;
+                    goto not_user_show;
                 }
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'membre_show')), array (  '_controller' => 'AppBundle\\Controller\\MembreController::showAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_show')), array (  '_controller' => 'AppBundle\\Controller\\UserController::showAction',));
             }
-            not_membre_show:
+            not_user_show:
 
-            // membre_edit
-            if (preg_match('#^/membre/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+            // user_edit
+            if (preg_match('#^/user/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_membre_edit;
+                    goto not_user_edit;
                 }
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'membre_edit')), array (  '_controller' => 'AppBundle\\Controller\\MembreController::editAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_edit')), array (  '_controller' => 'AppBundle\\Controller\\UserController::editAction',));
             }
-            not_membre_edit:
+            not_user_edit:
 
-            // membre_delete
-            if (preg_match('#^/membre/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            // user_delete
+            if (preg_match('#^/user/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 if ($this->context->getMethod() != 'DELETE') {
                     $allow[] = 'DELETE';
-                    goto not_membre_delete;
+                    goto not_user_delete;
                 }
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'membre_delete')), array (  '_controller' => 'AppBundle\\Controller\\MembreController::deleteAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_delete')), array (  '_controller' => 'AppBundle\\Controller\\UserController::deleteAction',));
             }
-            not_membre_delete:
+            not_user_delete:
 
-            // membre_by_id_delete
-            if (0 === strpos($pathinfo, '/membre/delete') && preg_match('#^/membre/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            // user_by_id_delete
+            if (0 === strpos($pathinfo, '/user/delete') && preg_match('#^/user/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_membre_by_id_delete;
+                    goto not_user_by_id_delete;
                 }
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'membre_by_id_delete')), array (  '_controller' => 'AppBundle\\Controller\\MembreController::deleteByIdAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_by_id_delete')), array (  '_controller' => 'AppBundle\\Controller\\UserController::deleteByIdAction',));
             }
-            not_membre_by_id_delete:
+            not_user_by_id_delete:
 
-            // membre_bulk_action
-            if ($pathinfo === '/membre/bulk-action/') {
+            // user_bulk_action
+            if ($pathinfo === '/user/bulk-action/') {
                 if ($this->context->getMethod() != 'POST') {
                     $allow[] = 'POST';
-                    goto not_membre_bulk_action;
+                    goto not_user_bulk_action;
                 }
 
-                return array (  '_controller' => 'AppBundle\\Controller\\MembreController::bulkAction',  '_route' => 'membre_bulk_action',);
+                return array (  '_controller' => 'AppBundle\\Controller\\UserController::bulkAction',  '_route' => 'user_bulk_action',);
             }
-            not_membre_bulk_action:
-
-        }
-
-        if (0 === strpos($pathinfo, '/p')) {
-            if (0 === strpos($pathinfo, '/personnel')) {
-                // personnel
-                if (rtrim($pathinfo, '/') === '/personnel') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_personnel;
-                    }
-
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'personnel');
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\PersonnelController::indexAction',  '_route' => 'personnel',);
-                }
-                not_personnel:
-
-                // personnel_new
-                if ($pathinfo === '/personnel/new') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_personnel_new;
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\PersonnelController::newAction',  '_route' => 'personnel_new',);
-                }
-                not_personnel_new:
-
-                // personnel_show
-                if (preg_match('#^/personnel/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_personnel_show;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'personnel_show')), array (  '_controller' => 'AppBundle\\Controller\\PersonnelController::showAction',));
-                }
-                not_personnel_show:
-
-                // personnel_edit
-                if (preg_match('#^/personnel/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_personnel_edit;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'personnel_edit')), array (  '_controller' => 'AppBundle\\Controller\\PersonnelController::editAction',));
-                }
-                not_personnel_edit:
-
-                // personnel_delete
-                if (preg_match('#^/personnel/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if ($this->context->getMethod() != 'DELETE') {
-                        $allow[] = 'DELETE';
-                        goto not_personnel_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'personnel_delete')), array (  '_controller' => 'AppBundle\\Controller\\PersonnelController::deleteAction',));
-                }
-                not_personnel_delete:
-
-                // personnel_by_id_delete
-                if (0 === strpos($pathinfo, '/personnel/delete') && preg_match('#^/personnel/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_personnel_by_id_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'personnel_by_id_delete')), array (  '_controller' => 'AppBundle\\Controller\\PersonnelController::deleteByIdAction',));
-                }
-                not_personnel_by_id_delete:
-
-                // personnel_bulk_action
-                if ($pathinfo === '/personnel/bulk-action/') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_personnel_bulk_action;
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\PersonnelController::bulkAction',  '_route' => 'personnel_bulk_action',);
-                }
-                not_personnel_bulk_action:
-
-            }
-
-            if (0 === strpos($pathinfo, '/poste')) {
-                // poste
-                if (rtrim($pathinfo, '/') === '/poste') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_poste;
-                    }
-
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'poste');
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\PosteController::indexAction',  '_route' => 'poste',);
-                }
-                not_poste:
-
-                // poste_new
-                if ($pathinfo === '/poste/new') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_poste_new;
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\PosteController::newAction',  '_route' => 'poste_new',);
-                }
-                not_poste_new:
-
-                // poste_show
-                if (preg_match('#^/poste/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_poste_show;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'poste_show')), array (  '_controller' => 'AppBundle\\Controller\\PosteController::showAction',));
-                }
-                not_poste_show:
-
-                // poste_edit
-                if (preg_match('#^/poste/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_poste_edit;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'poste_edit')), array (  '_controller' => 'AppBundle\\Controller\\PosteController::editAction',));
-                }
-                not_poste_edit:
-
-                // poste_delete
-                if (preg_match('#^/poste/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if ($this->context->getMethod() != 'DELETE') {
-                        $allow[] = 'DELETE';
-                        goto not_poste_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'poste_delete')), array (  '_controller' => 'AppBundle\\Controller\\PosteController::deleteAction',));
-                }
-                not_poste_delete:
-
-                // poste_by_id_delete
-                if (0 === strpos($pathinfo, '/poste/delete') && preg_match('#^/poste/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_poste_by_id_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'poste_by_id_delete')), array (  '_controller' => 'AppBundle\\Controller\\PosteController::deleteByIdAction',));
-                }
-                not_poste_by_id_delete:
-
-                // poste_bulk_action
-                if ($pathinfo === '/poste/bulk-action/') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_poste_bulk_action;
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\PosteController::bulkAction',  '_route' => 'poste_bulk_action',);
-                }
-                not_poste_bulk_action:
-
-            }
-
-            if (0 === strpos($pathinfo, '/pro')) {
-                if (0 === strpos($pathinfo, '/produit')) {
-                    // produit
-                    if (rtrim($pathinfo, '/') === '/produit') {
-                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'HEAD'));
-                            goto not_produit;
-                        }
-
-                        if (substr($pathinfo, -1) !== '/') {
-                            return $this->redirect($pathinfo.'/', 'produit');
-                        }
-
-                        return array (  '_controller' => 'AppBundle\\Controller\\ProduitController::indexAction',  '_route' => 'produit',);
-                    }
-                    not_produit:
-
-                    // produit_new
-                    if ($pathinfo === '/produit/new') {
-                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                            goto not_produit_new;
-                        }
-
-                        return array (  '_controller' => 'AppBundle\\Controller\\ProduitController::newAction',  '_route' => 'produit_new',);
-                    }
-                    not_produit_new:
-
-                    // produit_show
-                    if (preg_match('#^/produit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'HEAD'));
-                            goto not_produit_show;
-                        }
-
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'produit_show')), array (  '_controller' => 'AppBundle\\Controller\\ProduitController::showAction',));
-                    }
-                    not_produit_show:
-
-                    // produit_edit
-                    if (preg_match('#^/produit/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                            goto not_produit_edit;
-                        }
-
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'produit_edit')), array (  '_controller' => 'AppBundle\\Controller\\ProduitController::editAction',));
-                    }
-                    not_produit_edit:
-
-                    // produit_delete
-                    if (preg_match('#^/produit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                        if ($this->context->getMethod() != 'DELETE') {
-                            $allow[] = 'DELETE';
-                            goto not_produit_delete;
-                        }
-
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'produit_delete')), array (  '_controller' => 'AppBundle\\Controller\\ProduitController::deleteAction',));
-                    }
-                    not_produit_delete:
-
-                    // produit_by_id_delete
-                    if (0 === strpos($pathinfo, '/produit/delete') && preg_match('#^/produit/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'HEAD'));
-                            goto not_produit_by_id_delete;
-                        }
-
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'produit_by_id_delete')), array (  '_controller' => 'AppBundle\\Controller\\ProduitController::deleteByIdAction',));
-                    }
-                    not_produit_by_id_delete:
-
-                    // produit_bulk_action
-                    if ($pathinfo === '/produit/bulk-action/') {
-                        if ($this->context->getMethod() != 'POST') {
-                            $allow[] = 'POST';
-                            goto not_produit_bulk_action;
-                        }
-
-                        return array (  '_controller' => 'AppBundle\\Controller\\ProduitController::bulkAction',  '_route' => 'produit_bulk_action',);
-                    }
-                    not_produit_bulk_action:
-
-                }
-
-                if (0 === strpos($pathinfo, '/promotion')) {
-                    // promotion
-                    if (rtrim($pathinfo, '/') === '/promotion') {
-                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'HEAD'));
-                            goto not_promotion;
-                        }
-
-                        if (substr($pathinfo, -1) !== '/') {
-                            return $this->redirect($pathinfo.'/', 'promotion');
-                        }
-
-                        return array (  '_controller' => 'AppBundle\\Controller\\PromotionController::indexAction',  '_route' => 'promotion',);
-                    }
-                    not_promotion:
-
-                    // promotion_new
-                    if ($pathinfo === '/promotion/new') {
-                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                            goto not_promotion_new;
-                        }
-
-                        return array (  '_controller' => 'AppBundle\\Controller\\PromotionController::newAction',  '_route' => 'promotion_new',);
-                    }
-                    not_promotion_new:
-
-                    // promotion_show
-                    if (preg_match('#^/promotion/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'HEAD'));
-                            goto not_promotion_show;
-                        }
-
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'promotion_show')), array (  '_controller' => 'AppBundle\\Controller\\PromotionController::showAction',));
-                    }
-                    not_promotion_show:
-
-                    // promotion_edit
-                    if (preg_match('#^/promotion/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                            goto not_promotion_edit;
-                        }
-
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'promotion_edit')), array (  '_controller' => 'AppBundle\\Controller\\PromotionController::editAction',));
-                    }
-                    not_promotion_edit:
-
-                    // promotion_delete
-                    if (preg_match('#^/promotion/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                        if ($this->context->getMethod() != 'DELETE') {
-                            $allow[] = 'DELETE';
-                            goto not_promotion_delete;
-                        }
-
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'promotion_delete')), array (  '_controller' => 'AppBundle\\Controller\\PromotionController::deleteAction',));
-                    }
-                    not_promotion_delete:
-
-                    // promotion_by_id_delete
-                    if (0 === strpos($pathinfo, '/promotion/delete') && preg_match('#^/promotion/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'HEAD'));
-                            goto not_promotion_by_id_delete;
-                        }
-
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'promotion_by_id_delete')), array (  '_controller' => 'AppBundle\\Controller\\PromotionController::deleteByIdAction',));
-                    }
-                    not_promotion_by_id_delete:
-
-                    // promotion_bulk_action
-                    if ($pathinfo === '/promotion/bulk-action/') {
-                        if ($this->context->getMethod() != 'POST') {
-                            $allow[] = 'POST';
-                            goto not_promotion_bulk_action;
-                        }
-
-                        return array (  '_controller' => 'AppBundle\\Controller\\PromotionController::bulkAction',  '_route' => 'promotion_bulk_action',);
-                    }
-                    not_promotion_bulk_action:
-
-                }
-
-            }
-
-        }
-
-        if (0 === strpos($pathinfo, '/stage')) {
-            // stage
-            if (rtrim($pathinfo, '/') === '/stage') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_stage;
-                }
-
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'stage');
-                }
-
-                return array (  '_controller' => 'AppBundle\\Controller\\StageController::indexAction',  '_route' => 'stage',);
-            }
-            not_stage:
-
-            // stage_new
-            if ($pathinfo === '/stage/new') {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_stage_new;
-                }
-
-                return array (  '_controller' => 'AppBundle\\Controller\\StageController::newAction',  '_route' => 'stage_new',);
-            }
-            not_stage_new:
-
-            // stage_show
-            if (preg_match('#^/stage/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_stage_show;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'stage_show')), array (  '_controller' => 'AppBundle\\Controller\\StageController::showAction',));
-            }
-            not_stage_show:
-
-            // stage_edit
-            if (preg_match('#^/stage/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_stage_edit;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'stage_edit')), array (  '_controller' => 'AppBundle\\Controller\\StageController::editAction',));
-            }
-            not_stage_edit:
-
-            // stage_delete
-            if (preg_match('#^/stage/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if ($this->context->getMethod() != 'DELETE') {
-                    $allow[] = 'DELETE';
-                    goto not_stage_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'stage_delete')), array (  '_controller' => 'AppBundle\\Controller\\StageController::deleteAction',));
-            }
-            not_stage_delete:
-
-            // stage_by_id_delete
-            if (0 === strpos($pathinfo, '/stage/delete') && preg_match('#^/stage/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_stage_by_id_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'stage_by_id_delete')), array (  '_controller' => 'AppBundle\\Controller\\StageController::deleteByIdAction',));
-            }
-            not_stage_by_id_delete:
-
-            // stage_bulk_action
-            if ($pathinfo === '/stage/bulk-action/') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_stage_bulk_action;
-                }
-
-                return array (  '_controller' => 'AppBundle\\Controller\\StageController::bulkAction',  '_route' => 'stage_bulk_action',);
-            }
-            not_stage_bulk_action:
-
-        }
-
-        if (0 === strpos($pathinfo, '/u')) {
-            if (0 === strpos($pathinfo, '/user')) {
-                // user
-                if (rtrim($pathinfo, '/') === '/user') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_user;
-                    }
-
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'user');
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\UserController::indexAction',  '_route' => 'user',);
-                }
-                not_user:
-
-                // user_new
-                if ($pathinfo === '/user/new') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_user_new;
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\UserController::newAction',  '_route' => 'user_new',);
-                }
-                not_user_new:
-
-                // user_show
-                if (preg_match('#^/user/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_user_show;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_show')), array (  '_controller' => 'AppBundle\\Controller\\UserController::showAction',));
-                }
-                not_user_show:
-
-                // user_edit
-                if (preg_match('#^/user/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_user_edit;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_edit')), array (  '_controller' => 'AppBundle\\Controller\\UserController::editAction',));
-                }
-                not_user_edit:
-
-                // user_delete
-                if (preg_match('#^/user/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if ($this->context->getMethod() != 'DELETE') {
-                        $allow[] = 'DELETE';
-                        goto not_user_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_delete')), array (  '_controller' => 'AppBundle\\Controller\\UserController::deleteAction',));
-                }
-                not_user_delete:
-
-                // user_by_id_delete
-                if (0 === strpos($pathinfo, '/user/delete') && preg_match('#^/user/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_user_by_id_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'user_by_id_delete')), array (  '_controller' => 'AppBundle\\Controller\\UserController::deleteByIdAction',));
-                }
-                not_user_by_id_delete:
-
-                // user_bulk_action
-                if ($pathinfo === '/user/bulk-action/') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_user_bulk_action;
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\UserController::bulkAction',  '_route' => 'user_bulk_action',);
-                }
-                not_user_bulk_action:
-
-            }
-
-            if (0 === strpos($pathinfo, '/utilisateur')) {
-                // utilisateur
-                if (rtrim($pathinfo, '/') === '/utilisateur') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_utilisateur;
-                    }
-
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'utilisateur');
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\UtilisateurController::indexAction',  '_route' => 'utilisateur',);
-                }
-                not_utilisateur:
-
-                // utilisateur_new
-                if ($pathinfo === '/utilisateur/new') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_utilisateur_new;
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\UtilisateurController::newAction',  '_route' => 'utilisateur_new',);
-                }
-                not_utilisateur_new:
-
-                // utilisateur_show
-                if (preg_match('#^/utilisateur/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_utilisateur_show;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'utilisateur_show')), array (  '_controller' => 'AppBundle\\Controller\\UtilisateurController::showAction',));
-                }
-                not_utilisateur_show:
-
-                // utilisateur_edit
-                if (preg_match('#^/utilisateur/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_utilisateur_edit;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'utilisateur_edit')), array (  '_controller' => 'AppBundle\\Controller\\UtilisateurController::editAction',));
-                }
-                not_utilisateur_edit:
-
-                // utilisateur_delete
-                if (preg_match('#^/utilisateur/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if ($this->context->getMethod() != 'DELETE') {
-                        $allow[] = 'DELETE';
-                        goto not_utilisateur_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'utilisateur_delete')), array (  '_controller' => 'AppBundle\\Controller\\UtilisateurController::deleteAction',));
-                }
-                not_utilisateur_delete:
-
-                // utilisateur_by_id_delete
-                if (0 === strpos($pathinfo, '/utilisateur/delete') && preg_match('#^/utilisateur/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_utilisateur_by_id_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'utilisateur_by_id_delete')), array (  '_controller' => 'AppBundle\\Controller\\UtilisateurController::deleteByIdAction',));
-                }
-                not_utilisateur_by_id_delete:
-
-                // utilisateur_bulk_action
-                if ($pathinfo === '/utilisateur/bulk-action/') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_utilisateur_bulk_action;
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\UtilisateurController::bulkAction',  '_route' => 'utilisateur_bulk_action',);
-                }
-                not_utilisateur_bulk_action:
-
-            }
+            not_user_bulk_action:
 
         }
 

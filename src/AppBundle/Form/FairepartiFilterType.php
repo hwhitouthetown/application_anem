@@ -16,12 +16,12 @@ class FairepartiFilterType extends AbstractType
         $builder
             ->add('id', Filters\NumberFilterType::class)
         
-            ->add('idetudiant', Filters\EntityFilterType::class, array(
-                    'class' => 'AppBundle\Entity\Etudiant',
-                    'choice_label' => 'id',
-            )) 
             ->add('idpromotion', Filters\EntityFilterType::class, array(
                     'class' => 'AppBundle\Entity\Promotion',
+                    'choice_label' => 'id',
+            )) 
+            ->add('idetudiant', Filters\EntityFilterType::class, array(
+                    'class' => 'AppBundle\Entity\User',
                     'choice_label' => 'id',
             )) 
         ;

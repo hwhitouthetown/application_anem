@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <parameters>
-    <parameter key="kernel.root_dir">/var/www/html/application_anem/app</parameter>
+    <parameter key="kernel.root_dir">/Users/hugosanslaville/Documents/projetMercredi/application_anem/app</parameter>
     <parameter key="kernel.environment">dev</parameter>
     <parameter key="kernel.debug">true</parameter>
     <parameter key="kernel.name">app</parameter>
-    <parameter key="kernel.cache_dir">/var/www/html/application_anem/app/cache/dev</parameter>
-    <parameter key="kernel.logs_dir">/var/www/html/application_anem/app/logs</parameter>
+    <parameter key="kernel.cache_dir">/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev</parameter>
+    <parameter key="kernel.logs_dir">/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/logs</parameter>
     <parameter key="kernel.bundles" type="collection">
       <parameter key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</parameter>
       <parameter key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</parameter>
@@ -18,6 +18,7 @@
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="JMSSerializerBundle">JMS\SerializerBundle\JMSSerializerBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
+      <parameter key="FOSOAuthServerBundle">FOS\OAuthServerBundle\FOSOAuthServerBundle</parameter>
       <parameter key="LexikFormFilterBundle">Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle</parameter>
       <parameter key="PetkoparaMultiSearchBundle">Petkopara\MultiSearchBundle\PetkoparaMultiSearchBundle</parameter>
       <parameter key="PetkoparaCrudGeneratorBundle">Petkopara\CrudGeneratorBundle\PetkoparaCrudGeneratorBundle</parameter>
@@ -111,7 +112,7 @@
       <parameter key="cookie_httponly">true</parameter>
       <parameter key="gc_probability">1</parameter>
     </parameter>
-    <parameter key="session.save_path">/var/www/html/application_anem/app/cache/dev/sessions</parameter>
+    <parameter key="session.save_path">/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev/sessions</parameter>
     <parameter key="session.metadata.update_threshold">0</parameter>
     <parameter key="security.secure_random.class">Symfony\Component\Security\Core\Util\SecureRandom</parameter>
     <parameter key="form.resolved_type_factory.class">Symfony\Component\Form\ResolvedFormTypeFactory</parameter>
@@ -152,6 +153,7 @@
     <parameter key="validator.translation_domain">validators</parameter>
     <parameter key="validator.api">2.5-bc</parameter>
     <parameter key="fragment.listener.class">Symfony\Component\HttpKernel\EventListener\FragmentListener</parameter>
+    <parameter key="translator.logging">true</parameter>
     <parameter key="profiler.class">Symfony\Component\HttpKernel\Profiler\Profiler</parameter>
     <parameter key="profiler_listener.class">Symfony\Component\HttpKernel\EventListener\ProfilerListener</parameter>
     <parameter key="data_collector.config.class">Symfony\Component\HttpKernel\DataCollector\ConfigDataCollector</parameter>
@@ -168,7 +170,7 @@
     <parameter key="data_collector.form.extractor.class">Symfony\Component\Form\Extension\DataCollector\FormDataExtractor</parameter>
     <parameter key="profiler_listener.only_exceptions">false</parameter>
     <parameter key="profiler_listener.only_master_requests">false</parameter>
-    <parameter key="profiler.storage.dsn">file:/var/www/html/application_anem/app/cache/dev/profiler</parameter>
+    <parameter key="profiler.storage.dsn">file:/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev/profiler</parameter>
     <parameter key="profiler.storage.username"></parameter>
     <parameter key="profiler.storage.password"></parameter>
     <parameter key="profiler.storage.lifetime">86400</parameter>
@@ -192,7 +194,7 @@
     <parameter key="router.request_context.host">localhost</parameter>
     <parameter key="router.request_context.scheme">http</parameter>
     <parameter key="router.request_context.base_url"></parameter>
-    <parameter key="router.resource">/var/www/html/application_anem/app/config/routing_dev.yml</parameter>
+    <parameter key="router.resource">/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/config/routing_dev.yml</parameter>
     <parameter key="router.cache_class_prefix">appDevDebugProjectContainer</parameter>
     <parameter key="request_listener.http_port">80</parameter>
     <parameter key="request_listener.https_port">443</parameter>
@@ -203,7 +205,7 @@
     <parameter key="debug.stopwatch.class">Symfony\Component\Stopwatch\Stopwatch</parameter>
     <parameter key="debug.error_handler.throw_at">-1</parameter>
     <parameter key="debug.event_dispatcher.class">Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher</parameter>
-    <parameter key="debug.container.dump">/var/www/html/application_anem/app/cache/dev/appDevDebugProjectContainer.xml</parameter>
+    <parameter key="debug.container.dump">/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev/appDevDebugProjectContainer.xml</parameter>
     <parameter key="debug.controller_resolver.class">Symfony\Component\HttpKernel\Controller\TraceableControllerResolver</parameter>
     <parameter key="security.context.class">Symfony\Component\Security\Core\SecurityContext</parameter>
     <parameter key="security.user_checker.class">Symfony\Component\Security\Core\User\UserChecker</parameter>
@@ -395,7 +397,7 @@
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.local_domain">null</parameter>
-    <parameter key="swiftmailer.spool.default.memory.path">/var/www/html/application_anem/app/cache/dev/swiftmailer/spool/default</parameter>
+    <parameter key="swiftmailer.spool.default.memory.path">/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev/swiftmailer/spool/default</parameter>
     <parameter key="swiftmailer.mailer.default.spool.enabled">true</parameter>
     <parameter key="swiftmailer.mailer.default.plugin.impersonate">null</parameter>
     <parameter key="swiftmailer.mailer.default.single_address">null</parameter>
@@ -513,7 +515,7 @@
     <parameter key="doctrine.orm.second_level_cache.cache_configuration.class">Doctrine\ORM\Cache\CacheConfiguration</parameter>
     <parameter key="doctrine.orm.second_level_cache.regions_configuration.class">Doctrine\ORM\Cache\RegionsConfiguration</parameter>
     <parameter key="doctrine.orm.auto_generate_proxy_classes">true</parameter>
-    <parameter key="doctrine.orm.proxy_dir">/var/www/html/application_anem/app/cache/dev/doctrine/orm/Proxies</parameter>
+    <parameter key="doctrine.orm.proxy_dir">/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev/doctrine/orm/Proxies</parameter>
     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
     <parameter key="sensio_framework_extra.view.guesser.class">Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser</parameter>
     <parameter key="sensio_framework_extra.controller.listener.class">Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener</parameter>
@@ -602,6 +604,23 @@
       <parameter>ResetPassword</parameter>
       <parameter>Default</parameter>
     </parameter>
+    <parameter key="fos_oauth_server.server.class">OAuth2\OAuth2</parameter>
+    <parameter key="fos_oauth_server.security.authentication.provider.class">FOS\OAuthServerBundle\Security\Authentication\Provider\OAuthProvider</parameter>
+    <parameter key="fos_oauth_server.security.authentication.listener.class">FOS\OAuthServerBundle\Security\Firewall\OAuthListener</parameter>
+    <parameter key="fos_oauth_server.security.entry_point.class">FOS\OAuthServerBundle\Security\EntryPoint\OAuthEntryPoint</parameter>
+    <parameter key="fos_oauth_server.server.options" type="collection"/>
+    <parameter key="fos_oauth_server.model_manager_name">null</parameter>
+    <parameter key="fos_oauth_server.model.client.class">UserBundle\Entity\Client</parameter>
+    <parameter key="fos_oauth_server.model.access_token.class">UserBundle\Entity\AccesToken</parameter>
+    <parameter key="fos_oauth_server.model.refresh_token.class">UserBundle\Entity\RefreshToken</parameter>
+    <parameter key="fos_oauth_server.model.auth_code.class">UserBundle\Entity\AuthCode</parameter>
+    <parameter key="fos_oauth_server.template.engine">twig</parameter>
+    <parameter key="fos_oauth_server.authorize.form.type">FOS\OAuthServerBundle\Form\Type\AuthorizeFormType</parameter>
+    <parameter key="fos_oauth_server.authorize.form.name">fos_oauth_server_authorize_form</parameter>
+    <parameter key="fos_oauth_server.authorize.form.validation_groups" type="collection">
+      <parameter>Authorize</parameter>
+      <parameter>Default</parameter>
+    </parameter>
     <parameter key="lexik_form_filter.query_builder_updater.class">Lexik\Bundle\FormFilterBundle\Filter\FilterBuilderUpdater</parameter>
     <parameter key="lexik_form_filter.form_data_extractor.class">Lexik\Bundle\FormFilterBundle\Filter\DataExtractor\FormDataExtractor</parameter>
     <parameter key="lexik_form_filter.data_extraction_method.default.class">Lexik\Bundle\FormFilterBundle\Filter\DataExtractor\Method\DefaultExtractionMethod</parameter>
@@ -644,7 +663,7 @@
     <parameter key="fos_rest.violation_formatter.class">FOS\RestBundle\Util\ViolationFormatter</parameter>
     <parameter key="fos_rest.request.param_fetcher.class">FOS\RestBundle\Request\ParamFetcher</parameter>
     <parameter key="fos_rest.request.param_fetcher.reader.class">FOS\RestBundle\Request\ParamReader</parameter>
-    <parameter key="fos_rest.cache_dir">/var/www/html/application_anem/app/cache/dev/fos_rest</parameter>
+    <parameter key="fos_rest.cache_dir">/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev/fos_rest</parameter>
     <parameter key="fos_rest.routing.loader.default_format">json</parameter>
     <parameter key="fos_rest.routing.loader.include_format">true</parameter>
     <parameter key="fos_rest.serializer.serialize_null">false</parameter>
@@ -723,6 +742,10 @@
         <parameter>router</parameter>
         <parameter>@WebProfiler/Collector/router.html.twig</parameter>
       </parameter>
+      <parameter key="data_collector.translation" type="collection">
+        <parameter>translation</parameter>
+        <parameter>@WebProfiler/Collector/translation.html.twig</parameter>
+      </parameter>
       <parameter key="data_collector.security" type="collection">
         <parameter>security</parameter>
         <parameter>@Security/Collector/security.html.twig</parameter>
@@ -795,7 +818,7 @@
               <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
                 <argument type="service" id="kernel"/>
                 <argument type="service" id="templating.filename_parser"/>
-                <argument>/var/www/html/application_anem/app/Resources</argument>
+                <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/Resources</argument>
               </service>
             </argument>
             <argument type="service" id="templating.locator"/>
@@ -805,7 +828,7 @@
         <argument type="service">
           <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TranslationsCacheWarmer" public="false">
             <tag name="kernel.cache_warmer"/>
-            <argument type="service" id="translator"/>
+            <argument type="service" id="translator.default"/>
           </service>
         </argument>
         <argument type="service">
@@ -822,7 +845,7 @@
               <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
                 <argument type="service" id="kernel"/>
                 <argument type="service" id="templating.filename_parser"/>
-                <argument>/var/www/html/application_anem/app/Resources</argument>
+                <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/Resources</argument>
               </service>
             </argument>
             <argument type="collection"/>
@@ -835,7 +858,7 @@
             <argument type="service">
               <service class="Symfony\Bundle\TwigBundle\TemplateIterator" public="false">
                 <argument type="service" id="kernel"/>
-                <argument>/var/www/html/application_anem/app</argument>
+                <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/app</argument>
                 <argument type="collection"/>
               </service>
             </argument>
@@ -866,7 +889,7 @@
     <service id="filesystem" class="Symfony\Component\Filesystem\Filesystem"/>
     <service id="file_locator" class="Symfony\Component\HttpKernel\Config\FileLocator">
       <argument type="service" id="kernel"/>
-      <argument>/var/www/html/application_anem/app/Resources</argument>
+      <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/Resources</argument>
     </service>
     <service id="uri_signer" class="Symfony\Component\HttpKernel\UriSigner">
       <argument>ad1821efe6bb62db506594c150048348700e33a0</argument>
@@ -948,7 +971,9 @@
     </service>
     <service id="translator.default" class="Symfony\Bundle\FrameworkBundle\Translation\Translator">
       <argument type="service" id="service_container"/>
-      <argument type="service" id="translator.selector"/>
+      <argument type="service">
+        <service class="Symfony\Component\Translation\MessageSelector" public="false"/>
+      </argument>
       <argument type="collection">
         <argument key="translation.loader.php" type="collection">
           <argument>php</argument>
@@ -986,19 +1011,349 @@
         </argument>
       </argument>
       <argument type="collection">
-        <argument key="cache_dir">/var/www/html/application_anem/app/cache/dev/translations</argument>
+        <argument key="cache_dir">/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev/translations</argument>
         <argument key="debug">true</argument>
+        <argument key="resource_files" type="collection">
+          <argument key="af" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.af.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.af.yml</argument>
+          </argument>
+          <argument key="ar" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ar.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ar.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ar.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ar.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ar.yml</argument>
+          </argument>
+          <argument key="az" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.az.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.az.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.az.xlf</argument>
+          </argument>
+          <argument key="bg" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.bg.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.bg.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.bg.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.bg.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.bg.yml</argument>
+          </argument>
+          <argument key="ca" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ca.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ca.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ca.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ca.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ca.yml</argument>
+          </argument>
+          <argument key="cs" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.cs.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.cs.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.cs.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.cs.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.cs.yml</argument>
+          </argument>
+          <argument key="cy" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.cy.xlf</argument>
+          </argument>
+          <argument key="da" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.da.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.da.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.da.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.da.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.da.yml</argument>
+          </argument>
+          <argument key="de" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.de.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.de.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.de.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.de.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.de.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/translations/FOSOAuthServerBundle.de.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.de.yml</argument>
+          </argument>
+          <argument key="el" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.el.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.el.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.el.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.el.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.el.yml</argument>
+          </argument>
+          <argument key="en" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.en.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.en.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.en.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.en.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.en.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/translations/FOSOAuthServerBundle.en.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.en.yml</argument>
+          </argument>
+          <argument key="es" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.es.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.es.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.es.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.es.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.es.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.es.yml</argument>
+          </argument>
+          <argument key="et" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.et.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.et.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.et.yml</argument>
+          </argument>
+          <argument key="eu" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.eu.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.eu.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.eu.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.eu.yml</argument>
+          </argument>
+          <argument key="fa" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fa.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fa.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.fa.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.fa.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.fa.yml</argument>
+          </argument>
+          <argument key="fi" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fi.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fi.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.fi.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.fi.yml</argument>
+          </argument>
+          <argument key="fr" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fr.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fr.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.fr.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.fr.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.fr.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/translations/FOSOAuthServerBundle.fr.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.fr.yml</argument>
+          </argument>
+          <argument key="gl" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.gl.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.gl.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.gl.xlf</argument>
+          </argument>
+          <argument key="he" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.he.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.he.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.he.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.he.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.he.yml</argument>
+          </argument>
+          <argument key="hr" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hr.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.hr.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.hr.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.hr.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.hr.yml</argument>
+          </argument>
+          <argument key="hu" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hu.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.hu.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.hu.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.hu.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.hu.yml</argument>
+          </argument>
+          <argument key="hy" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hy.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.hy.xlf</argument>
+          </argument>
+          <argument key="id" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.id.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.id.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.id.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.id.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.id.yml</argument>
+          </argument>
+          <argument key="it" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.it.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.it.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.it.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.it.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.it.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.it.yml</argument>
+          </argument>
+          <argument key="ja" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ja.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ja.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ja.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ja.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ja.yml</argument>
+          </argument>
+          <argument key="lb" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lb.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lb.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.lb.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.lb.yml</argument>
+          </argument>
+          <argument key="lt" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lt.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lt.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.lt.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.lt.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.lt.yml</argument>
+          </argument>
+          <argument key="lv" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lv.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lv.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.lv.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.lv.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.lv.yml</argument>
+          </argument>
+          <argument key="mn" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.mn.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.mn.xlf</argument>
+          </argument>
+          <argument key="nl" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nl.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.nl.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.nl.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.nl.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.nl.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.nl.yml</argument>
+          </argument>
+          <argument key="nn" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nn.xlf</argument>
+          </argument>
+          <argument key="no" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.no.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.no.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.no.xlf</argument>
+          </argument>
+          <argument key="pl" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pl.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pl.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.pl.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.pl.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.pl.yml</argument>
+          </argument>
+          <argument key="pt" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pt.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pt.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.pt.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.pt.yml</argument>
+          </argument>
+          <argument key="pt_BR" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pt_BR.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pt_BR.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.pt_BR.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.pt_BR.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.pt_BR.yml</argument>
+          </argument>
+          <argument key="ro" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ro.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ro.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ro.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ro.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ro.yml</argument>
+          </argument>
+          <argument key="ru" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ru.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ru.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ru.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ru.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ru.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.ru.yml</argument>
+          </argument>
+          <argument key="sk" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sk.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sk.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.sk.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.sk.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.sk.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.sk.yml</argument>
+          </argument>
+          <argument key="sl" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sl.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sl.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.sl.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.sl.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.sl.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/translations/FOSOAuthServerBundle.sl.yml</argument>
+          </argument>
+          <argument key="sq" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sq.xlf</argument>
+          </argument>
+          <argument key="sr_Cyrl" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sr_Cyrl.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sr_Cyrl.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.sr_Cyrl.xlf</argument>
+          </argument>
+          <argument key="sr_Latn" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sr_Latn.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sr_Latn.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.sr_Latn.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.sr_Latn.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.sr_Latn.yml</argument>
+          </argument>
+          <argument key="sv" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sv.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sv.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.sv.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.sv.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.sv.yml</argument>
+          </argument>
+          <argument key="th" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.th.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.th.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.th.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.th.yml</argument>
+          </argument>
+          <argument key="tr" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.tr.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.tr.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.tr.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.tr.yml</argument>
+          </argument>
+          <argument key="uk" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.uk.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.uk.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.uk.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.uk.yml</argument>
+          </argument>
+          <argument key="vi" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.vi.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.vi.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.vi.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.vi.yml</argument>
+          </argument>
+          <argument key="zh_CN" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.zh_CN.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.zh_CN.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.zh_CN.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.zh_CN.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.zh_CN.yml</argument>
+          </argument>
+          <argument key="zh_TW" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.zh_TW.xlf</argument>
+          </argument>
+          <argument key="pt_PT" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.pt_PT.xlf</argument>
+          </argument>
+          <argument key="ua" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ua.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.ua.yml</argument>
+          </argument>
+          <argument key="ky" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ky.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ky.yml</argument>
+          </argument>
+          <argument key="nb" type="collection">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.nb.yml</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.nb.yml</argument>
+          </argument>
+        </argument>
       </argument>
       <argument type="collection"/>
       <call method="setConfigCacheFactory">
         <argument type="service" id="config_cache_factory"/>
       </call>
+      <call method="setFallbackLocales">
+        <argument type="collection">
+          <argument>en</argument>
+        </argument>
+      </call>
       <autowiring-type>Symfony\Component\Translation\TranslatorInterface</autowiring-type>
     </service>
-    <service id="translator" class="Symfony\Component\Translation\IdentityTranslator">
-      <argument type="service" id="translator.selector"/>
-    </service>
-    <service id="translator.selector" class="Symfony\Component\Translation\MessageSelector" public="false"/>
     <service id="translation.loader.php" class="Symfony\Component\Translation\Loader\PhpFileLoader">
       <tag name="translation.loader" alias="php"/>
     </service>
@@ -1292,6 +1647,8 @@
               <argument key="FOS\UserBundle\Form\Type\ChangePasswordFormType">fos_user.change_password.form.type</argument>
               <argument key="fos_user_resetting">fos_user.resetting.form.type</argument>
               <argument key="FOS\UserBundle\Form\Type\ResettingFormType">fos_user.resetting.form.type</argument>
+              <argument key="fos_oauth_server_authorize">fos_oauth_server.authorize.form.type</argument>
+              <argument key="FOS\OAuthServerBundle\Form\Type\AuthorizeFormType">fos_oauth_server.authorize.form.type</argument>
               <argument key="lexik_form_filter.type.filter_text">lexik_form_filter.type.filter_text</argument>
               <argument key="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\TextFilterType">lexik_form_filter.type.filter_text</argument>
               <argument key="lexik_form_filter.type.filter_number">lexik_form_filter.type.filter_number</argument>
@@ -1528,7 +1885,7 @@
     <service id="templating.filename_parser" class="Symfony\Bundle\FrameworkBundle\Templating\TemplateFilenameParser"/>
     <service id="templating.locator" class="Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator" public="false">
       <argument type="service" id="file_locator"/>
-      <argument>/var/www/html/application_anem/app/cache/dev</argument>
+      <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev</argument>
     </service>
     <service id="templating.helper.assets" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\AssetsHelper">
       <tag name="templating.helper" alias="assets"/>
@@ -1567,8 +1924,9 @@
       </call>
       <call method="addXmlMappings">
         <argument type="collection">
-          <argument>/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml</argument>
-          <argument>/var/www/html/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/validation.xml</argument>
+          <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml</argument>
+          <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/validation.xml</argument>
+          <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/config/validation.xml</argument>
         </argument>
       </call>
       <call method="enableAnnotationMapping">
@@ -1589,7 +1947,7 @@
         </argument>
       </call>
       <call method="addXmlMapping">
-        <argument>/var/www/html/application_anem/vendor/friendsofsymfony/user-bundle/DependencyInjection/Compiler/../../Resources/config/storage-validation/orm.xml</argument>
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/DependencyInjection/Compiler/../../Resources/config/storage-validation/orm.xml</argument>
       </call>
       <factory class="Symfony\Component\Validator\Validation" method="createValidatorBuilder"/>
     </service>
@@ -1610,7 +1968,7 @@
       <tag name="monolog.logger" channel="profiler"/>
       <argument type="service">
         <service class="Symfony\Component\HttpKernel\Profiler\FileProfilerStorage" public="false">
-          <argument>file:/var/www/html/application_anem/app/cache/dev/profiler</argument>
+          <argument>file:/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev/profiler</argument>
           <argument></argument>
           <argument></argument>
           <argument>86400</argument>
@@ -1672,6 +2030,9 @@
       </call>
       <call method="add">
         <argument type="service" id="data_collector.router"/>
+      </call>
+      <call method="add">
+        <argument type="service" id="data_collector.translation"/>
       </call>
       <call method="add">
         <argument type="service">
@@ -1749,6 +2110,10 @@
     <service id="data_collector.form" class="Symfony\Component\Form\Extension\DataCollector\FormDataCollector">
       <tag name="data_collector" template="@WebProfiler/Collector/form.html.twig" id="form" priority="310"/>
       <argument type="service" id="data_collector.form.extractor"/>
+    </service>
+    <service id="data_collector.translation" class="Symfony\Component\Translation\DataCollector\TranslationDataCollector">
+      <tag name="data_collector" template="@WebProfiler/Collector/translation.html.twig" id="translation" priority="275"/>
+      <argument type="service" id="translator"/>
     </service>
     <service id="routing.loader" class="Symfony\Bundle\FrameworkBundle\Routing\DelegatingLoader">
       <argument type="service" id="controller_name_converter"/>
@@ -2071,7 +2436,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>586cb715ae0869.98604776</argument>
+            <argument>586d01eac7c8a7.12945365</argument>
           </service>
         </argument>
       </argument>
@@ -2360,7 +2725,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>586cb715ae0869.98604776</argument>
+            <argument>586d01eac7c8a7.12945365</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2464,7 +2829,7 @@
         </argument>
         <argument key="exception_controller">twig.controller.exception:showAction</argument>
         <argument key="autoescape">name</argument>
-        <argument key="cache">/var/www/html/application_anem/app/cache/dev/twig</argument>
+        <argument key="cache">/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev/twig</argument>
         <argument key="charset">UTF-8</argument>
         <argument key="paths" type="collection"/>
         <argument key="date" type="collection">
@@ -2539,7 +2904,7 @@
           <service class="Symfony\Bridge\Twig\Extension\CodeExtension" public="false">
             <tag name="twig.extension"/>
             <argument>null</argument>
-            <argument>/var/www/html/application_anem/app</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/app</argument>
             <argument>UTF-8</argument>
           </service>
         </argument>
@@ -2702,7 +3067,7 @@
       <argument>twig.controller.exception:showAction</argument>
     </service>
     <service id="monolog.handler.main" class="Monolog\Handler\StreamHandler">
-      <argument>/var/www/html/application_anem/app/logs/dev.log</argument>
+      <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/logs/dev.log</argument>
       <argument>100</argument>
       <argument>true</argument>
       <argument>null</argument>
@@ -2815,17 +3180,17 @@
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_metadata_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_49da5e0c05f634f46617d02c40cd2de2654395c5861e9e426e8fd192f66100e3</argument>
+        <argument>sf2orm_default_fb6ef4cfc2587e2f187e29d71c8bdbbf2d95b7640a4401017288bf824aa94cc0</argument>
       </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_result_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_49da5e0c05f634f46617d02c40cd2de2654395c5861e9e426e8fd192f66100e3</argument>
+        <argument>sf2orm_default_fb6ef4cfc2587e2f187e29d71c8bdbbf2d95b7640a4401017288bf824aa94cc0</argument>
       </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_query_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_49da5e0c05f634f46617d02c40cd2de2654395c5861e9e426e8fd192f66100e3</argument>
+        <argument>sf2orm_default_fb6ef4cfc2587e2f187e29d71c8bdbbf2d95b7640a4401017288bf824aa94cc0</argument>
       </call>
     </service>
     <service id="doctrine.orm.default_entity_listener_resolver" class="Doctrine\ORM\Mapping\DefaultEntityListenerResolver"/>
@@ -2843,6 +3208,8 @@
           <call method="setEntityNamespaces">
             <argument type="collection">
               <argument key="AppBundle">AppBundle\Entity</argument>
+              <argument key="FOSOAuthServerBundle">FOS\OAuthServerBundle\Entity</argument>
+              <argument key="UserBundle">UserBundle\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -2861,7 +3228,8 @@
                   <argument type="service">
                     <service class="Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver" public="false">
                       <argument type="collection">
-                        <argument key="/var/www/html/application_anem/src/AppBundle/Resources/config/doctrine">AppBundle\Entity</argument>
+                        <argument key="/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/AppBundle/Resources/config/doctrine">AppBundle\Entity</argument>
+                        <argument key="/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/config/doctrine">FOS\OAuthServerBundle\Entity</argument>
                       </argument>
                       <call method="setGlobalBasename">
                         <argument>mapping</argument>
@@ -2872,11 +3240,36 @@
                 </call>
                 <call method="addDriver">
                   <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver" public="false">
+                      <argument type="collection">
+                        <argument key="/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/AppBundle/Resources/config/doctrine">AppBundle\Entity</argument>
+                        <argument key="/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/config/doctrine">FOS\OAuthServerBundle\Entity</argument>
+                      </argument>
+                      <call method="setGlobalBasename">
+                        <argument>mapping</argument>
+                      </call>
+                    </service>
+                  </argument>
+                  <argument>FOS\OAuthServerBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/UserBundle/Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>UserBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
                     <service class="Doctrine\ORM\Mapping\Driver\XmlDriver">
                       <argument type="service">
                         <service class="Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator">
                           <argument type="collection">
-                            <argument key="/var/www/html/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/doctrine-mapping">FOS\UserBundle\Model</argument>
+                            <argument key="/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/doctrine-mapping">FOS\UserBundle\Model</argument>
                           </argument>
                           <argument>.orm.xml</argument>
                         </service>
@@ -2889,7 +3282,7 @@
             </argument>
           </call>
           <call method="setProxyDir">
-            <argument>/var/www/html/application_anem/app/cache/dev/doctrine/orm/Proxies</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev/doctrine/orm/Proxies</argument>
           </call>
           <call method="setProxyNamespace">
             <argument>Proxies</argument>
@@ -3302,7 +3695,7 @@
     <service id="jms_serializer.datetime_handler" class="JMS\Serializer\Handler\DateHandler">
       <tag name="jms_serializer.subscribing_handler"/>
       <argument>Y-m-d\TH:i:sO</argument>
-      <argument>Europe/Berlin</argument>
+      <argument>Europe/Paris</argument>
       <argument>true</argument>
     </service>
     <service id="jms_serializer.array_collection_handler" class="JMS\Serializer\Handler\ArrayCollectionHandler">
@@ -3451,6 +3844,52 @@
       <tag name="kernel.event_subscriber"/>
       <argument type="service" id="router"/>
       <argument>86400</argument>
+    </service>
+    <service id="fos_oauth_server.client_manager.default" class="FOS\OAuthServerBundle\Entity\ClientManager">
+      <argument type="service" id="fos_oauth_server.entity_manager"/>
+      <argument>UserBundle\Entity\Client</argument>
+    </service>
+    <service id="fos_oauth_server.access_token_manager.default" class="FOS\OAuthServerBundle\Entity\AccessTokenManager">
+      <argument type="service" id="fos_oauth_server.entity_manager"/>
+      <argument>UserBundle\Entity\AccesToken</argument>
+    </service>
+    <service id="fos_oauth_server.refresh_token_manager.default" class="FOS\OAuthServerBundle\Entity\RefreshTokenManager">
+      <argument type="service" id="fos_oauth_server.entity_manager"/>
+      <argument>UserBundle\Entity\RefreshToken</argument>
+    </service>
+    <service id="fos_oauth_server.auth_code_manager.default" class="FOS\OAuthServerBundle\Entity\AuthCodeManager">
+      <argument type="service" id="fos_oauth_server.entity_manager"/>
+      <argument>UserBundle\Entity\AuthCode</argument>
+    </service>
+    <service id="fos_oauth_server.entity_manager" class="Doctrine\ORM\EntityManager" public="false">
+      <argument>null</argument>
+      <factory service="doctrine" method="getManager"/>
+    </service>
+    <service id="fos_oauth_server.server" class="OAuth2\OAuth2">
+      <argument type="service" id="fos_oauth_server.storage"/>
+      <argument type="collection"/>
+    </service>
+    <service id="fos_oauth_server.controller.token" class="FOS\OAuthServerBundle\Controller\TokenController">
+      <argument type="service" id="fos_oauth_server.server"/>
+    </service>
+    <service id="fos_oauth_server.authorize.form" class="Symfony\Component\Form\Form">
+      <argument>fos_oauth_server_authorize_form</argument>
+      <argument>FOS\OAuthServerBundle\Form\Type\AuthorizeFormType</argument>
+      <argument>null</argument>
+      <argument type="collection">
+        <argument key="validation_groups" type="collection">
+          <argument>Authorize</argument>
+          <argument>Default</argument>
+        </argument>
+      </argument>
+      <factory service="form.factory" method="createNamed"/>
+    </service>
+    <service id="fos_oauth_server.authorize.form.type" class="FOS\OAuthServerBundle\Form\Type\AuthorizeFormType">
+      <tag name="form.type" alias="fos_oauth_server_authorize"/>
+    </service>
+    <service id="fos_oauth_server.authorize.form.handler.default" class="FOS\OAuthServerBundle\Form\Handler\AuthorizeFormHandler">
+      <argument type="service" id="fos_oauth_server.authorize.form"/>
+      <argument type="service" id="request_stack" on-invalid="ignore"/>
     </service>
     <service id="lexik_form_filter.query_builder_updater" class="Lexik\Bundle\FormFilterBundle\Filter\FilterBuilderUpdater">
       <argument type="service" id="lexik_form_filter.form_data_extractor"/>
@@ -3691,6 +4130,10 @@
           <argument>router</argument>
           <argument>@WebProfiler/Collector/router.html.twig</argument>
         </argument>
+        <argument key="data_collector.translation" type="collection">
+          <argument>translation</argument>
+          <argument>@WebProfiler/Collector/translation.html.twig</argument>
+        </argument>
         <argument key="data_collector.security" type="collection">
           <argument>security</argument>
           <argument>@Security/Collector/security.html.twig</argument>
@@ -3819,7 +4262,7 @@
     </service>
     <service id="monolog.handler.null_internal" class="Monolog\Handler\NullHandler"/>
     <service id="session.storage.filesystem" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage">
-      <argument>/var/www/html/application_anem/app/cache/dev/sessions</argument>
+      <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev/sessions</argument>
       <argument>MOCKSESSID</argument>
       <argument type="service" id="session.storage.metadata_bag"/>
     </service>
@@ -3831,12 +4274,21 @@
       <argument type="service" id="templating.name_parser"/>
       <argument type="service" id="templating.locator"/>
     </service>
+    <service id="translator" class="Symfony\Component\Translation\DataCollectorTranslator">
+      <argument type="service">
+        <service class="Symfony\Component\Translation\LoggingTranslator" public="false">
+          <tag name="monolog.logger" channel="translation"/>
+          <argument type="service" id="translator.default"/>
+          <argument type="service" id="monolog.logger.translation"/>
+        </service>
+      </argument>
+    </service>
     <service id="router" class="Symfony\Bundle\FrameworkBundle\Routing\Router">
       <tag name="monolog.logger" channel="router"/>
       <argument type="service" id="service_container"/>
-      <argument>/var/www/html/application_anem/app/config/routing_dev.yml</argument>
+      <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/config/routing_dev.yml</argument>
       <argument type="collection">
-        <argument key="cache_dir">/var/www/html/application_anem/app/cache/dev</argument>
+        <argument key="cache_dir">/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev</argument>
         <argument key="debug">true</argument>
         <argument key="generator_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
         <argument key="generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
@@ -3860,7 +4312,7 @@
       </argument>
       <argument type="service">
         <service class="Doctrine\Common\Cache\FilesystemCache" public="false">
-          <argument>/var/www/html/application_anem/app/cache/dev/annotations</argument>
+          <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev/annotations</argument>
         </service>
       </argument>
       <argument>true</argument>
@@ -3884,66 +4336,70 @@
       <argument type="service" id="templating.locator"/>
       <argument type="service" id="templating.name_parser"/>
       <call method="addPath">
-        <argument>/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/views</argument>
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/views</argument>
         <argument>Framework</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views</argument>
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views</argument>
         <argument>Security</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views</argument>
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views</argument>
         <argument>Twig</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/html/application_anem/vendor/symfony/swiftmailer-bundle/Resources/views</argument>
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/swiftmailer-bundle/Resources/views</argument>
         <argument>Swiftmailer</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/html/application_anem/vendor/doctrine/doctrine-bundle/Resources/views</argument>
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/doctrine/doctrine-bundle/Resources/views</argument>
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/html/application_anem/vendor/friendsofsymfony/user-bundle/Resources/views</argument>
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/views</argument>
         <argument>FOSUser</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/html/application_anem/vendor/lexik/form-filter-bundle/Resources/views</argument>
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/views</argument>
+        <argument>FOSOAuthServer</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/views</argument>
         <argument>LexikFormFilter</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/html/application_anem/vendor/petkopara/multi-search-bundle/Resources/views</argument>
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/petkopara/multi-search-bundle/Resources/views</argument>
         <argument>PetkoparaMultiSearch</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/html/application_anem/vendor/petkopara/crud-generator-bundle/Resources/views</argument>
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/petkopara/crud-generator-bundle/Resources/views</argument>
         <argument>PetkoparaCrudGenerator</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/html/application_anem/src/UserBundle/Resources/views</argument>
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/UserBundle/Resources/views</argument>
         <argument>User</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/html/application_anem/src/ShopBundle/Resources/views</argument>
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/ShopBundle/Resources/views</argument>
         <argument>Shop</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/html/application_anem/src/StageBundle/Resources/views</argument>
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/StageBundle/Resources/views</argument>
         <argument>Stage</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views</argument>
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views</argument>
         <argument>WebProfiler</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/html/application_anem/app/Resources/views</argument>
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/Resources/views</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form</argument>
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form</argument>
       </call>
     </service>
     <service id="logger" class="Symfony\Bridge\Monolog\Logger">
@@ -4033,27 +4489,28 @@
                 <argument type="service">
                   <service class="Metadata\Driver\FileLocator" public="false">
                     <argument type="collection">
-                      <argument key="Symfony\Bundle\FrameworkBundle">/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer</argument>
-                      <argument key="Symfony\Bundle\SecurityBundle">/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer</argument>
-                      <argument key="Symfony\Bundle\TwigBundle">/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer</argument>
-                      <argument key="Symfony\Bundle\MonologBundle">/var/www/html/application_anem/vendor/symfony/monolog-bundle/Resources/config/serializer</argument>
-                      <argument key="Symfony\Bundle\SwiftmailerBundle">/var/www/html/application_anem/vendor/symfony/swiftmailer-bundle/Resources/config/serializer</argument>
-                      <argument key="Doctrine\Bundle\DoctrineBundle">/var/www/html/application_anem/vendor/doctrine/doctrine-bundle/Resources/config/serializer</argument>
-                      <argument key="Sensio\Bundle\FrameworkExtraBundle">/var/www/html/application_anem/vendor/sensio/framework-extra-bundle/Resources/config/serializer</argument>
-                      <argument key="AppBundle">/var/www/html/application_anem/src/AppBundle/Resources/config/serializer</argument>
-                      <argument key="JMS\SerializerBundle">/var/www/html/application_anem/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer</argument>
-                      <argument key="FOS\UserBundle">/var/www/html/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/serializer</argument>
-                      <argument key="Lexik\Bundle\FormFilterBundle">/var/www/html/application_anem/vendor/lexik/form-filter-bundle/Resources/config/serializer</argument>
-                      <argument key="Petkopara\MultiSearchBundle">/var/www/html/application_anem/vendor/petkopara/multi-search-bundle/Resources/config/serializer</argument>
-                      <argument key="Petkopara\CrudGeneratorBundle">/var/www/html/application_anem/vendor/petkopara/crud-generator-bundle/Resources/config/serializer</argument>
-                      <argument key="FOS\RestBundle">/var/www/html/application_anem/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer</argument>
-                      <argument key="UserBundle">/var/www/html/application_anem/src/UserBundle/Resources/config/serializer</argument>
-                      <argument key="ShopBundle">/var/www/html/application_anem/src/ShopBundle/Resources/config/serializer</argument>
-                      <argument key="StageBundle">/var/www/html/application_anem/src/StageBundle/Resources/config/serializer</argument>
-                      <argument key="Symfony\Bundle\DebugBundle">/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/config/serializer</argument>
-                      <argument key="Symfony\Bundle\WebProfilerBundle">/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
-                      <argument key="Sensio\Bundle\DistributionBundle">/var/www/html/application_anem/vendor/sensio/distribution-bundle/Resources/config/serializer</argument>
-                      <argument key="Sensio\Bundle\GeneratorBundle">/var/www/html/application_anem/vendor/sensio/generator-bundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\FrameworkBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\SecurityBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\TwigBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\MonologBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/monolog-bundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\SwiftmailerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/swiftmailer-bundle/Resources/config/serializer</argument>
+                      <argument key="Doctrine\Bundle\DoctrineBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/doctrine/doctrine-bundle/Resources/config/serializer</argument>
+                      <argument key="Sensio\Bundle\FrameworkExtraBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/sensio/framework-extra-bundle/Resources/config/serializer</argument>
+                      <argument key="AppBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/AppBundle/Resources/config/serializer</argument>
+                      <argument key="JMS\SerializerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer</argument>
+                      <argument key="FOS\UserBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/serializer</argument>
+                      <argument key="FOS\OAuthServerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/config/serializer</argument>
+                      <argument key="Lexik\Bundle\FormFilterBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/config/serializer</argument>
+                      <argument key="Petkopara\MultiSearchBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/petkopara/multi-search-bundle/Resources/config/serializer</argument>
+                      <argument key="Petkopara\CrudGeneratorBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/petkopara/crud-generator-bundle/Resources/config/serializer</argument>
+                      <argument key="FOS\RestBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer</argument>
+                      <argument key="UserBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/UserBundle/Resources/config/serializer</argument>
+                      <argument key="ShopBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/ShopBundle/Resources/config/serializer</argument>
+                      <argument key="StageBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/StageBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\DebugBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\WebProfilerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
+                      <argument key="Sensio\Bundle\DistributionBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/sensio/distribution-bundle/Resources/config/serializer</argument>
+                      <argument key="Sensio\Bundle\GeneratorBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/sensio/generator-bundle/Resources/config/serializer</argument>
                     </argument>
                   </service>
                 </argument>
@@ -4064,27 +4521,28 @@
                 <argument type="service">
                   <service class="Metadata\Driver\FileLocator" public="false">
                     <argument type="collection">
-                      <argument key="Symfony\Bundle\FrameworkBundle">/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer</argument>
-                      <argument key="Symfony\Bundle\SecurityBundle">/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer</argument>
-                      <argument key="Symfony\Bundle\TwigBundle">/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer</argument>
-                      <argument key="Symfony\Bundle\MonologBundle">/var/www/html/application_anem/vendor/symfony/monolog-bundle/Resources/config/serializer</argument>
-                      <argument key="Symfony\Bundle\SwiftmailerBundle">/var/www/html/application_anem/vendor/symfony/swiftmailer-bundle/Resources/config/serializer</argument>
-                      <argument key="Doctrine\Bundle\DoctrineBundle">/var/www/html/application_anem/vendor/doctrine/doctrine-bundle/Resources/config/serializer</argument>
-                      <argument key="Sensio\Bundle\FrameworkExtraBundle">/var/www/html/application_anem/vendor/sensio/framework-extra-bundle/Resources/config/serializer</argument>
-                      <argument key="AppBundle">/var/www/html/application_anem/src/AppBundle/Resources/config/serializer</argument>
-                      <argument key="JMS\SerializerBundle">/var/www/html/application_anem/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer</argument>
-                      <argument key="FOS\UserBundle">/var/www/html/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/serializer</argument>
-                      <argument key="Lexik\Bundle\FormFilterBundle">/var/www/html/application_anem/vendor/lexik/form-filter-bundle/Resources/config/serializer</argument>
-                      <argument key="Petkopara\MultiSearchBundle">/var/www/html/application_anem/vendor/petkopara/multi-search-bundle/Resources/config/serializer</argument>
-                      <argument key="Petkopara\CrudGeneratorBundle">/var/www/html/application_anem/vendor/petkopara/crud-generator-bundle/Resources/config/serializer</argument>
-                      <argument key="FOS\RestBundle">/var/www/html/application_anem/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer</argument>
-                      <argument key="UserBundle">/var/www/html/application_anem/src/UserBundle/Resources/config/serializer</argument>
-                      <argument key="ShopBundle">/var/www/html/application_anem/src/ShopBundle/Resources/config/serializer</argument>
-                      <argument key="StageBundle">/var/www/html/application_anem/src/StageBundle/Resources/config/serializer</argument>
-                      <argument key="Symfony\Bundle\DebugBundle">/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/config/serializer</argument>
-                      <argument key="Symfony\Bundle\WebProfilerBundle">/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
-                      <argument key="Sensio\Bundle\DistributionBundle">/var/www/html/application_anem/vendor/sensio/distribution-bundle/Resources/config/serializer</argument>
-                      <argument key="Sensio\Bundle\GeneratorBundle">/var/www/html/application_anem/vendor/sensio/generator-bundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\FrameworkBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\SecurityBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\TwigBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\MonologBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/monolog-bundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\SwiftmailerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/swiftmailer-bundle/Resources/config/serializer</argument>
+                      <argument key="Doctrine\Bundle\DoctrineBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/doctrine/doctrine-bundle/Resources/config/serializer</argument>
+                      <argument key="Sensio\Bundle\FrameworkExtraBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/sensio/framework-extra-bundle/Resources/config/serializer</argument>
+                      <argument key="AppBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/AppBundle/Resources/config/serializer</argument>
+                      <argument key="JMS\SerializerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer</argument>
+                      <argument key="FOS\UserBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/serializer</argument>
+                      <argument key="FOS\OAuthServerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/config/serializer</argument>
+                      <argument key="Lexik\Bundle\FormFilterBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/config/serializer</argument>
+                      <argument key="Petkopara\MultiSearchBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/petkopara/multi-search-bundle/Resources/config/serializer</argument>
+                      <argument key="Petkopara\CrudGeneratorBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/petkopara/crud-generator-bundle/Resources/config/serializer</argument>
+                      <argument key="FOS\RestBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer</argument>
+                      <argument key="UserBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/UserBundle/Resources/config/serializer</argument>
+                      <argument key="ShopBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/ShopBundle/Resources/config/serializer</argument>
+                      <argument key="StageBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/StageBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\DebugBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\WebProfilerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
+                      <argument key="Sensio\Bundle\DistributionBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/sensio/distribution-bundle/Resources/config/serializer</argument>
+                      <argument key="Sensio\Bundle\GeneratorBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/sensio/generator-bundle/Resources/config/serializer</argument>
                     </argument>
                   </service>
                 </argument>
@@ -4095,27 +4553,28 @@
                 <argument type="service">
                   <service class="Metadata\Driver\FileLocator" public="false">
                     <argument type="collection">
-                      <argument key="Symfony\Bundle\FrameworkBundle">/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer</argument>
-                      <argument key="Symfony\Bundle\SecurityBundle">/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer</argument>
-                      <argument key="Symfony\Bundle\TwigBundle">/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer</argument>
-                      <argument key="Symfony\Bundle\MonologBundle">/var/www/html/application_anem/vendor/symfony/monolog-bundle/Resources/config/serializer</argument>
-                      <argument key="Symfony\Bundle\SwiftmailerBundle">/var/www/html/application_anem/vendor/symfony/swiftmailer-bundle/Resources/config/serializer</argument>
-                      <argument key="Doctrine\Bundle\DoctrineBundle">/var/www/html/application_anem/vendor/doctrine/doctrine-bundle/Resources/config/serializer</argument>
-                      <argument key="Sensio\Bundle\FrameworkExtraBundle">/var/www/html/application_anem/vendor/sensio/framework-extra-bundle/Resources/config/serializer</argument>
-                      <argument key="AppBundle">/var/www/html/application_anem/src/AppBundle/Resources/config/serializer</argument>
-                      <argument key="JMS\SerializerBundle">/var/www/html/application_anem/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer</argument>
-                      <argument key="FOS\UserBundle">/var/www/html/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/serializer</argument>
-                      <argument key="Lexik\Bundle\FormFilterBundle">/var/www/html/application_anem/vendor/lexik/form-filter-bundle/Resources/config/serializer</argument>
-                      <argument key="Petkopara\MultiSearchBundle">/var/www/html/application_anem/vendor/petkopara/multi-search-bundle/Resources/config/serializer</argument>
-                      <argument key="Petkopara\CrudGeneratorBundle">/var/www/html/application_anem/vendor/petkopara/crud-generator-bundle/Resources/config/serializer</argument>
-                      <argument key="FOS\RestBundle">/var/www/html/application_anem/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer</argument>
-                      <argument key="UserBundle">/var/www/html/application_anem/src/UserBundle/Resources/config/serializer</argument>
-                      <argument key="ShopBundle">/var/www/html/application_anem/src/ShopBundle/Resources/config/serializer</argument>
-                      <argument key="StageBundle">/var/www/html/application_anem/src/StageBundle/Resources/config/serializer</argument>
-                      <argument key="Symfony\Bundle\DebugBundle">/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/config/serializer</argument>
-                      <argument key="Symfony\Bundle\WebProfilerBundle">/var/www/html/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
-                      <argument key="Sensio\Bundle\DistributionBundle">/var/www/html/application_anem/vendor/sensio/distribution-bundle/Resources/config/serializer</argument>
-                      <argument key="Sensio\Bundle\GeneratorBundle">/var/www/html/application_anem/vendor/sensio/generator-bundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\FrameworkBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\SecurityBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\TwigBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\MonologBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/monolog-bundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\SwiftmailerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/swiftmailer-bundle/Resources/config/serializer</argument>
+                      <argument key="Doctrine\Bundle\DoctrineBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/doctrine/doctrine-bundle/Resources/config/serializer</argument>
+                      <argument key="Sensio\Bundle\FrameworkExtraBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/sensio/framework-extra-bundle/Resources/config/serializer</argument>
+                      <argument key="AppBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/AppBundle/Resources/config/serializer</argument>
+                      <argument key="JMS\SerializerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer</argument>
+                      <argument key="FOS\UserBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/serializer</argument>
+                      <argument key="FOS\OAuthServerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/config/serializer</argument>
+                      <argument key="Lexik\Bundle\FormFilterBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/config/serializer</argument>
+                      <argument key="Petkopara\MultiSearchBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/petkopara/multi-search-bundle/Resources/config/serializer</argument>
+                      <argument key="Petkopara\CrudGeneratorBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/petkopara/crud-generator-bundle/Resources/config/serializer</argument>
+                      <argument key="FOS\RestBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer</argument>
+                      <argument key="UserBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/UserBundle/Resources/config/serializer</argument>
+                      <argument key="ShopBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/ShopBundle/Resources/config/serializer</argument>
+                      <argument key="StageBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/StageBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\DebugBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/config/serializer</argument>
+                      <argument key="Symfony\Bundle\WebProfilerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/config/serializer</argument>
+                      <argument key="Sensio\Bundle\DistributionBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/sensio/distribution-bundle/Resources/config/serializer</argument>
+                      <argument key="Sensio\Bundle\GeneratorBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/sensio/generator-bundle/Resources/config/serializer</argument>
                     </argument>
                   </service>
                 </argument>
@@ -4161,7 +4620,7 @@
           <call method="setCache">
             <argument type="service">
               <service class="Metadata\Cache\FileCache" public="false">
-                <argument>/var/www/html/application_anem/app/cache/dev/jms_serializer</argument>
+                <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev/jms_serializer</argument>
               </service>
             </argument>
           </call>
@@ -4256,6 +4715,14 @@
       </argument>
       <argument>AppBundle\Entity\User</argument>
     </service>
+    <service id="fos_oauth_server.storage" class="FOS\OAuthServerBundle\Storage\OAuthStorage">
+      <argument type="service" id="fos_oauth_server.client_manager.default"/>
+      <argument type="service" id="fos_oauth_server.access_token_manager.default"/>
+      <argument type="service" id="fos_oauth_server.refresh_token_manager.default"/>
+      <argument type="service" id="fos_oauth_server.auth_code_manager.default"/>
+      <argument>null</argument>
+      <argument type="service" id="security.encoder_factory"/>
+    </service>
     <service id="fos_rest.view_handler" class="FOS\RestBundle\View\ViewHandler">
       <argument type="collection">
         <argument key="json">false</argument>
@@ -4297,6 +4764,11 @@
     <service id="doctrine.orm.default_query_cache" alias="doctrine_cache.providers.doctrine.orm.default_query_cache"/>
     <service id="serializer" alias="jms_serializer"/>
     <service id="fos_user.util.username_canonicalizer" alias="fos_user.util.email_canonicalizer"/>
+    <service id="fos_oauth_server.client_manager" alias="fos_oauth_server.client_manager.default"/>
+    <service id="fos_oauth_server.access_token_manager" alias="fos_oauth_server.access_token_manager.default"/>
+    <service id="fos_oauth_server.refresh_token_manager" alias="fos_oauth_server.refresh_token_manager.default"/>
+    <service id="fos_oauth_server.auth_code_manager" alias="fos_oauth_server.auth_code_manager.default"/>
+    <service id="fos_oauth_server.authorize.form.handler" alias="fos_oauth_server.authorize.form.handler.default"/>
     <service id="fos_rest.router" alias="router"/>
     <service id="fos_rest.templating" alias="templating"/>
     <service id="fos_rest.exception_handler" alias="fos_rest.view.exception_wrapper_handler"/>

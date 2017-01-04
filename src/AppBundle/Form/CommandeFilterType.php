@@ -22,7 +22,7 @@ class CommandeFilterType extends AbstractType
                     'choice_label' => 'id',
             )) 
             ->add('idutilisateur', Filters\EntityFilterType::class, array(
-                    'class' => 'AppBundle\Entity\Utilisateur',
+                    'class' => 'AppBundle\Entity\User',
                     'choice_label' => 'id',
             )) 
         ;

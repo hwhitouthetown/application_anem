@@ -1,41 +1,9 @@
-app_produit:
-    resource: "@AppBundle/Controller/ProduitController.php"
-    type:     annotation
-
-app_utilisateur:
-    resource: "@AppBundle/Controller/UtilisateurController.php"
-    type:     annotation
-
-app_stage:
-    resource: "@AppBundle/Controller/StageController.php"
-    type:     annotation
-
-app_promotion:
-    resource: "@AppBundle/Controller/PromotionController.php"
-    type:     annotation
-
-app_poste:
-    resource: "@AppBundle/Controller/PosteController.php"
-    type:     annotation
-
-app_personnel:
-    resource: "@AppBundle/Controller/PersonnelController.php"
-    type:     annotation
-
-app_membre:
-    resource: "@AppBundle/Controller/MembreController.php"
-    type:     annotation
-
 app_fichesuivie:
     resource: "@AppBundle/Controller/FichesuivieController.php"
     type:     annotation
 
 app_faireparti:
     resource: "@AppBundle/Controller/FairepartiController.php"
-    type:     annotation
-
-app_etudiant:
-    resource: "@AppBundle/Controller/EtudiantController.php"
     type:     annotation
 
 app_entreprise:
@@ -46,10 +14,6 @@ app_contenu:
     resource: "@AppBundle/Controller/ContenuController.php"
     type:     annotation
 
-app_competence:
-    resource: "@AppBundle/Controller/CompetenceController.php"
-    type:     annotation
-
 app_commande:
     resource: "@AppBundle/Controller/CommandeController.php"
     type:     annotation
@@ -58,16 +22,16 @@ app_user:
     resource: "@AppBundle/Controller/UserController.php"
     type:     annotation
 
+app_competence:
+    resource: "@AppBundle/Controller/CompetenceController.php"
+    type:     annotation
+
 stage:
     resource: "@StageBundle/Resources/config/routing.yml"
     prefix:   /
 
 shop:
     resource: "@ShopBundle/Resources/config/routing.yml"
-    prefix:   /
-
-user:
-    resource: "@UserBundle/Resources/config/routing.yml"
     prefix:   /
 
 app:

@@ -4,9 +4,25 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="titre" type="text" column="titre" length="65535" nullable="false"/>
-    <field name="anneedebut" type="text" column="anneeDebut" length="65535" nullable="false"/>
-    <field name="anneefin" type="text" column="anneeFin" length="65535" nullable="false"/>
-    <field name="niveau" type="text" column="niveau" length="65535" nullable="false"/>
+    <field name="titre" type="text" column="titre" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="anneedebut" type="text" column="anneeDebut" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="anneefin" type="text" column="anneeFin" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="niveau" type="text" column="niveau" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
   </entity>
 </doctrine-mapping>

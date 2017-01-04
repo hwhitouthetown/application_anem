@@ -2,8 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Commande
  */
@@ -25,7 +23,7 @@ class Commande
     private $idproduit;
 
     /**
-     * @var \AppBundle\Entity\Utilisateur
+     * @var \AppBundle\Entity\User
      */
     private $idutilisateur;
 
@@ -34,6 +32,7 @@ class Commande
      * Set dateachat
      *
      * @param \DateTime $dateachat
+     *
      * @return Commande
      */
     public function setDateachat($dateachat)
@@ -46,7 +45,7 @@ class Commande
     /**
      * Get dateachat
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateachat()
     {
@@ -56,7 +55,7 @@ class Commande
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -67,6 +66,7 @@ class Commande
      * Set idproduit
      *
      * @param \AppBundle\Entity\Produit $idproduit
+     *
      * @return Commande
      */
     public function setIdproduit(\AppBundle\Entity\Produit $idproduit = null)
@@ -79,7 +79,7 @@ class Commande
     /**
      * Get idproduit
      *
-     * @return \AppBundle\Entity\Produit 
+     * @return \AppBundle\Entity\Produit
      */
     public function getIdproduit()
     {
@@ -89,10 +89,11 @@ class Commande
     /**
      * Set idutilisateur
      *
-     * @param \AppBundle\Entity\Utilisateur $idutilisateur
+     * @param \AppBundle\Entity\User $idutilisateur
+     *
      * @return Commande
      */
-    public function setIdutilisateur(\AppBundle\Entity\Utilisateur $idutilisateur = null)
+    public function setIdutilisateur(\AppBundle\Entity\User $idutilisateur = null)
     {
         $this->idutilisateur = $idutilisateur;
 
@@ -102,7 +103,7 @@ class Commande
     /**
      * Get idutilisateur
      *
-     * @return \AppBundle\Entity\Utilisateur 
+     * @return \AppBundle\Entity\User
      */
     public function getIdutilisateur()
     {

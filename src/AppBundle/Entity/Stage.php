@@ -2,8 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Stage
  */
@@ -35,7 +33,7 @@ class Stage
     private $identreprise;
 
     /**
-     * @var \AppBundle\Entity\Etudiant
+     * @var \AppBundle\Entity\User
      */
     private $idetudiant;
 
@@ -44,6 +42,7 @@ class Stage
      * Set intitule
      *
      * @param string $intitule
+     *
      * @return Stage
      */
     public function setIntitule($intitule)
@@ -56,7 +55,7 @@ class Stage
     /**
      * Get intitule
      *
-     * @return string 
+     * @return string
      */
     public function getIntitule()
     {
@@ -67,6 +66,7 @@ class Stage
      * Set description
      *
      * @param string $description
+     *
      * @return Stage
      */
     public function setDescription($description)
@@ -79,7 +79,7 @@ class Stage
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -90,6 +90,7 @@ class Stage
      * Set etat
      *
      * @param string $etat
+     *
      * @return Stage
      */
     public function setEtat($etat)
@@ -102,7 +103,7 @@ class Stage
     /**
      * Get etat
      *
-     * @return string 
+     * @return string
      */
     public function getEtat()
     {
@@ -112,7 +113,7 @@ class Stage
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -123,6 +124,7 @@ class Stage
      * Set identreprise
      *
      * @param \AppBundle\Entity\Entreprise $identreprise
+     *
      * @return Stage
      */
     public function setIdentreprise(\AppBundle\Entity\Entreprise $identreprise = null)
@@ -135,7 +137,7 @@ class Stage
     /**
      * Get identreprise
      *
-     * @return \AppBundle\Entity\Entreprise 
+     * @return \AppBundle\Entity\Entreprise
      */
     public function getIdentreprise()
     {
@@ -145,10 +147,11 @@ class Stage
     /**
      * Set idetudiant
      *
-     * @param \AppBundle\Entity\Etudiant $idetudiant
+     * @param \AppBundle\Entity\User $idetudiant
+     *
      * @return Stage
      */
-    public function setIdetudiant(\AppBundle\Entity\Etudiant $idetudiant = null)
+    public function setIdetudiant(\AppBundle\Entity\User $idetudiant = null)
     {
         $this->idetudiant = $idetudiant;
 
@@ -158,7 +161,7 @@ class Stage
     /**
      * Get idetudiant
      *
-     * @return \AppBundle\Entity\Etudiant 
+     * @return \AppBundle\Entity\User
      */
     public function getIdetudiant()
     {

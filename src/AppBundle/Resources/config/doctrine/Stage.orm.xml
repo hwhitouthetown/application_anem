@@ -8,17 +8,29 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="intitule" type="text" column="intitule" length="65535" nullable="false"/>
-    <field name="description" type="text" column="description" length="65535" nullable="false"/>
-    <field name="etat" type="text" column="etat" length="65535" nullable="false"/>
-    <many-to-one field="identreprise" target-entity="Entreprise">
+    <field name="intitule" type="text" column="intitule" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="description" type="text" column="description" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="etat" type="text" column="etat" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="identreprise" target-entity="Entreprise" fetch="LAZY">
       <join-columns>
         <join-column name="idEntreprise" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idetudiant" target-entity="Etudiant">
+    <many-to-one field="idetudiant" target-entity="User" fetch="LAZY">
       <join-columns>
-        <join-column name="idEtudiant" referenced-column-name="idUtilisateur"/>
+        <join-column name="idEtudiant" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

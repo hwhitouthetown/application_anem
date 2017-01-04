@@ -13,7 +13,7 @@ parameters:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -74,7 +74,15 @@ swiftmailer:
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
-    user_class: AppBundle\Entity\User   
+    user_class: AppBundle\Entity\User 
+
+fos_oauth_server:
+    db_driver: orm
+    client_class : UserBundle\Entity\Client
+    access_token_class: UserBundle\Entity\AccesToken
+    refresh_token_class: UserBundle\Entity\RefreshToken
+    auth_code_class: UserBundle\Entity\AuthCode   
+
 fos_rest:
     param_fetcher_listener: true
     body_listener: true

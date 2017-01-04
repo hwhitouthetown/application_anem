@@ -20,7 +20,7 @@ class FichesuivieType extends AbstractType
             ->add('description')
             ->add('entreprise')
             ->add('idetudiant', EntityType::class, array(
-                'class' => 'AppBundle\Entity\Etudiant',
+                'class' => 'AppBundle\Entity\User',
                 'choice_label' => 'id',
                 'placeholder' => 'Please choose',
                 'empty_data' => null,

@@ -26,7 +26,7 @@ class CommandeType extends AbstractType
  
             )) 
             ->add('idutilisateur', EntityType::class, array(
-                'class' => 'AppBundle\Entity\Utilisateur',
+                'class' => 'AppBundle\Entity\User',
                 'choice_label' => 'id',
                 'placeholder' => 'Please choose',
                 'empty_data' => null,

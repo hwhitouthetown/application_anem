@@ -10,12 +10,12 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="dateachat" type="date" column="dateAchat" nullable="false"/>
-    <many-to-one field="idproduit" target-entity="Produit">
+    <many-to-one field="idproduit" target-entity="Produit" fetch="LAZY">
       <join-columns>
         <join-column name="idProduit" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idutilisateur" target-entity="Utilisateur">
+    <many-to-one field="idutilisateur" target-entity="User" fetch="LAZY">
       <join-columns>
         <join-column name="idUtilisateur" referenced-column-name="id"/>
       </join-columns>

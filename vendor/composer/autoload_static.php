@@ -47,6 +47,8 @@ class ComposerStaticInit2a1b692c807567a6e323fcf90b265fe4
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Petkopara\\MultiSearchBundle\\' => 28,
+            'Petkopara\\CrudGeneratorBundle\\' => 30,
         ),
         'N' => 
         array (
@@ -55,6 +57,10 @@ class ComposerStaticInit2a1b692c807567a6e323fcf90b265fe4
         'M' => 
         array (
             'Monolog\\' => 8,
+        ),
+        'L' => 
+        array (
+            'Lexik\\Bundle\\FormFilterBundle\\' => 30,
         ),
         'I' => 
         array (
@@ -160,6 +166,14 @@ class ComposerStaticInit2a1b692c807567a6e323fcf90b265fe4
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'Petkopara\\MultiSearchBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/petkopara/multi-search-bundle',
+        ),
+        'Petkopara\\CrudGeneratorBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/petkopara/crud-generator-bundle',
+        ),
         'Negotiation\\' => 
         array (
             0 => __DIR__ . '/..' . '/willdurand/negotiation/src/Negotiation',
@@ -167,6 +181,10 @@ class ComposerStaticInit2a1b692c807567a6e323fcf90b265fe4
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Lexik\\Bundle\\FormFilterBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lexik/form-filter-bundle',
         ),
         'Incenteev\\ParameterHandler\\' => 
         array (
@@ -230,6 +248,10 @@ class ComposerStaticInit2a1b692c807567a6e323fcf90b265fe4
             'PhpCollection' => 
             array (
                 0 => __DIR__ . '/..' . '/phpcollection/phpcollection/src',
+            ),
+            'Pagerfanta\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/pagerfanta/pagerfanta/src',
             ),
         ),
         'M' => 

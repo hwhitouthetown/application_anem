@@ -18,6 +18,9 @@
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="JMSSerializerBundle">JMS\SerializerBundle\JMSSerializerBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
+      <parameter key="LexikFormFilterBundle">Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle</parameter>
+      <parameter key="PetkoparaMultiSearchBundle">Petkopara\MultiSearchBundle\PetkoparaMultiSearchBundle</parameter>
+      <parameter key="PetkoparaCrudGeneratorBundle">Petkopara\CrudGeneratorBundle\PetkoparaCrudGeneratorBundle</parameter>
       <parameter key="FOSRestBundle">FOS\RestBundle\FOSRestBundle</parameter>
       <parameter key="UserBundle">UserBundle\UserBundle</parameter>
       <parameter key="ShopBundle">ShopBundle\ShopBundle</parameter>
@@ -306,6 +309,7 @@
     <parameter key="twig.exception_listener.controller">twig.controller.exception:showAction</parameter>
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
+      <parameter>bootstrap_3_layout.html.twig</parameter>
     </parameter>
     <parameter key="monolog.logger.class">Symfony\Bridge\Monolog\Logger</parameter>
     <parameter key="monolog.gelf.publisher.class">Gelf\MessagePublisher</parameter>
@@ -598,6 +602,29 @@
       <parameter>ResetPassword</parameter>
       <parameter>Default</parameter>
     </parameter>
+    <parameter key="lexik_form_filter.query_builder_updater.class">Lexik\Bundle\FormFilterBundle\Filter\FilterBuilderUpdater</parameter>
+    <parameter key="lexik_form_filter.form_data_extractor.class">Lexik\Bundle\FormFilterBundle\Filter\DataExtractor\FormDataExtractor</parameter>
+    <parameter key="lexik_form_filter.data_extraction_method.default.class">Lexik\Bundle\FormFilterBundle\Filter\DataExtractor\Method\DefaultExtractionMethod</parameter>
+    <parameter key="lexik_form_filter.data_extraction_method.text.class">Lexik\Bundle\FormFilterBundle\Filter\DataExtractor\Method\TextExtractionMethod</parameter>
+    <parameter key="lexik_form_filter.data_extraction_method.key_values.class">Lexik\Bundle\FormFilterBundle\Filter\DataExtractor\Method\ValueKeysExtractionMethod</parameter>
+    <parameter key="lexik_form_filter.filter_prepare.class">Lexik\Bundle\FormFilterBundle\Event\Listener\PrepareListener</parameter>
+    <parameter key="lexik_form_filter.type.filter_text.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\TextFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_number.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\NumberFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_number_range.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\NumberRangeFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_checkbox.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\CheckboxFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_boolean.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\BooleanFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_choice.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\ChoiceFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_entity.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\EntityFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_date.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_date_range.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateRangeFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_datetime.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateTimeFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_datetime_range.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateTimeRangeFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_collection_adapter.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\CollectionAdapterFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_sharedable.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\SharedableFilterType</parameter>
+    <parameter key="lexik_form_filter.type_extension.filter_extension.class">Lexik\Bundle\FormFilterBundle\Filter\Form\FilterTypeExtension</parameter>
+    <parameter key="lexik_form_filter.get_filter.doctrine_orm.class">Lexik\Bundle\FormFilterBundle\Event\Subscriber\DoctrineORMSubscriber</parameter>
+    <parameter key="lexik_form_filter.apply_filter.doctrine_orm.class">Lexik\Bundle\FormFilterBundle\Event\Listener\DoctrineApplyFilterListener</parameter>
+    <parameter key="lexik_form_filter.where_method">and</parameter>
     <parameter key="fos_rest.serializer.exclusion_strategy.version"></parameter>
     <parameter key="fos_rest.serializer.exclusion_strategy.groups"></parameter>
     <parameter key="fos_rest.view_handler.jsonp.callback_param"></parameter>
@@ -1265,6 +1292,32 @@
               <argument key="FOS\UserBundle\Form\Type\ChangePasswordFormType">fos_user.change_password.form.type</argument>
               <argument key="fos_user_resetting">fos_user.resetting.form.type</argument>
               <argument key="FOS\UserBundle\Form\Type\ResettingFormType">fos_user.resetting.form.type</argument>
+              <argument key="lexik_form_filter.type.filter_text">lexik_form_filter.type.filter_text</argument>
+              <argument key="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\TextFilterType">lexik_form_filter.type.filter_text</argument>
+              <argument key="lexik_form_filter.type.filter_number">lexik_form_filter.type.filter_number</argument>
+              <argument key="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\NumberFilterType">lexik_form_filter.type.filter_number</argument>
+              <argument key="lexik_form_filter.type.filter_number_range">lexik_form_filter.type.filter_number_range</argument>
+              <argument key="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\NumberRangeFilterType">lexik_form_filter.type.filter_number_range</argument>
+              <argument key="lexik_form_filter.type.filter_checkbox">lexik_form_filter.type.filter_checkbox</argument>
+              <argument key="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\CheckboxFilterType">lexik_form_filter.type.filter_checkbox</argument>
+              <argument key="lexik_form_filter.type.filter_boolean">lexik_form_filter.type.filter_boolean</argument>
+              <argument key="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\BooleanFilterType">lexik_form_filter.type.filter_boolean</argument>
+              <argument key="lexik_form_filter.type.filter_choice">lexik_form_filter.type.filter_choice</argument>
+              <argument key="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\ChoiceFilterType">lexik_form_filter.type.filter_choice</argument>
+              <argument key="filter_entity">lexik_form_filter.type.filter_entity</argument>
+              <argument key="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\EntityFilterType">lexik_form_filter.type.filter_entity</argument>
+              <argument key="lexik_form_filter.type.filter_date">lexik_form_filter.type.filter_date</argument>
+              <argument key="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateFilterType">lexik_form_filter.type.filter_date</argument>
+              <argument key="lexik_form_filter.type.filter_date_range">lexik_form_filter.type.filter_date_range</argument>
+              <argument key="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateRangeFilterType">lexik_form_filter.type.filter_date_range</argument>
+              <argument key="lexik_form_filter.type.filter_datetime">lexik_form_filter.type.filter_datetime</argument>
+              <argument key="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateTimeFilterType">lexik_form_filter.type.filter_datetime</argument>
+              <argument key="lexik_form_filter.type.filter_datetime_range">lexik_form_filter.type.filter_datetime_range</argument>
+              <argument key="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateTimeRangeFilterType">lexik_form_filter.type.filter_datetime_range</argument>
+              <argument key="lexik_form_filter.type.filter_collection_adapter">lexik_form_filter.type.filter_collection_adapter</argument>
+              <argument key="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\CollectionAdapterFilterType">lexik_form_filter.type.filter_collection_adapter</argument>
+              <argument key="lexik_form_filter.type.filter_sharedable">lexik_form_filter.type.filter_sharedable</argument>
+              <argument key="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\SharedableFilterType">lexik_form_filter.type.filter_sharedable</argument>
             </argument>
             <argument type="collection">
               <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="collection">
@@ -1273,6 +1326,7 @@
                 <argument>form.type_extension.upload.validator</argument>
                 <argument>form.type_extension.csrf</argument>
                 <argument>form.type_extension.form.data_collector</argument>
+                <argument>lexik_form_filter.type_extension.filter_extension</argument>
               </argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\RepeatedType" type="collection">
                 <argument>form.type_extension.repeated.validator</argument>
@@ -1833,6 +1887,22 @@
         <argument>0</argument>
       </call>
       <call method="addListenerService">
+        <argument>lexik_filter.prepare</argument>
+        <argument type="collection">
+          <argument>lexik_form_filter.filter_prepare</argument>
+          <argument>onFilterBuilderPrepare</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListenerService">
+        <argument>lexik_filter.apply_filters.orm</argument>
+        <argument type="collection">
+          <argument>lexik_form_filter.apply_filter.doctrine_orm</argument>
+          <argument>onApplyFilterCondition</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListenerService">
         <argument>kernel.request</argument>
         <argument type="collection">
           <argument>fos_rest.body_listener</argument>
@@ -1953,6 +2023,10 @@
         <argument>FOS\UserBundle\EventListener\ResettingListener</argument>
       </call>
       <call method="addSubscriberService">
+        <argument>lexik_form_filter.get_filter.doctrine_orm</argument>
+        <argument>Lexik\Bundle\FormFilterBundle\Event\Subscriber\DoctrineORMSubscriber</argument>
+      </call>
+      <call method="addSubscriberService">
         <argument>debug.dump_listener</argument>
         <argument>Symfony\Component\HttpKernel\EventListener\DumpListener</argument>
       </call>
@@ -1997,7 +2071,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>58357fcc340f56.53459276</argument>
+            <argument>586cb715ae0869.98604776</argument>
           </service>
         </argument>
       </argument>
@@ -2286,7 +2360,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>58357fcc340f56.53459276</argument>
+            <argument>586cb715ae0869.98604776</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2384,10 +2458,11 @@
       <argument type="collection">
         <argument key="debug">true</argument>
         <argument key="strict_variables">true</argument>
-        <argument key="exception_controller">twig.controller.exception:showAction</argument>
         <argument key="form_themes" type="collection">
           <argument>form_div_layout.html.twig</argument>
+          <argument>bootstrap_3_layout.html.twig</argument>
         </argument>
+        <argument key="exception_controller">twig.controller.exception:showAction</argument>
         <argument key="autoescape">name</argument>
         <argument key="cache">/var/www/html/application_anem/app/cache/dev/twig</argument>
         <argument key="charset">UTF-8</argument>
@@ -2527,6 +2602,7 @@
                   <service class="Symfony\Bridge\Twig\Form\TwigRendererEngine" public="false">
                     <argument type="collection">
                       <argument>form_div_layout.html.twig</argument>
+                      <argument>bootstrap_3_layout.html.twig</argument>
                     </argument>
                   </service>
                 </argument>
@@ -3376,6 +3452,83 @@
       <argument type="service" id="router"/>
       <argument>86400</argument>
     </service>
+    <service id="lexik_form_filter.query_builder_updater" class="Lexik\Bundle\FormFilterBundle\Filter\FilterBuilderUpdater">
+      <argument type="service" id="lexik_form_filter.form_data_extractor"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
+    <service id="lexik_form_filter.form_data_extractor" class="Lexik\Bundle\FormFilterBundle\Filter\DataExtractor\FormDataExtractor">
+      <call method="addMethod">
+        <argument type="service" id="lexik_form_filter.data_extraction_method.default"/>
+      </call>
+      <call method="addMethod">
+        <argument type="service" id="lexik_form_filter.data_extraction_method.text"/>
+      </call>
+      <call method="addMethod">
+        <argument type="service" id="lexik_form_filter.data_extraction_method.key_values"/>
+      </call>
+    </service>
+    <service id="lexik_form_filter.data_extraction_method.default" class="Lexik\Bundle\FormFilterBundle\Filter\DataExtractor\Method\DefaultExtractionMethod">
+      <tag name="lexik_form_filter.data_extraction_method"/>
+    </service>
+    <service id="lexik_form_filter.data_extraction_method.text" class="Lexik\Bundle\FormFilterBundle\Filter\DataExtractor\Method\TextExtractionMethod">
+      <tag name="lexik_form_filter.data_extraction_method"/>
+    </service>
+    <service id="lexik_form_filter.data_extraction_method.key_values" class="Lexik\Bundle\FormFilterBundle\Filter\DataExtractor\Method\ValueKeysExtractionMethod">
+      <tag name="lexik_form_filter.data_extraction_method"/>
+    </service>
+    <service id="lexik_form_filter.filter_prepare" class="Lexik\Bundle\FormFilterBundle\Event\Listener\PrepareListener">
+      <tag name="kernel.event_listener" event="lexik_filter.prepare" method="onFilterBuilderPrepare"/>
+    </service>
+    <service id="lexik_form_filter.type.filter_text" class="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\TextFilterType">
+      <tag name="form.type"/>
+    </service>
+    <service id="lexik_form_filter.type.filter_number" class="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\NumberFilterType">
+      <tag name="form.type"/>
+    </service>
+    <service id="lexik_form_filter.type.filter_number_range" class="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\NumberRangeFilterType">
+      <tag name="form.type"/>
+    </service>
+    <service id="lexik_form_filter.type.filter_checkbox" class="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\CheckboxFilterType">
+      <tag name="form.type"/>
+    </service>
+    <service id="lexik_form_filter.type.filter_boolean" class="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\BooleanFilterType">
+      <tag name="form.type"/>
+    </service>
+    <service id="lexik_form_filter.type.filter_choice" class="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\ChoiceFilterType">
+      <tag name="form.type"/>
+    </service>
+    <service id="lexik_form_filter.type.filter_entity" class="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\EntityFilterType">
+      <tag name="form.type" alias="filter_entity"/>
+    </service>
+    <service id="lexik_form_filter.type.filter_date" class="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateFilterType">
+      <tag name="form.type"/>
+    </service>
+    <service id="lexik_form_filter.type.filter_date_range" class="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateRangeFilterType">
+      <tag name="form.type"/>
+    </service>
+    <service id="lexik_form_filter.type.filter_datetime" class="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateTimeFilterType">
+      <tag name="form.type"/>
+    </service>
+    <service id="lexik_form_filter.type.filter_datetime_range" class="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateTimeRangeFilterType">
+      <tag name="form.type"/>
+    </service>
+    <service id="lexik_form_filter.type.filter_collection_adapter" class="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\CollectionAdapterFilterType">
+      <tag name="form.type"/>
+    </service>
+    <service id="lexik_form_filter.type.filter_sharedable" class="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\SharedableFilterType">
+      <tag name="form.type"/>
+    </service>
+    <service id="lexik_form_filter.type_extension.filter_extension" class="Lexik\Bundle\FormFilterBundle\Filter\Form\FilterTypeExtension">
+      <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
+    </service>
+    <service id="lexik_form_filter.get_filter.doctrine_orm" class="Lexik\Bundle\FormFilterBundle\Event\Subscriber\DoctrineORMSubscriber">
+      <tag name="kernel.event_subscriber"/>
+    </service>
+    <service id="lexik_form_filter.apply_filter.doctrine_orm" class="Lexik\Bundle\FormFilterBundle\Event\Listener\DoctrineApplyFilterListener">
+      <tag name="kernel.event_listener" event="lexik_filter.apply_filters.orm" method="onApplyFilterCondition"/>
+      <argument>and</argument>
+    </service>
+    <service id="petkopara_multi_search.builder" class="Petkopara\MultiSearchBundle\Service\MultiSearchBuilderService"/>
     <service id="fos_rest.view.exception_wrapper_handler" class="FOS\RestBundle\View\ExceptionWrapperHandler"/>
     <service id="fos_rest.serializer.exception_wrapper_serialize_handler" class="FOS\RestBundle\Serializer\ExceptionWrapperSerializeHandler">
       <tag name="jms_serializer.subscribing_handler"/>
@@ -3597,9 +3750,6 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
-      </call>
     </service>
     <service id="monolog.logger.translation" class="Symfony\Bridge\Monolog\Logger">
       <argument>translation</argument>
@@ -3608,9 +3758,6 @@
       </call>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
-      </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
       </call>
     </service>
     <service id="monolog.logger.templating" class="Symfony\Bridge\Monolog\Logger">
@@ -3621,9 +3768,6 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
-      </call>
     </service>
     <service id="monolog.logger.profiler" class="Symfony\Bridge\Monolog\Logger">
       <argument>profiler</argument>
@@ -3632,9 +3776,6 @@
       </call>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
-      </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
       </call>
     </service>
     <service id="monolog.logger.router" class="Symfony\Bridge\Monolog\Logger">
@@ -3645,9 +3786,6 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
-      </call>
     </service>
     <service id="monolog.logger.php" class="Symfony\Bridge\Monolog\Logger">
       <argument>php</argument>
@@ -3657,14 +3795,11 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
-      </call>
     </service>
     <service id="monolog.logger.event" class="Symfony\Bridge\Monolog\Logger">
       <argument>event</argument>
       <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
+        <argument type="service" id="monolog.handler.null_internal"/>
       </call>
     </service>
     <service id="monolog.logger.security" class="Symfony\Bridge\Monolog\Logger">
@@ -3675,22 +3810,12 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
-      </call>
     </service>
     <service id="monolog.logger.doctrine" class="Symfony\Bridge\Monolog\Logger">
       <argument>doctrine</argument>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
-      </call>
-    </service>
-    <service id="monolog.handler.debug" class="Symfony\Bridge\Monolog\Handler\DebugHandler">
-      <argument>100</argument>
-      <argument>true</argument>
     </service>
     <service id="monolog.handler.null_internal" class="Monolog\Handler\NullHandler"/>
     <service id="session.storage.filesystem" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage">
@@ -3783,6 +3908,18 @@
         <argument>FOSUser</argument>
       </call>
       <call method="addPath">
+        <argument>/var/www/html/application_anem/vendor/lexik/form-filter-bundle/Resources/views</argument>
+        <argument>LexikFormFilter</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/html/application_anem/vendor/petkopara/multi-search-bundle/Resources/views</argument>
+        <argument>PetkoparaMultiSearch</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/html/application_anem/vendor/petkopara/crud-generator-bundle/Resources/views</argument>
+        <argument>PetkoparaCrudGenerator</argument>
+      </call>
+      <call method="addPath">
         <argument>/var/www/html/application_anem/src/UserBundle/Resources/views</argument>
         <argument>User</argument>
       </call>
@@ -3819,9 +3956,6 @@
       </call>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
-      </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
       </call>
       <autowiring-type>Psr\Log\LoggerInterface</autowiring-type>
     </service>
@@ -3909,6 +4043,9 @@
                       <argument key="AppBundle">/var/www/html/application_anem/src/AppBundle/Resources/config/serializer</argument>
                       <argument key="JMS\SerializerBundle">/var/www/html/application_anem/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer</argument>
                       <argument key="FOS\UserBundle">/var/www/html/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/serializer</argument>
+                      <argument key="Lexik\Bundle\FormFilterBundle">/var/www/html/application_anem/vendor/lexik/form-filter-bundle/Resources/config/serializer</argument>
+                      <argument key="Petkopara\MultiSearchBundle">/var/www/html/application_anem/vendor/petkopara/multi-search-bundle/Resources/config/serializer</argument>
+                      <argument key="Petkopara\CrudGeneratorBundle">/var/www/html/application_anem/vendor/petkopara/crud-generator-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\RestBundle">/var/www/html/application_anem/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer</argument>
                       <argument key="UserBundle">/var/www/html/application_anem/src/UserBundle/Resources/config/serializer</argument>
                       <argument key="ShopBundle">/var/www/html/application_anem/src/ShopBundle/Resources/config/serializer</argument>
@@ -3937,6 +4074,9 @@
                       <argument key="AppBundle">/var/www/html/application_anem/src/AppBundle/Resources/config/serializer</argument>
                       <argument key="JMS\SerializerBundle">/var/www/html/application_anem/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer</argument>
                       <argument key="FOS\UserBundle">/var/www/html/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/serializer</argument>
+                      <argument key="Lexik\Bundle\FormFilterBundle">/var/www/html/application_anem/vendor/lexik/form-filter-bundle/Resources/config/serializer</argument>
+                      <argument key="Petkopara\MultiSearchBundle">/var/www/html/application_anem/vendor/petkopara/multi-search-bundle/Resources/config/serializer</argument>
+                      <argument key="Petkopara\CrudGeneratorBundle">/var/www/html/application_anem/vendor/petkopara/crud-generator-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\RestBundle">/var/www/html/application_anem/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer</argument>
                       <argument key="UserBundle">/var/www/html/application_anem/src/UserBundle/Resources/config/serializer</argument>
                       <argument key="ShopBundle">/var/www/html/application_anem/src/ShopBundle/Resources/config/serializer</argument>
@@ -3965,6 +4105,9 @@
                       <argument key="AppBundle">/var/www/html/application_anem/src/AppBundle/Resources/config/serializer</argument>
                       <argument key="JMS\SerializerBundle">/var/www/html/application_anem/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer</argument>
                       <argument key="FOS\UserBundle">/var/www/html/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/serializer</argument>
+                      <argument key="Lexik\Bundle\FormFilterBundle">/var/www/html/application_anem/vendor/lexik/form-filter-bundle/Resources/config/serializer</argument>
+                      <argument key="Petkopara\MultiSearchBundle">/var/www/html/application_anem/vendor/petkopara/multi-search-bundle/Resources/config/serializer</argument>
+                      <argument key="Petkopara\CrudGeneratorBundle">/var/www/html/application_anem/vendor/petkopara/crud-generator-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\RestBundle">/var/www/html/application_anem/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer</argument>
                       <argument key="UserBundle">/var/www/html/application_anem/src/UserBundle/Resources/config/serializer</argument>
                       <argument key="ShopBundle">/var/www/html/application_anem/src/ShopBundle/Resources/config/serializer</argument>

@@ -4,9 +4,17 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="nom" type="text" column="nom" length="65535" nullable="false"/>
+    <field name="nom" type="text" column="nom" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="prix" type="float" column="prix" precision="10" scale="0" nullable="false"/>
     <field name="prixadherent" type="float" column="prixAdherent" precision="10" scale="0" nullable="false"/>
-    <field name="urlimage" type="text" column="urlImage" length="65535" nullable="false"/>
+    <field name="urlimage" type="text" column="urlImage" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
   </entity>
 </doctrine-mapping>

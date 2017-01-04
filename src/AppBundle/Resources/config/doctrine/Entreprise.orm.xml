@@ -4,8 +4,20 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="nom" type="text" column="nom" length="65535" nullable="false"/>
-    <field name="adresse" type="text" column="adresse" length="65535" nullable="false"/>
-    <field name="numtel" type="text" column="numTel" length="65535" nullable="false"/>
+    <field name="nom" type="text" column="nom" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="adresse" type="text" column="adresse" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="numtel" type="text" column="numTel" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
   </entity>
 </doctrine-mapping>

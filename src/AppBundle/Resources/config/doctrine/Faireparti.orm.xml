@@ -9,14 +9,14 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <many-to-one field="idetudiant" target-entity="Etudiant">
-      <join-columns>
-        <join-column name="idEtudiant" referenced-column-name="idUtilisateur"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="idpromotion" target-entity="Promotion">
+    <many-to-one field="idpromotion" target-entity="Promotion" fetch="LAZY">
       <join-columns>
         <join-column name="idPromotion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idetudiant" target-entity="User" fetch="LAZY">
+      <join-columns>
+        <join-column name="idEtudiant" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

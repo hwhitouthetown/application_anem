@@ -20,7 +20,7 @@ class FichesuivieFilterType extends AbstractType
             ->add('id', Filters\NumberFilterType::class)
         
             ->add('idetudiant', Filters\EntityFilterType::class, array(
-                    'class' => 'AppBundle\Entity\Etudiant',
+                    'class' => 'AppBundle\Entity\User',
                     'choice_label' => 'id',
             )) 
         ;

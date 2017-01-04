@@ -8,11 +8,19 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="date" type="date" column="date" nullable="false"/>
-    <field name="description" type="text" column="description" length="65535" nullable="false"/>
-    <field name="entreprise" type="text" column="entreprise" length="65535" nullable="false"/>
-    <many-to-one field="idetudiant" target-entity="Etudiant">
+    <field name="description" type="text" column="description" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="entreprise" type="text" column="entreprise" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idetudiant" target-entity="User" fetch="LAZY">
       <join-columns>
-        <join-column name="idEtudiant" referenced-column-name="idUtilisateur"/>
+        <join-column name="idEtudiant" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

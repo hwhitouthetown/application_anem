@@ -2,8 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Fichesuivie
  */
@@ -30,7 +28,7 @@ class Fichesuivie
     private $id;
 
     /**
-     * @var \AppBundle\Entity\Etudiant
+     * @var \AppBundle\Entity\User
      */
     private $idetudiant;
 
@@ -39,6 +37,7 @@ class Fichesuivie
      * Set date
      *
      * @param \DateTime $date
+     *
      * @return Fichesuivie
      */
     public function setDate($date)
@@ -51,7 +50,7 @@ class Fichesuivie
     /**
      * Get date
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDate()
     {
@@ -62,6 +61,7 @@ class Fichesuivie
      * Set description
      *
      * @param string $description
+     *
      * @return Fichesuivie
      */
     public function setDescription($description)
@@ -74,7 +74,7 @@ class Fichesuivie
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -85,6 +85,7 @@ class Fichesuivie
      * Set entreprise
      *
      * @param string $entreprise
+     *
      * @return Fichesuivie
      */
     public function setEntreprise($entreprise)
@@ -97,7 +98,7 @@ class Fichesuivie
     /**
      * Get entreprise
      *
-     * @return string 
+     * @return string
      */
     public function getEntreprise()
     {
@@ -107,7 +108,7 @@ class Fichesuivie
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -117,10 +118,11 @@ class Fichesuivie
     /**
      * Set idetudiant
      *
-     * @param \AppBundle\Entity\Etudiant $idetudiant
+     * @param \AppBundle\Entity\User $idetudiant
+     *
      * @return Fichesuivie
      */
-    public function setIdetudiant(\AppBundle\Entity\Etudiant $idetudiant = null)
+    public function setIdetudiant(\AppBundle\Entity\User $idetudiant = null)
     {
         $this->idetudiant = $idetudiant;
 
@@ -130,7 +132,7 @@ class Fichesuivie
     /**
      * Get idetudiant
      *
-     * @return \AppBundle\Entity\Etudiant 
+     * @return \AppBundle\Entity\User
      */
     public function getIdetudiant()
     {

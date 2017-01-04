@@ -10,6 +10,7 @@ return array(
     'SensioLabs\\Security' => array($vendorDir . '/sensiolabs/security-checker'),
     'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src'),
     'PhpCollection' => array($vendorDir . '/phpcollection/phpcollection/src'),
+    'Pagerfanta\\' => array($vendorDir . '/pagerfanta/pagerfanta/src'),
     'Metadata\\' => array($vendorDir . '/jms/metadata/src'),
     'JsonpCallbackValidator' => array($vendorDir . '/willdurand/jsonp-callback-validator/src'),
     'JMS\\SerializerBundle' => array($vendorDir . '/jms/serializer-bundle'),

@@ -16,6 +16,16 @@ class User extends BaseUser
 
 
     /**
+     * @var string
+     */ 
+    private $nom;
+
+    /*
+     * @var string 
+     */ 
+    private $prenom;
+
+    /**
      * Get id
      *
      * @return int

@@ -14,7 +14,6 @@ class User extends BaseUser
      */
     protected $id;
 
-
     /**
      * @var string
      */ 
@@ -24,6 +23,11 @@ class User extends BaseUser
      * @var string 
      */ 
     private $prenom;
+
+    /*
+     * @var string 
+     */ 
+    private $url;
 
     /**
      * Get id

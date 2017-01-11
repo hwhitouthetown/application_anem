@@ -30,18 +30,5 @@ class ApiController extends Controller
       $serializer = $this->container->get('serializer');
       $reports = $serializer->serialize($user, 'json', SerializationContext::create()->enableMaxDepthChecks());
       return new Response($reports);
-    }
-
-    public function getContenAction($id){
-      $repository = $this
-      ->getDoctrine()
-      ->getManager()
-      ->getRepository('AppBundle:Contenu');
-      $user = $repository->findById($id);
-      $serializer = $this->container->get('serializer');
-      $reports = $serializer->serialize($user, 'json', SerializationContext::create()->enableMaxDepthChecks());
-      return new Response($reports);
-    }
-
-    
+    }    
 }

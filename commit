@@ -1,0 +1,4 @@
+git add -A;
+git rm app/cache;
+git commit;
+git push;

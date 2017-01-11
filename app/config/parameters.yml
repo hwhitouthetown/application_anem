@@ -10,3 +10,7 @@ parameters:
     mailer_user: null
     mailer_password: null
     secret: ad1821efe6bb62db506594c150048348700e33a0
+    jwt_private_key_path: '%kernel.root_dir%/../var/jwt/private.pem'
+    jwt_public_key_path: '%kernel.root_dir%/../var/jwt/public.pem'
+    jwt_key_pass_phrase: ''
+    jwt_token_ttl: 3600

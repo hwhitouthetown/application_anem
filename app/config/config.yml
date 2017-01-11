@@ -70,24 +70,26 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-# app/config/config.yml
-fos_user:
-    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
-    firewall_name: main
-    user_class: AppBundle\Entity\User 
-
-fos_oauth_server:
-    db_driver: orm
-    client_class : UserBundle\Entity\Client
-    access_token_class: UserBundle\Entity\AccesToken
-    refresh_token_class: UserBundle\Entity\RefreshToken
-    auth_code_class: UserBundle\Entity\AuthCode   
+nelmio_api_doc: ~
 
 fos_rest:
-    param_fetcher_listener: true
-    body_listener: true
-    format_listener: true
-
     routing_loader:
-        default_format: json 
+        default_format: json                            # All responses should be JSON formated
+        include_format: false                          # We do not include format in request, so that all responses
+                                                        # will eventually be JSON formated
 
+fos_user:
+    db_driver: orm
+    firewall_name: api                                  # Seems to be used when registering user/reseting password,
+                                                        # but since there is no "login", as so it seems to be useless in
+                                                        # our particular context, but still required by "FOSUserBundle"
+    user_class: AppBundle\Entity\User
+
+fos_oauth_server:
+    db_driver:           orm
+    client_class:        UserBundle\Entity\Client
+    access_token_class:  UserBundle\Entity\AccessToken
+    refresh_token_class: UserBundle\Entity\RefreshToken
+    auth_code_class:     UserBundle\Entity\AuthCode
+    service:
+        user_provider: fos_user.user_provider.username           # This property will be used when valid credentials are given to load the user upon access token creation

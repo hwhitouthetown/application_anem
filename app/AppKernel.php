@@ -13,16 +13,26 @@ class AppKernel extends Kernel
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+            
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new AppBundle\AppBundle(),
+            
             new JMS\SerializerBundle\JMSSerializerBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
-            new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
+
             new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
+            new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
+
+            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+
             new Petkopara\MultiSearchBundle\PetkoparaMultiSearchBundle(),
             new Petkopara\CrudGeneratorBundle\PetkoparaCrudGeneratorBundle(),
+            
             new FOS\RestBundle\FOSRestBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
+
+            new AppBundle\AppBundle(),
             new UserBundle\UserBundle(),
             new ShopBundle\ShopBundle(),
             new StageBundle\StageBundle(),

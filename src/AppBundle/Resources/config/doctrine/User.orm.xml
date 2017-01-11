@@ -4,5 +4,20 @@
     <id name="id" type="integer" column="id">
       <generator strategy="AUTO"/>
     </id>
+      <field name="nom" type="text" column="nom" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+      <field name="prenom" type="text" column="prenom" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="url" type="text" column="url" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
   </entity>
 </doctrine-mapping>

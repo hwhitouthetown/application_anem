@@ -14,6 +14,20 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @var string
+     */ 
+    private $nom;
+
+    /*
+     * @var string 
+     */ 
+    private $prenom;
+
+    /*
+     * @var string 
+     */ 
+    private $url;
 
     /**
      * Get id

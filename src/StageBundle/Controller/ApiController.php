@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use JMS\Serializer\SerializationContext;
-
+use AppBundle\Entity\Entreprise;
 
 
 
@@ -30,6 +30,22 @@ class ApiController extends Controller
       $reports = $serializer->serialize($entreprises, 'json', SerializationContext::create()->enableMaxDepthChecks());
       return new Response($reports);
     }
+
+    public function postUpdateEntrepriseAction(Request $request){
+      $em = $this->getDoctrine()->getManager();
+      $entreprise = $em->getRepository('AppBundle:Entreprise')->findOneById(intval($request->get('id')));
+      if (!isset($entreprise)) {
+        $entreprise = new Entreprise();
+      }
+      $entreprise->setNom($request->get('nom'));
+      $entreprise->setAdresse($request->get('adresse'));
+      $entreprise->setNumtel($request->get('tel'));
+      $em->persist($projet);
+      $em->flush();
+      $serializer = $this->container->get('serializer');
+      return new Response($serializer->serialize($projet, 'json', SerializationContext::create()->enableMaxDepthChecks()));
+    }
+
     public function getUserAction(){
       $repository = $this
       ->getDoctrine()
@@ -51,3 +67,4 @@ class ApiController extends Controller
       return new Response($reports);
     }
 }
+

@@ -11,22 +11,21 @@ use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use JMS\Serializer\SerializationContext;
-use FOS\RestBundle\Controller\FOSRestController;
 
-use use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 
 /**
  * @Route("/api")
  */
-class ApiController extends extends FOSRestController
+class ApiController extends Controller
 {
 
 
     public function getDemosAction()
     {
 
-      
+
         $data = array("hello" => "world");
         $view = $this->view($data);
         return $this->handleView($view);

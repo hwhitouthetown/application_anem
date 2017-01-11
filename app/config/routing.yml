@@ -6,6 +6,11 @@ NelmioApiDocBundle:
 fos_oauth_server_token:
     resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
 
+rest: 
+    type: rest 
+    resource: "routing_rest.yml"
+    prefix:   /api 
+
 app_fichesuivie:
     resource: "@AppBundle/Controller/FichesuivieController.php"
     type:     annotation

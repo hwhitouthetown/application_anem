@@ -3,9 +3,8 @@
 namespace StageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-/**
- * @Route("/api/stage")
- */
+
+
 class DefaultController extends Controller
 {
     public function indexAction()

@@ -14,5 +14,10 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="url" type="text" column="url" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
   </entity>
 </doctrine-mapping>

@@ -105,6 +105,28 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        // nelmio_api_doc_index
+        if (0 === strpos($pathinfo, '/api/doc') && preg_match('#^/api/doc(?:/(?P<view>[^/]++))?$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'HEAD'));
+                goto not_nelmio_api_doc_index;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'nelmio_api_doc_index')), array (  '_controller' => 'Nelmio\\ApiDocBundle\\Controller\\ApiDocController::indexAction',  'view' => 'default',));
+        }
+        not_nelmio_api_doc_index:
+
+        // fos_oauth_server_token
+        if ($pathinfo === '/oauth/v2/token') {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_fos_oauth_server_token;
+            }
+
+            return array (  '_controller' => 'fos_oauth_server.controller.token:tokenAction',  '_route' => 'fos_oauth_server_token',);
+        }
+        not_fos_oauth_server_token:
+
         // stage_homepage
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
@@ -717,270 +739,6 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'AppBundle\\Controller\\UserController::bulkAction',  '_route' => 'user_bulk_action',);
             }
             not_user_bulk_action:
-
-        }
-
-        if (0 === strpos($pathinfo, '/log')) {
-            if (0 === strpos($pathinfo, '/login')) {
-                // fos_user_security_login
-                if ($pathinfo === '/login') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_fos_user_security_login;
-                    }
-
-                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
-                }
-                not_fos_user_security_login:
-
-                // fos_user_security_check
-                if ($pathinfo === '/login_check') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_fos_user_security_check;
-                    }
-
-                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::checkAction',  '_route' => 'fos_user_security_check',);
-                }
-                not_fos_user_security_check:
-
-            }
-
-            // fos_user_security_logout
-            if ($pathinfo === '/logout') {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_fos_user_security_logout;
-                }
-
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fos_user_security_logout',);
-            }
-            not_fos_user_security_logout:
-
-        }
-
-        if (0 === strpos($pathinfo, '/profile')) {
-            // fos_user_profile_show
-            if (rtrim($pathinfo, '/') === '/profile') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_fos_user_profile_show;
-                }
-
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'fos_user_profile_show');
-                }
-
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ProfileController::showAction',  '_route' => 'fos_user_profile_show',);
-            }
-            not_fos_user_profile_show:
-
-            // fos_user_profile_edit
-            if ($pathinfo === '/profile/edit') {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_fos_user_profile_edit;
-                }
-
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ProfileController::editAction',  '_route' => 'fos_user_profile_edit',);
-            }
-            not_fos_user_profile_edit:
-
-        }
-
-        if (0 === strpos($pathinfo, '/re')) {
-            if (0 === strpos($pathinfo, '/register')) {
-                // fos_user_registration_register
-                if (rtrim($pathinfo, '/') === '/register') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_fos_user_registration_register;
-                    }
-
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'fos_user_registration_register');
-                    }
-
-                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::registerAction',  '_route' => 'fos_user_registration_register',);
-                }
-                not_fos_user_registration_register:
-
-                if (0 === strpos($pathinfo, '/register/c')) {
-                    // fos_user_registration_check_email
-                    if ($pathinfo === '/register/check-email') {
-                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'HEAD'));
-                            goto not_fos_user_registration_check_email;
-                        }
-
-                        return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::checkEmailAction',  '_route' => 'fos_user_registration_check_email',);
-                    }
-                    not_fos_user_registration_check_email:
-
-                    if (0 === strpos($pathinfo, '/register/confirm')) {
-                        // fos_user_registration_confirm
-                        if (preg_match('#^/register/confirm/(?P<token>[^/]++)$#s', $pathinfo, $matches)) {
-                            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                                $allow = array_merge($allow, array('GET', 'HEAD'));
-                                goto not_fos_user_registration_confirm;
-                            }
-
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'fos_user_registration_confirm')), array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::confirmAction',));
-                        }
-                        not_fos_user_registration_confirm:
-
-                        // fos_user_registration_confirmed
-                        if ($pathinfo === '/register/confirmed') {
-                            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                                $allow = array_merge($allow, array('GET', 'HEAD'));
-                                goto not_fos_user_registration_confirmed;
-                            }
-
-                            return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::confirmedAction',  '_route' => 'fos_user_registration_confirmed',);
-                        }
-                        not_fos_user_registration_confirmed:
-
-                    }
-
-                }
-
-            }
-
-            if (0 === strpos($pathinfo, '/resetting')) {
-                // fos_user_resetting_request
-                if ($pathinfo === '/resetting/request') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_fos_user_resetting_request;
-                    }
-
-                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ResettingController::requestAction',  '_route' => 'fos_user_resetting_request',);
-                }
-                not_fos_user_resetting_request:
-
-                // fos_user_resetting_send_email
-                if ($pathinfo === '/resetting/send-email') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_fos_user_resetting_send_email;
-                    }
-
-                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ResettingController::sendEmailAction',  '_route' => 'fos_user_resetting_send_email',);
-                }
-                not_fos_user_resetting_send_email:
-
-                // fos_user_resetting_check_email
-                if ($pathinfo === '/resetting/check-email') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_fos_user_resetting_check_email;
-                    }
-
-                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ResettingController::checkEmailAction',  '_route' => 'fos_user_resetting_check_email',);
-                }
-                not_fos_user_resetting_check_email:
-
-                // fos_user_resetting_reset
-                if (0 === strpos($pathinfo, '/resetting/reset') && preg_match('#^/resetting/reset/(?P<token>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_fos_user_resetting_reset;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fos_user_resetting_reset')), array (  '_controller' => 'FOS\\UserBundle\\Controller\\ResettingController::resetAction',));
-                }
-                not_fos_user_resetting_reset:
-
-            }
-
-        }
-
-        // fos_user_change_password
-        if ($pathinfo === '/profile/change-password') {
-            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                goto not_fos_user_change_password;
-            }
-
-            return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ChangePasswordController::changePasswordAction',  '_route' => 'fos_user_change_password',);
-        }
-        not_fos_user_change_password:
-
-        if (0 === strpos($pathinfo, '/api')) {
-            if (0 === strpos($pathinfo, '/api/conten')) {
-                // api_get_contenu
-                if (0 === strpos($pathinfo, '/api/contenu') && preg_match('#^/api/contenu(?:\\.(?P<_format>json|xml|html))?$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_api_get_contenu;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'api_get_contenu')), array (  '_controller' => 'AppBundle\\Controller\\ApiController::getContenuAction',  '_format' => 'json',));
-                }
-                not_api_get_contenu:
-
-                // api_get_conten
-                if (0 === strpos($pathinfo, '/api/contens') && preg_match('#^/api/contens/(?P<id>[^/\\.]++)(?:\\.(?P<_format>json|xml|html))?$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_api_get_conten;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'api_get_conten')), array (  '_controller' => 'AppBundle\\Controller\\ApiController::getContenAction',  '_format' => 'json',));
-                }
-                not_api_get_conten:
-
-            }
-
-            if (0 === strpos($pathinfo, '/api/index')) {
-                // api_user_index
-                if (preg_match('#^/api/index(?:\\.(?P<_format>json|xml|html))?$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_api_user_index;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'api_user_index')), array (  '_controller' => 'UserBundle\\Controller\\DefaultController::indexAction',  '_format' => 'json',));
-                }
-                not_api_user_index:
-
-                // api_stage_index
-                if (preg_match('#^/api/index(?:\\.(?P<_format>json|xml|html))?$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_api_stage_index;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'api_stage_index')), array (  '_controller' => 'StageBundle\\Controller\\DefaultController::indexAction',  '_format' => 'json',));
-                }
-                not_api_stage_index:
-
-            }
-
-            if (0 === strpos($pathinfo, '/api/shop')) {
-                // api_shop_index
-                if (0 === strpos($pathinfo, '/api/shop/index') && preg_match('#^/api/shop/index(?:\\.(?P<_format>json|xml|html))?$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_api_shop_index;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'api_shop_index')), array (  '_controller' => 'ShopBundle\\Controller\\DefaultController::indexAction',  '_format' => 'json',));
-                }
-                not_api_shop_index:
-
-                // api_shop_get_produit
-                if (0 === strpos($pathinfo, '/api/shop/produit') && preg_match('#^/api/shop/produit(?:\\.(?P<_format>json|xml|html))?$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_api_shop_get_produit;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'api_shop_get_produit')), array (  '_controller' => 'ShopBundle\\Controller\\DefaultController::getProduitAction',  '_format' => 'json',));
-                }
-                not_api_shop_get_produit:
-
-            }
 
         }
 

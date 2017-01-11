@@ -15,14 +15,16 @@
       <parameter key="SwiftmailerBundle">Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle</parameter>
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
-      <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="JMSSerializerBundle">JMS\SerializerBundle\JMSSerializerBundle</parameter>
-      <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
-      <parameter key="FOSOAuthServerBundle">FOS\OAuthServerBundle\FOSOAuthServerBundle</parameter>
       <parameter key="LexikFormFilterBundle">Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle</parameter>
+      <parameter key="LexikJWTAuthenticationBundle">Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle</parameter>
+      <parameter key="NelmioApiDocBundle">Nelmio\ApiDocBundle\NelmioApiDocBundle</parameter>
       <parameter key="PetkoparaMultiSearchBundle">Petkopara\MultiSearchBundle\PetkoparaMultiSearchBundle</parameter>
       <parameter key="PetkoparaCrudGeneratorBundle">Petkopara\CrudGeneratorBundle\PetkoparaCrudGeneratorBundle</parameter>
       <parameter key="FOSRestBundle">FOS\RestBundle\FOSRestBundle</parameter>
+      <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
+      <parameter key="FOSOAuthServerBundle">FOS\OAuthServerBundle\FOSOAuthServerBundle</parameter>
+      <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="UserBundle">UserBundle\UserBundle</parameter>
       <parameter key="ShopBundle">ShopBundle\ShopBundle</parameter>
       <parameter key="StageBundle">StageBundle\StageBundle</parameter>
@@ -43,6 +45,10 @@
     <parameter key="mailer_user">null</parameter>
     <parameter key="mailer_password">null</parameter>
     <parameter key="secret">ad1821efe6bb62db506594c150048348700e33a0</parameter>
+    <parameter key="jwt_private_key_path">/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/../var/jwt/private.pem</parameter>
+    <parameter key="jwt_public_key_path">/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/../var/jwt/public.pem</parameter>
+    <parameter key="jwt_key_pass_phrase"></parameter>
+    <parameter key="jwt_token_ttl">3600</parameter>
     <parameter key="locale">en</parameter>
     <parameter key="controller_resolver.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver</parameter>
     <parameter key="controller_name_converter.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser</parameter>
@@ -236,14 +242,7 @@
     <parameter key="security.http_utils.class">Symfony\Component\Security\Http\HttpUtils</parameter>
     <parameter key="security.validator.user_password.class">Symfony\Component\Security\Core\Validator\Constraints\UserPasswordValidator</parameter>
     <parameter key="security.expression_language.class">Symfony\Component\Security\Core\Authorization\ExpressionLanguage</parameter>
-    <parameter key="security.role_hierarchy.roles" type="collection">
-      <parameter key="ROLE_ADMIN" type="collection">
-        <parameter>ROLE_USER</parameter>
-      </parameter>
-      <parameter key="ROLE_SUPER_ADMIN" type="collection">
-        <parameter>ROLE_ADMIN</parameter>
-      </parameter>
-    </parameter>
+    <parameter key="security.role_hierarchy.roles" type="collection"/>
     <parameter key="security.authentication.retry_entry_point.class">Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint</parameter>
     <parameter key="security.channel_listener.class">Symfony\Component\Security\Http\Firewall\ChannelListener</parameter>
     <parameter key="security.authentication.form_entry_point.class">Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint</parameter>
@@ -563,13 +562,144 @@
     <parameter key="jms_serializer.constraint_violation_handler.class">JMS\Serializer\Handler\ConstraintViolationHandler</parameter>
     <parameter key="jms_serializer.doctrine_proxy_subscriber.class">JMS\Serializer\EventDispatcher\Subscriber\DoctrineProxySubscriber</parameter>
     <parameter key="jms_serializer.stopwatch_subscriber.class">JMS\SerializerBundle\Serializer\StopwatchEventSubscriber</parameter>
+    <parameter key="lexik_form_filter.query_builder_updater.class">Lexik\Bundle\FormFilterBundle\Filter\FilterBuilderUpdater</parameter>
+    <parameter key="lexik_form_filter.form_data_extractor.class">Lexik\Bundle\FormFilterBundle\Filter\DataExtractor\FormDataExtractor</parameter>
+    <parameter key="lexik_form_filter.data_extraction_method.default.class">Lexik\Bundle\FormFilterBundle\Filter\DataExtractor\Method\DefaultExtractionMethod</parameter>
+    <parameter key="lexik_form_filter.data_extraction_method.text.class">Lexik\Bundle\FormFilterBundle\Filter\DataExtractor\Method\TextExtractionMethod</parameter>
+    <parameter key="lexik_form_filter.data_extraction_method.key_values.class">Lexik\Bundle\FormFilterBundle\Filter\DataExtractor\Method\ValueKeysExtractionMethod</parameter>
+    <parameter key="lexik_form_filter.filter_prepare.class">Lexik\Bundle\FormFilterBundle\Event\Listener\PrepareListener</parameter>
+    <parameter key="lexik_form_filter.type.filter_text.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\TextFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_number.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\NumberFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_number_range.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\NumberRangeFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_checkbox.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\CheckboxFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_boolean.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\BooleanFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_choice.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\ChoiceFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_entity.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\EntityFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_date.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_date_range.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateRangeFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_datetime.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateTimeFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_datetime_range.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateTimeRangeFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_collection_adapter.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\CollectionAdapterFilterType</parameter>
+    <parameter key="lexik_form_filter.type.filter_sharedable.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\SharedableFilterType</parameter>
+    <parameter key="lexik_form_filter.type_extension.filter_extension.class">Lexik\Bundle\FormFilterBundle\Filter\Form\FilterTypeExtension</parameter>
+    <parameter key="lexik_form_filter.get_filter.doctrine_orm.class">Lexik\Bundle\FormFilterBundle\Event\Subscriber\DoctrineORMSubscriber</parameter>
+    <parameter key="lexik_form_filter.apply_filter.doctrine_orm.class">Lexik\Bundle\FormFilterBundle\Event\Listener\DoctrineApplyFilterListener</parameter>
+    <parameter key="lexik_form_filter.where_method">and</parameter>
+    <parameter key="lexik_jwt_authentication.private_key_path">null</parameter>
+    <parameter key="lexik_jwt_authentication.public_key_path">null</parameter>
+    <parameter key="lexik_jwt_authentication.pass_phrase"></parameter>
+    <parameter key="lexik_jwt_authentication.token_ttl">3600</parameter>
+    <parameter key="lexik_jwt_authentication.user_identity_field">username</parameter>
+    <parameter key="lexik_jwt_authentication.encoder.signature_algorithm">RS256</parameter>
+    <parameter key="lexik_jwt_authentication.encoder.crypto_engine">openssl</parameter>
+    <parameter key="nelmio_api_doc.motd.template">NelmioApiDocBundle::Components/motd.html.twig</parameter>
+    <parameter key="nelmio_api_doc.exclude_sections" type="collection"/>
+    <parameter key="nelmio_api_doc.default_sections_opened">true</parameter>
+    <parameter key="nelmio_api_doc.api_name">API documentation</parameter>
+    <parameter key="nelmio_api_doc.sandbox.enabled">true</parameter>
+    <parameter key="nelmio_api_doc.sandbox.endpoint">null</parameter>
+    <parameter key="nelmio_api_doc.sandbox.accept_type">null</parameter>
+    <parameter key="nelmio_api_doc.sandbox.body_format.formats" type="collection">
+      <parameter>form</parameter>
+      <parameter>json</parameter>
+    </parameter>
+    <parameter key="nelmio_api_doc.sandbox.body_format.default_format">form</parameter>
+    <parameter key="nelmio_api_doc.sandbox.request_format.method">format_param</parameter>
+    <parameter key="nelmio_api_doc.sandbox.request_format.default_format">json</parameter>
+    <parameter key="nelmio_api_doc.sandbox.request_format.formats" type="collection">
+      <parameter key="json">application/json</parameter>
+      <parameter key="xml">application/xml</parameter>
+    </parameter>
+    <parameter key="nelmio_api_doc.sandbox.entity_to_choice">true</parameter>
+    <parameter key="nelmio_api_doc.formatter.abstract_formatter.class">Nelmio\ApiDocBundle\Formatter\AbstractFormatter</parameter>
+    <parameter key="nelmio_api_doc.formatter.markdown_formatter.class">Nelmio\ApiDocBundle\Formatter\MarkdownFormatter</parameter>
+    <parameter key="nelmio_api_doc.formatter.simple_formatter.class">Nelmio\ApiDocBundle\Formatter\SimpleFormatter</parameter>
+    <parameter key="nelmio_api_doc.formatter.html_formatter.class">Nelmio\ApiDocBundle\Formatter\HtmlFormatter</parameter>
+    <parameter key="nelmio_api_doc.formatter.swagger_formatter.class">Nelmio\ApiDocBundle\Formatter\SwaggerFormatter</parameter>
+    <parameter key="nelmio_api_doc.sandbox.authentication">null</parameter>
+    <parameter key="nelmio_api_doc.extractor.api_doc_extractor.class">Nelmio\ApiDocBundle\Extractor\ApiDocExtractor</parameter>
+    <parameter key="nelmio_api_doc.form.extension.description_form_type_extension.class">Nelmio\ApiDocBundle\Form\Extension\DescriptionFormTypeExtension</parameter>
+    <parameter key="nelmio_api_doc.twig.extension.extra_markdown.class">Nelmio\ApiDocBundle\Twig\Extension\MarkdownExtension</parameter>
+    <parameter key="nelmio_api_doc.doc_comment_extractor.class">Nelmio\ApiDocBundle\Util\DocCommentExtractor</parameter>
+    <parameter key="nelmio_api_doc.extractor.handler.fos_rest.class">Nelmio\ApiDocBundle\Extractor\Handler\FosRestHandler</parameter>
+    <parameter key="nelmio_api_doc.extractor.handler.jms_security.class">Nelmio\ApiDocBundle\Extractor\Handler\JmsSecurityExtraHandler</parameter>
+    <parameter key="nelmio_api_doc.extractor.handler.sensio_framework_extra.class">Nelmio\ApiDocBundle\Extractor\Handler\SensioFrameworkExtraHandler</parameter>
+    <parameter key="nelmio_api_doc.extractor.handler.phpdoc.class">Nelmio\ApiDocBundle\Extractor\Handler\PhpDocHandler</parameter>
+    <parameter key="nelmio_api_doc.parser.collection_parser.class">Nelmio\ApiDocBundle\Parser\CollectionParser</parameter>
+    <parameter key="nelmio_api_doc.parser.form_errors_parser.class">Nelmio\ApiDocBundle\Parser\FormErrorsParser</parameter>
+    <parameter key="nelmio_api_doc.parser.json_serializable_parser.class">Nelmio\ApiDocBundle\Parser\JsonSerializableParser</parameter>
+    <parameter key="nelmio_api_doc.request_listener.parameter">_doc</parameter>
+    <parameter key="nelmio_api_doc.event_listener.request.class">Nelmio\ApiDocBundle\EventListener\RequestListener</parameter>
+    <parameter key="nelmio_api_doc.swagger.base_path">/api</parameter>
+    <parameter key="nelmio_api_doc.swagger.swagger_version">1.2</parameter>
+    <parameter key="nelmio_api_doc.swagger.api_version">0.1</parameter>
+    <parameter key="nelmio_api_doc.swagger.info" type="collection">
+      <parameter key="title">Symfony2</parameter>
+      <parameter key="description">My awesome Symfony2 app!</parameter>
+      <parameter key="TermsOfServiceUrl">null</parameter>
+      <parameter key="contact">null</parameter>
+      <parameter key="license">null</parameter>
+      <parameter key="licenseUrl">null</parameter>
+    </parameter>
+    <parameter key="nelmio_api_doc.swagger.model_naming_strategy">dot_notation</parameter>
+    <parameter key="fos_rest.serializer.exclusion_strategy.version"></parameter>
+    <parameter key="fos_rest.serializer.exclusion_strategy.groups"></parameter>
+    <parameter key="fos_rest.view_handler.jsonp.callback_param"></parameter>
+    <parameter key="fos_rest.view.exception_wrapper_handler">FOS\RestBundle\View\ExceptionWrapperHandler</parameter>
+    <parameter key="fos_rest.view_handler.default.class">FOS\RestBundle\View\ViewHandler</parameter>
+    <parameter key="fos_rest.view_handler.jsonp.class">FOS\RestBundle\View\JsonpHandler</parameter>
+    <parameter key="fos_rest.serializer.exception_wrapper_serialize_handler.class">FOS\RestBundle\Serializer\ExceptionWrapperSerializeHandler</parameter>
+    <parameter key="fos_rest.routing.loader.controller.class">FOS\RestBundle\Routing\Loader\RestRouteLoader</parameter>
+    <parameter key="fos_rest.routing.loader.yaml_collection.class">FOS\RestBundle\Routing\Loader\RestYamlCollectionLoader</parameter>
+    <parameter key="fos_rest.routing.loader.xml_collection.class">FOS\RestBundle\Routing\Loader\RestXmlCollectionLoader</parameter>
+    <parameter key="fos_rest.routing.loader.processor.class">FOS\RestBundle\Routing\Loader\RestRouteProcessor</parameter>
+    <parameter key="fos_rest.routing.loader.reader.controller.class">FOS\RestBundle\Routing\Loader\Reader\RestControllerReader</parameter>
+    <parameter key="fos_rest.routing.loader.reader.action.class">FOS\RestBundle\Routing\Loader\Reader\RestActionReader</parameter>
+    <parameter key="fos_rest.format_negotiator.class">FOS\RestBundle\Util\FormatNegotiator</parameter>
+    <parameter key="fos_rest.inflector.class">FOS\RestBundle\Util\Inflector\DoctrineInflector</parameter>
+    <parameter key="fos_rest.request_matcher.class">Symfony\Component\HttpFoundation\RequestMatcher</parameter>
+    <parameter key="fos_rest.violation_formatter.class">FOS\RestBundle\Util\ViolationFormatter</parameter>
+    <parameter key="fos_rest.request.param_fetcher.class">FOS\RestBundle\Request\ParamFetcher</parameter>
+    <parameter key="fos_rest.request.param_fetcher.reader.class">FOS\RestBundle\Request\ParamReader</parameter>
+    <parameter key="fos_rest.cache_dir">/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev/fos_rest</parameter>
+    <parameter key="fos_rest.routing.loader.default_format">json</parameter>
+    <parameter key="fos_rest.routing.loader.include_format">false</parameter>
+    <parameter key="fos_rest.serializer.serialize_null">false</parameter>
+    <parameter key="fos_rest.exception.codes" type="collection"/>
+    <parameter key="fos_rest.exception.messages" type="collection"/>
+    <parameter key="fos_rest.converter.request_body.validation_errors_argument">validationErrors</parameter>
+    <parameter key="fos_rest.mime_types" type="collection"/>
+    <parameter key="fos_rest.formats" type="collection">
+      <parameter key="json">false</parameter>
+      <parameter key="xml">false</parameter>
+      <parameter key="html">true</parameter>
+    </parameter>
+    <parameter key="fos_rest.force_redirects" type="collection">
+      <parameter key="html">302</parameter>
+    </parameter>
+    <parameter key="fos_rest.failed_validation">400</parameter>
+    <parameter key="fos_rest.empty_content">204</parameter>
+    <parameter key="fos_rest.serialize_null">false</parameter>
+    <parameter key="fos_rest.default_engine">twig</parameter>
+    <parameter key="fos_rest.normalizer.camel_keys.class">FOS\RestBundle\Normalizer\CamelKeysNormalizer</parameter>
+    <parameter key="fos_rest.decoder.json.class">FOS\RestBundle\Decoder\JsonDecoder</parameter>
+    <parameter key="fos_rest.decoder.jsontoform.class">FOS\RestBundle\Decoder\JsonToFormDecoder</parameter>
+    <parameter key="fos_rest.decoder.xml.class">FOS\RestBundle\Decoder\XmlDecoder</parameter>
+    <parameter key="fos_rest.decoder_provider.class">FOS\RestBundle\Decoder\ContainerDecoderProvider</parameter>
+    <parameter key="fos_rest.body_listener.class">FOS\RestBundle\EventListener\BodyListener</parameter>
+    <parameter key="fos_rest.throw_exception_on_unsupported_content_type">false</parameter>
+    <parameter key="fos_rest.body_default_format">null</parameter>
+    <parameter key="fos_rest.decoders" type="collection">
+      <parameter key="json">fos_rest.decoder.json</parameter>
+      <parameter key="xml">fos_rest.decoder.xml</parameter>
+    </parameter>
     <parameter key="fos_user.backend_type_orm">true</parameter>
     <parameter key="fos_user.security.interactive_login_listener.class">FOS\UserBundle\EventListener\LastLoginListener</parameter>
     <parameter key="fos_user.security.login_manager.class">FOS\UserBundle\Security\LoginManager</parameter>
     <parameter key="fos_user.resetting.email.template">FOSUserBundle:Resetting:email.txt.twig</parameter>
     <parameter key="fos_user.registration.confirmation.template">FOSUserBundle:Registration:email.txt.twig</parameter>
     <parameter key="fos_user.storage">orm</parameter>
-    <parameter key="fos_user.firewall_name">main</parameter>
+    <parameter key="fos_user.firewall_name">api</parameter>
     <parameter key="fos_user.model_manager_name">null</parameter>
     <parameter key="fos_user.model.user.class">AppBundle\Entity\User</parameter>
     <parameter key="fos_user.profile.form.type">FOS\UserBundle\Form\Type\ProfileFormType</parameter>
@@ -611,7 +741,7 @@
     <parameter key="fos_oauth_server.server.options" type="collection"/>
     <parameter key="fos_oauth_server.model_manager_name">null</parameter>
     <parameter key="fos_oauth_server.model.client.class">UserBundle\Entity\Client</parameter>
-    <parameter key="fos_oauth_server.model.access_token.class">UserBundle\Entity\AccesToken</parameter>
+    <parameter key="fos_oauth_server.model.access_token.class">UserBundle\Entity\AccessToken</parameter>
     <parameter key="fos_oauth_server.model.refresh_token.class">UserBundle\Entity\RefreshToken</parameter>
     <parameter key="fos_oauth_server.model.auth_code.class">UserBundle\Entity\AuthCode</parameter>
     <parameter key="fos_oauth_server.template.engine">twig</parameter>
@@ -621,82 +751,6 @@
       <parameter>Authorize</parameter>
       <parameter>Default</parameter>
     </parameter>
-    <parameter key="lexik_form_filter.query_builder_updater.class">Lexik\Bundle\FormFilterBundle\Filter\FilterBuilderUpdater</parameter>
-    <parameter key="lexik_form_filter.form_data_extractor.class">Lexik\Bundle\FormFilterBundle\Filter\DataExtractor\FormDataExtractor</parameter>
-    <parameter key="lexik_form_filter.data_extraction_method.default.class">Lexik\Bundle\FormFilterBundle\Filter\DataExtractor\Method\DefaultExtractionMethod</parameter>
-    <parameter key="lexik_form_filter.data_extraction_method.text.class">Lexik\Bundle\FormFilterBundle\Filter\DataExtractor\Method\TextExtractionMethod</parameter>
-    <parameter key="lexik_form_filter.data_extraction_method.key_values.class">Lexik\Bundle\FormFilterBundle\Filter\DataExtractor\Method\ValueKeysExtractionMethod</parameter>
-    <parameter key="lexik_form_filter.filter_prepare.class">Lexik\Bundle\FormFilterBundle\Event\Listener\PrepareListener</parameter>
-    <parameter key="lexik_form_filter.type.filter_text.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\TextFilterType</parameter>
-    <parameter key="lexik_form_filter.type.filter_number.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\NumberFilterType</parameter>
-    <parameter key="lexik_form_filter.type.filter_number_range.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\NumberRangeFilterType</parameter>
-    <parameter key="lexik_form_filter.type.filter_checkbox.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\CheckboxFilterType</parameter>
-    <parameter key="lexik_form_filter.type.filter_boolean.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\BooleanFilterType</parameter>
-    <parameter key="lexik_form_filter.type.filter_choice.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\ChoiceFilterType</parameter>
-    <parameter key="lexik_form_filter.type.filter_entity.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\EntityFilterType</parameter>
-    <parameter key="lexik_form_filter.type.filter_date.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateFilterType</parameter>
-    <parameter key="lexik_form_filter.type.filter_date_range.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateRangeFilterType</parameter>
-    <parameter key="lexik_form_filter.type.filter_datetime.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateTimeFilterType</parameter>
-    <parameter key="lexik_form_filter.type.filter_datetime_range.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\DateTimeRangeFilterType</parameter>
-    <parameter key="lexik_form_filter.type.filter_collection_adapter.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\CollectionAdapterFilterType</parameter>
-    <parameter key="lexik_form_filter.type.filter_sharedable.class">Lexik\Bundle\FormFilterBundle\Filter\Form\Type\SharedableFilterType</parameter>
-    <parameter key="lexik_form_filter.type_extension.filter_extension.class">Lexik\Bundle\FormFilterBundle\Filter\Form\FilterTypeExtension</parameter>
-    <parameter key="lexik_form_filter.get_filter.doctrine_orm.class">Lexik\Bundle\FormFilterBundle\Event\Subscriber\DoctrineORMSubscriber</parameter>
-    <parameter key="lexik_form_filter.apply_filter.doctrine_orm.class">Lexik\Bundle\FormFilterBundle\Event\Listener\DoctrineApplyFilterListener</parameter>
-    <parameter key="lexik_form_filter.where_method">and</parameter>
-    <parameter key="fos_rest.serializer.exclusion_strategy.version"></parameter>
-    <parameter key="fos_rest.serializer.exclusion_strategy.groups"></parameter>
-    <parameter key="fos_rest.view_handler.jsonp.callback_param"></parameter>
-    <parameter key="fos_rest.view.exception_wrapper_handler">FOS\RestBundle\View\ExceptionWrapperHandler</parameter>
-    <parameter key="fos_rest.view_handler.default.class">FOS\RestBundle\View\ViewHandler</parameter>
-    <parameter key="fos_rest.view_handler.jsonp.class">FOS\RestBundle\View\JsonpHandler</parameter>
-    <parameter key="fos_rest.serializer.exception_wrapper_serialize_handler.class">FOS\RestBundle\Serializer\ExceptionWrapperSerializeHandler</parameter>
-    <parameter key="fos_rest.routing.loader.controller.class">FOS\RestBundle\Routing\Loader\RestRouteLoader</parameter>
-    <parameter key="fos_rest.routing.loader.yaml_collection.class">FOS\RestBundle\Routing\Loader\RestYamlCollectionLoader</parameter>
-    <parameter key="fos_rest.routing.loader.xml_collection.class">FOS\RestBundle\Routing\Loader\RestXmlCollectionLoader</parameter>
-    <parameter key="fos_rest.routing.loader.processor.class">FOS\RestBundle\Routing\Loader\RestRouteProcessor</parameter>
-    <parameter key="fos_rest.routing.loader.reader.controller.class">FOS\RestBundle\Routing\Loader\Reader\RestControllerReader</parameter>
-    <parameter key="fos_rest.routing.loader.reader.action.class">FOS\RestBundle\Routing\Loader\Reader\RestActionReader</parameter>
-    <parameter key="fos_rest.format_negotiator.class">FOS\RestBundle\Util\FormatNegotiator</parameter>
-    <parameter key="fos_rest.inflector.class">FOS\RestBundle\Util\Inflector\DoctrineInflector</parameter>
-    <parameter key="fos_rest.request_matcher.class">Symfony\Component\HttpFoundation\RequestMatcher</parameter>
-    <parameter key="fos_rest.violation_formatter.class">FOS\RestBundle\Util\ViolationFormatter</parameter>
-    <parameter key="fos_rest.request.param_fetcher.class">FOS\RestBundle\Request\ParamFetcher</parameter>
-    <parameter key="fos_rest.request.param_fetcher.reader.class">FOS\RestBundle\Request\ParamReader</parameter>
-    <parameter key="fos_rest.cache_dir">/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev/fos_rest</parameter>
-    <parameter key="fos_rest.routing.loader.default_format">json</parameter>
-    <parameter key="fos_rest.routing.loader.include_format">true</parameter>
-    <parameter key="fos_rest.serializer.serialize_null">false</parameter>
-    <parameter key="fos_rest.exception.codes" type="collection"/>
-    <parameter key="fos_rest.exception.messages" type="collection"/>
-    <parameter key="fos_rest.converter.request_body.validation_errors_argument">validationErrors</parameter>
-    <parameter key="fos_rest.mime_types" type="collection"/>
-    <parameter key="fos_rest.formats" type="collection">
-      <parameter key="json">false</parameter>
-      <parameter key="xml">false</parameter>
-      <parameter key="html">true</parameter>
-    </parameter>
-    <parameter key="fos_rest.force_redirects" type="collection">
-      <parameter key="html">302</parameter>
-    </parameter>
-    <parameter key="fos_rest.failed_validation">400</parameter>
-    <parameter key="fos_rest.empty_content">204</parameter>
-    <parameter key="fos_rest.serialize_null">false</parameter>
-    <parameter key="fos_rest.default_engine">twig</parameter>
-    <parameter key="fos_rest.normalizer.camel_keys.class">FOS\RestBundle\Normalizer\CamelKeysNormalizer</parameter>
-    <parameter key="fos_rest.decoder.json.class">FOS\RestBundle\Decoder\JsonDecoder</parameter>
-    <parameter key="fos_rest.decoder.jsontoform.class">FOS\RestBundle\Decoder\JsonToFormDecoder</parameter>
-    <parameter key="fos_rest.decoder.xml.class">FOS\RestBundle\Decoder\XmlDecoder</parameter>
-    <parameter key="fos_rest.decoder_provider.class">FOS\RestBundle\Decoder\ContainerDecoderProvider</parameter>
-    <parameter key="fos_rest.body_listener.class">FOS\RestBundle\EventListener\BodyListener</parameter>
-    <parameter key="fos_rest.throw_exception_on_unsupported_content_type">false</parameter>
-    <parameter key="fos_rest.body_default_format">null</parameter>
-    <parameter key="fos_rest.decoders" type="collection">
-      <parameter key="json">fos_rest.decoder.json</parameter>
-      <parameter key="xml">fos_rest.decoder.xml</parameter>
-    </parameter>
-    <parameter key="fos_rest.param_fetcher_listener.class">FOS\RestBundle\EventListener\ParamFetcherListener</parameter>
-    <parameter key="fos_rest.param_fetcher_listener.set_params_as_attributes">false</parameter>
     <parameter key="web_profiler.controller.profiler.class">Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController</parameter>
     <parameter key="web_profiler.controller.router.class">Symfony\Bundle\WebProfilerBundle\Controller\RouterController</parameter>
     <parameter key="web_profiler.controller.exception.class">Symfony\Bundle\WebProfilerBundle\Controller\ExceptionController</parameter>
@@ -774,6 +828,9 @@
     <parameter key="console.command.ids" type="collection">
       <parameter>sensio_distribution.security_checker.command</parameter>
     </parameter>
+    <parameter key="nelmio_api_doc.parser.form_type_parser.class">Nelmio\ApiDocBundle\Parser\FormTypeParser</parameter>
+    <parameter key="nelmio_api_doc.parser.validation_parser.class">Nelmio\ApiDocBundle\Parser\ValidationParser</parameter>
+    <parameter key="nelmio_api_doc.parser.jms_metadata_parser.class">Nelmio\ApiDocBundle\Parser\JmsMetadataParser</parameter>
   </parameters>
   <services>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
@@ -1065,10 +1122,10 @@
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.de.xlf</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.de.xlf</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.de.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.de.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.de.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.de.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/translations/FOSOAuthServerBundle.de.yml</argument>
-            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.de.yml</argument>
           </argument>
           <argument key="el" type="collection">
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.el.xlf</argument>
@@ -1081,18 +1138,18 @@
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.en.xlf</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.en.xlf</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.en.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.en.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.en.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.en.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/translations/FOSOAuthServerBundle.en.yml</argument>
-            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.en.yml</argument>
           </argument>
           <argument key="es" type="collection">
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.es.xlf</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.es.xlf</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.es.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.es.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.es.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.es.yml</argument>
-            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.es.yml</argument>
           </argument>
           <argument key="et" type="collection">
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.et.xlf</argument>
@@ -1122,10 +1179,10 @@
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fr.xlf</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fr.xlf</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.fr.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.fr.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.fr.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.fr.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/translations/FOSOAuthServerBundle.fr.yml</argument>
-            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.fr.yml</argument>
           </argument>
           <argument key="gl" type="collection">
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.gl.xlf</argument>
@@ -1168,9 +1225,9 @@
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.it.xlf</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.it.xlf</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.it.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.it.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.it.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.it.yml</argument>
-            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.it.yml</argument>
           </argument>
           <argument key="ja" type="collection">
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ja.xlf</argument>
@@ -1207,9 +1264,9 @@
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nl.xlf</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.nl.xlf</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.nl.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.nl.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.nl.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.nl.yml</argument>
-            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.nl.yml</argument>
           </argument>
           <argument key="nn" type="collection">
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nn.xlf</argument>
@@ -1250,17 +1307,17 @@
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ru.xlf</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ru.xlf</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ru.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.ru.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ru.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ru.yml</argument>
-            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.ru.yml</argument>
           </argument>
           <argument key="sk" type="collection">
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sk.xlf</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sk.xlf</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.sk.xlf</argument>
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.sk.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.sk.yml</argument>
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.sk.yml</argument>
-            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/translations/LexikFormFilterBundle.sk.yml</argument>
           </argument>
           <argument key="sl" type="collection">
             <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sl.xlf</argument>
@@ -1637,18 +1694,6 @@
               <argument key="Symfony\Component\Form\Extension\Core\Type\CurrencyType">form.type.currency</argument>
               <argument key="entity">form.type.entity</argument>
               <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType">form.type.entity</argument>
-              <argument key="fos_user_username">fos_user.username_form_type</argument>
-              <argument key="FOS\UserBundle\Form\Type\UsernameFormType">fos_user.username_form_type</argument>
-              <argument key="fos_user_profile">fos_user.profile.form.type</argument>
-              <argument key="FOS\UserBundle\Form\Type\ProfileFormType">fos_user.profile.form.type</argument>
-              <argument key="fos_user_registration">fos_user.registration.form.type</argument>
-              <argument key="FOS\UserBundle\Form\Type\RegistrationFormType">fos_user.registration.form.type</argument>
-              <argument key="fos_user_change_password">fos_user.change_password.form.type</argument>
-              <argument key="FOS\UserBundle\Form\Type\ChangePasswordFormType">fos_user.change_password.form.type</argument>
-              <argument key="fos_user_resetting">fos_user.resetting.form.type</argument>
-              <argument key="FOS\UserBundle\Form\Type\ResettingFormType">fos_user.resetting.form.type</argument>
-              <argument key="fos_oauth_server_authorize">fos_oauth_server.authorize.form.type</argument>
-              <argument key="FOS\OAuthServerBundle\Form\Type\AuthorizeFormType">fos_oauth_server.authorize.form.type</argument>
               <argument key="lexik_form_filter.type.filter_text">lexik_form_filter.type.filter_text</argument>
               <argument key="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\TextFilterType">lexik_form_filter.type.filter_text</argument>
               <argument key="lexik_form_filter.type.filter_number">lexik_form_filter.type.filter_number</argument>
@@ -1675,6 +1720,18 @@
               <argument key="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\CollectionAdapterFilterType">lexik_form_filter.type.filter_collection_adapter</argument>
               <argument key="lexik_form_filter.type.filter_sharedable">lexik_form_filter.type.filter_sharedable</argument>
               <argument key="Lexik\Bundle\FormFilterBundle\Filter\Form\Type\SharedableFilterType">lexik_form_filter.type.filter_sharedable</argument>
+              <argument key="fos_user_username">fos_user.username_form_type</argument>
+              <argument key="FOS\UserBundle\Form\Type\UsernameFormType">fos_user.username_form_type</argument>
+              <argument key="fos_user_profile">fos_user.profile.form.type</argument>
+              <argument key="FOS\UserBundle\Form\Type\ProfileFormType">fos_user.profile.form.type</argument>
+              <argument key="fos_user_registration">fos_user.registration.form.type</argument>
+              <argument key="FOS\UserBundle\Form\Type\RegistrationFormType">fos_user.registration.form.type</argument>
+              <argument key="fos_user_change_password">fos_user.change_password.form.type</argument>
+              <argument key="FOS\UserBundle\Form\Type\ChangePasswordFormType">fos_user.change_password.form.type</argument>
+              <argument key="fos_user_resetting">fos_user.resetting.form.type</argument>
+              <argument key="FOS\UserBundle\Form\Type\ResettingFormType">fos_user.resetting.form.type</argument>
+              <argument key="fos_oauth_server_authorize">fos_oauth_server.authorize.form.type</argument>
+              <argument key="FOS\OAuthServerBundle\Form\Type\AuthorizeFormType">fos_oauth_server.authorize.form.type</argument>
             </argument>
             <argument type="collection">
               <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="collection">
@@ -1684,6 +1741,7 @@
                 <argument>form.type_extension.csrf</argument>
                 <argument>form.type_extension.form.data_collector</argument>
                 <argument>lexik_form_filter.type_extension.filter_extension</argument>
+                <argument>nelmio_api_doc.form.extension.description_form_type_extension</argument>
               </argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\RepeatedType" type="collection">
                 <argument>form.type_extension.repeated.validator</argument>
@@ -2270,18 +2328,18 @@
       <call method="addListenerService">
         <argument>kernel.request</argument>
         <argument type="collection">
+          <argument>nelmio_api_doc.event_listener.request</argument>
+          <argument>onKernelRequest</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListenerService">
+        <argument>kernel.request</argument>
+        <argument type="collection">
           <argument>fos_rest.body_listener</argument>
           <argument>onKernelRequest</argument>
         </argument>
         <argument>10</argument>
-      </call>
-      <call method="addListenerService">
-        <argument>kernel.controller</argument>
-        <argument type="collection">
-          <argument>fos_rest.param_fetcher_listener</argument>
-          <argument>onKernelController</argument>
-        </argument>
-        <argument>5</argument>
       </call>
       <call method="addSubscriberService">
         <argument>response_listener</argument>
@@ -2372,6 +2430,10 @@
         <argument>Sensio\Bundle\FrameworkExtraBundle\EventListener\SecurityListener</argument>
       </call>
       <call method="addSubscriberService">
+        <argument>lexik_form_filter.get_filter.doctrine_orm</argument>
+        <argument>Lexik\Bundle\FormFilterBundle\Event\Subscriber\DoctrineORMSubscriber</argument>
+      </call>
+      <call method="addSubscriberService">
         <argument>fos_user.security.interactive_login_listener</argument>
         <argument>FOS\UserBundle\EventListener\LastLoginListener</argument>
       </call>
@@ -2386,10 +2448,6 @@
       <call method="addSubscriberService">
         <argument>fos_user.listener.resetting</argument>
         <argument>FOS\UserBundle\EventListener\ResettingListener</argument>
-      </call>
-      <call method="addSubscriberService">
-        <argument>lexik_form_filter.get_filter.doctrine_orm</argument>
-        <argument>Lexik\Bundle\FormFilterBundle\Event\Subscriber\DoctrineORMSubscriber</argument>
       </call>
       <call method="addSubscriberService">
         <argument>debug.dump_listener</argument>
@@ -2426,17 +2484,10 @@
     <service id="security.authentication.manager" class="Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager" public="false">
       <argument type="collection">
         <argument type="service">
-          <service class="Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider" public="false">
+          <service class="FOS\OAuthServerBundle\Security\Authentication\Provider\OAuthProvider" public="false">
             <argument type="service" id="fos_user.user_provider.username"/>
-            <argument type="service" id="security.user_checker.main"/>
-            <argument>main</argument>
-            <argument type="service" id="security.encoder_factory"/>
-            <argument>true</argument>
-          </service>
-        </argument>
-        <argument type="service">
-          <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>586d01eac7c8a7.12945365</argument>
+            <argument type="service" id="fos_oauth_server.server"/>
+            <argument type="service" id="security.user_checker.api"/>
           </service>
         </argument>
       </argument>
@@ -2449,9 +2500,6 @@
       <argument>Symfony\Component\Security\Core\Authentication\Token\AnonymousToken</argument>
       <argument>Symfony\Component\Security\Core\Authentication\Token\RememberMeToken</argument>
     </service>
-    <service id="security.authentication.session_strategy" class="Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy" public="false">
-      <argument>migrate</argument>
-    </service>
     <service id="security.authentication_utils" class="Symfony\Component\Security\Http\Authentication\AuthenticationUtils">
       <argument type="service" id="request_stack"/>
     </service>
@@ -2463,9 +2511,8 @@
       <call method="setVoters">
         <argument type="collection">
           <argument type="service">
-            <service class="Symfony\Component\Security\Core\Authorization\Voter\RoleHierarchyVoter" public="false">
+            <service class="Symfony\Component\Security\Core\Authorization\Voter\RoleVoter" public="false">
               <tag name="security.voter" priority="245"/>
-              <argument type="service" id="security.role_hierarchy"/>
             </service>
           </argument>
           <argument type="service">
@@ -2488,14 +2535,7 @@
       </call>
     </service>
     <service id="security.role_hierarchy" class="Symfony\Component\Security\Core\Role\RoleHierarchy" public="false">
-      <argument type="collection">
-        <argument key="ROLE_ADMIN" type="collection">
-          <argument>ROLE_USER</argument>
-        </argument>
-        <argument key="ROLE_SUPER_ADMIN" type="collection">
-          <argument>ROLE_ADMIN</argument>
-        </argument>
-      </argument>
+      <argument type="collection"/>
     </service>
     <service id="security.firewall" class="Symfony\Component\Security\Http\Firewall">
       <tag name="kernel.event_subscriber"/>
@@ -2503,7 +2543,12 @@
         <service class="Symfony\Bundle\SecurityBundle\Security\FirewallMap" public="false">
           <argument type="service" id="service_container"/>
           <argument type="collection">
-            <argument key="security.firewall.map.context.main" type="service">
+            <argument key="security.firewall.map.context.oauth_token" type="service">
+              <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                <argument>^/oauth/v2/token</argument>
+              </service>
+            </argument>
+            <argument key="security.firewall.map.context.api" type="service">
               <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
                 <argument>^/</argument>
               </service>
@@ -2517,13 +2562,6 @@
       <argument type="service" id="request_stack" on-invalid="null"/>
       <argument type="service" id="router" on-invalid="null"/>
       <argument type="service" id="security.token_storage" on-invalid="null"/>
-      <call method="registerListener">
-        <argument>main</argument>
-        <argument>/logout</argument>
-        <argument>logout</argument>
-        <argument>_csrf_token</argument>
-        <argument>null</argument>
-      </call>
     </service>
     <service id="security.validator.user_password" class="Symfony\Component\Security\Core\Validator\Constraints\UserPasswordValidator">
       <tag name="validator.constraint_validator" alias="security.validator.user_password"/>
@@ -2545,58 +2583,17 @@
       <argument type="service" id="security.token_storage"/>
       <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
     </service>
-    <service id="security.firewall.map.context.main" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
+    <service id="security.firewall.map.context.oauth_token" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
+      <argument type="collection"/>
+      <argument>null</argument>
+    </service>
+    <service id="security.firewall.map.context.api" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\ChannelListener" public="false">
             <tag name="monolog.logger" channel="security"/>
             <argument type="service">
-              <service class="Symfony\Component\Security\Http\AccessMap" public="false">
-                <call method="add">
-                  <argument type="service">
-                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/login$</argument>
-                    </service>
-                  </argument>
-                  <argument type="collection">
-                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
-                  </argument>
-                  <argument>null</argument>
-                </call>
-                <call method="add">
-                  <argument type="service">
-                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/register</argument>
-                    </service>
-                  </argument>
-                  <argument type="collection">
-                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
-                  </argument>
-                  <argument>null</argument>
-                </call>
-                <call method="add">
-                  <argument type="service">
-                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/resetting</argument>
-                    </service>
-                  </argument>
-                  <argument type="collection">
-                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
-                  </argument>
-                  <argument>null</argument>
-                </call>
-                <call method="add">
-                  <argument type="service">
-                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/admin/</argument>
-                    </service>
-                  </argument>
-                  <argument type="collection">
-                    <argument>ROLE_ADMIN</argument>
-                  </argument>
-                  <argument>null</argument>
-                </call>
-              </service>
+              <service class="Symfony\Component\Security\Http\AccessMap" public="false"/>
             </argument>
             <argument type="service">
               <service class="Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint" public="false">
@@ -2608,126 +2605,10 @@
           </service>
         </argument>
         <argument type="service">
-          <service class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
-            <argument type="service" id="security.token_storage"/>
-            <argument type="collection">
-              <argument type="service" id="fos_user.user_provider.username"/>
-            </argument>
-            <argument>main</argument>
-            <argument type="service" id="monolog.logger.security" on-invalid="null"/>
-            <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
-          </service>
-        </argument>
-        <argument type="service">
-          <service class="Symfony\Component\Security\Http\Firewall\LogoutListener" public="false">
-            <argument type="service" id="security.token_storage"/>
-            <argument type="service">
-              <service class="Symfony\Component\Security\Http\HttpUtils" public="false">
-                <argument type="service" id="router" on-invalid="null"/>
-                <argument type="service" id="router" on-invalid="null"/>
-              </service>
-            </argument>
-            <argument type="service">
-              <service class="Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler" public="false">
-                <argument type="service">
-                  <service class="Symfony\Component\Security\Http\HttpUtils" public="false">
-                    <argument type="service" id="router" on-invalid="null"/>
-                    <argument type="service" id="router" on-invalid="null"/>
-                  </service>
-                </argument>
-                <argument>/</argument>
-              </service>
-            </argument>
-            <argument type="collection">
-              <argument key="csrf_parameter">_csrf_token</argument>
-              <argument key="csrf_token_id">logout</argument>
-              <argument key="logout_path">/logout</argument>
-            </argument>
-            <call method="addHandler">
-              <argument type="service">
-                <service class="Symfony\Component\Security\Http\Logout\SessionLogoutHandler" public="false"/>
-              </argument>
-            </call>
-          </service>
-        </argument>
-        <argument type="service">
-          <service class="Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener" public="false">
-            <tag name="security.remember_me_aware" id="main" provider="security.user.provider.concrete.fos_userbundle"/>
+          <service class="FOS\OAuthServerBundle\Security\Firewall\OAuthListener" public="false">
             <argument type="service" id="security.token_storage"/>
             <argument type="service" id="security.authentication.manager"/>
-            <argument type="service" id="security.authentication.session_strategy"/>
-            <argument type="service">
-              <service class="Symfony\Component\Security\Http\HttpUtils" public="false">
-                <argument type="service" id="router" on-invalid="null"/>
-                <argument type="service" id="router" on-invalid="null"/>
-              </service>
-            </argument>
-            <argument>main</argument>
-            <argument type="service">
-              <service class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler" public="false">
-                <argument type="service">
-                  <service class="Symfony\Component\Security\Http\HttpUtils" public="false">
-                    <argument type="service" id="router" on-invalid="null"/>
-                    <argument type="service" id="router" on-invalid="null"/>
-                  </service>
-                </argument>
-                <argument type="collection"/>
-                <call method="setOptions">
-                  <argument type="collection">
-                    <argument key="always_use_default_target_path">false</argument>
-                    <argument key="default_target_path">/</argument>
-                    <argument key="login_path">/login</argument>
-                    <argument key="target_path_parameter">_target_path</argument>
-                    <argument key="use_referer">false</argument>
-                  </argument>
-                </call>
-                <call method="setProviderKey">
-                  <argument>main</argument>
-                </call>
-              </service>
-            </argument>
-            <argument type="service">
-              <service class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler" public="false">
-                <argument type="service" id="http_kernel"/>
-                <argument type="service">
-                  <service class="Symfony\Component\Security\Http\HttpUtils" public="false">
-                    <argument type="service" id="router" on-invalid="null"/>
-                    <argument type="service" id="router" on-invalid="null"/>
-                  </service>
-                </argument>
-                <argument type="collection"/>
-                <argument type="service" id="monolog.logger.security" on-invalid="null"/>
-                <call method="setOptions">
-                  <argument type="collection">
-                    <argument key="login_path">/login</argument>
-                    <argument key="failure_path">null</argument>
-                    <argument key="failure_forward">false</argument>
-                    <argument key="failure_path_parameter">_failure_path</argument>
-                  </argument>
-                </call>
-              </service>
-            </argument>
-            <argument type="collection">
-              <argument key="check_path">/login_check</argument>
-              <argument key="use_forward">false</argument>
-              <argument key="require_previous_session">true</argument>
-              <argument key="username_parameter">_username</argument>
-              <argument key="password_parameter">_password</argument>
-              <argument key="csrf_parameter">_csrf_token</argument>
-              <argument key="csrf_token_id">authenticate</argument>
-              <argument key="post_only">true</argument>
-            </argument>
-            <argument type="service" id="monolog.logger.security" on-invalid="null"/>
-            <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
-            <argument type="service" id="security.csrf.token_manager"/>
-          </service>
-        </argument>
-        <argument type="service">
-          <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
-            <argument type="service" id="security.token_storage"/>
-            <argument>586d01eac7c8a7.12945365</argument>
-            <argument type="service" id="monolog.logger.security" on-invalid="null"/>
-            <argument type="service" id="security.authentication.manager"/>
+            <argument type="service" id="fos_oauth_server.server"/>
           </service>
         </argument>
         <argument type="service">
@@ -2736,52 +2617,7 @@
             <argument type="service" id="security.token_storage"/>
             <argument type="service" id="security.access.decision_manager"/>
             <argument type="service">
-              <service class="Symfony\Component\Security\Http\AccessMap" public="false">
-                <call method="add">
-                  <argument type="service">
-                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/login$</argument>
-                    </service>
-                  </argument>
-                  <argument type="collection">
-                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
-                  </argument>
-                  <argument>null</argument>
-                </call>
-                <call method="add">
-                  <argument type="service">
-                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/register</argument>
-                    </service>
-                  </argument>
-                  <argument type="collection">
-                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
-                  </argument>
-                  <argument>null</argument>
-                </call>
-                <call method="add">
-                  <argument type="service">
-                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/resetting</argument>
-                    </service>
-                  </argument>
-                  <argument type="collection">
-                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
-                  </argument>
-                  <argument>null</argument>
-                </call>
-                <call method="add">
-                  <argument type="service">
-                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/admin/</argument>
-                    </service>
-                  </argument>
-                  <argument type="collection">
-                    <argument>ROLE_ADMIN</argument>
-                  </argument>
-                  <argument>null</argument>
-                </call>
-              </service>
+              <service class="Symfony\Component\Security\Http\AccessMap" public="false"/>
             </argument>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2797,24 +2633,16 @@
               <argument type="service" id="router" on-invalid="null"/>
             </service>
           </argument>
-          <argument>main</argument>
+          <argument>api</argument>
           <argument type="service">
-            <service class="Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint" public="false">
-              <argument type="service" id="http_kernel"/>
-              <argument type="service">
-                <service class="Symfony\Component\Security\Http\HttpUtils" public="false">
-                  <argument type="service" id="router" on-invalid="null"/>
-                  <argument type="service" id="router" on-invalid="null"/>
-                </service>
-              </argument>
-              <argument>/login</argument>
-              <argument>false</argument>
+            <service class="FOS\OAuthServerBundle\Security\EntryPoint\OAuthEntryPoint" public="false">
+              <argument type="service" id="fos_oauth_server.server"/>
             </service>
           </argument>
           <argument>null</argument>
           <argument>null</argument>
           <argument type="service" id="monolog.logger.security" on-invalid="null"/>
-          <argument>false</argument>
+          <argument>true</argument>
         </service>
       </argument>
     </service>
@@ -2998,6 +2826,9 @@
             <argument type="service" id="jms_serializer"/>
           </service>
         </argument>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="nelmio_api_doc.twig.extension.extra_markdown"/>
       </call>
       <call method="addExtension">
         <argument type="service">
@@ -3207,8 +3038,8 @@
         <service class="Doctrine\ORM\Configuration" public="false">
           <call method="setEntityNamespaces">
             <argument type="collection">
-              <argument key="AppBundle">AppBundle\Entity</argument>
               <argument key="FOSOAuthServerBundle">FOS\OAuthServerBundle\Entity</argument>
+              <argument key="AppBundle">AppBundle\Entity</argument>
               <argument key="UserBundle">UserBundle\Entity</argument>
             </argument>
           </call>
@@ -3228,8 +3059,24 @@
                   <argument type="service">
                     <service class="Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver" public="false">
                       <argument type="collection">
-                        <argument key="/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/AppBundle/Resources/config/doctrine">AppBundle\Entity</argument>
                         <argument key="/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/config/doctrine">FOS\OAuthServerBundle\Entity</argument>
+                        <argument key="/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/AppBundle/Resources/config/doctrine">AppBundle\Entity</argument>
+                        <argument key="/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/UserBundle/Resources/config/doctrine">UserBundle\Entity</argument>
+                      </argument>
+                      <call method="setGlobalBasename">
+                        <argument>mapping</argument>
+                      </call>
+                    </service>
+                  </argument>
+                  <argument>FOS\OAuthServerBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver" public="false">
+                      <argument type="collection">
+                        <argument key="/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/config/doctrine">FOS\OAuthServerBundle\Entity</argument>
+                        <argument key="/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/AppBundle/Resources/config/doctrine">AppBundle\Entity</argument>
+                        <argument key="/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/UserBundle/Resources/config/doctrine">UserBundle\Entity</argument>
                       </argument>
                       <call method="setGlobalBasename">
                         <argument>mapping</argument>
@@ -3242,23 +3089,13 @@
                   <argument type="service">
                     <service class="Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver" public="false">
                       <argument type="collection">
-                        <argument key="/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/AppBundle/Resources/config/doctrine">AppBundle\Entity</argument>
                         <argument key="/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/config/doctrine">FOS\OAuthServerBundle\Entity</argument>
+                        <argument key="/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/AppBundle/Resources/config/doctrine">AppBundle\Entity</argument>
+                        <argument key="/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/UserBundle/Resources/config/doctrine">UserBundle\Entity</argument>
                       </argument>
                       <call method="setGlobalBasename">
                         <argument>mapping</argument>
                       </call>
-                    </service>
-                  </argument>
-                  <argument>FOS\OAuthServerBundle\Entity</argument>
-                </call>
-                <call method="addDriver">
-                  <argument type="service">
-                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
-                      <argument type="service" id="annotation_reader"/>
-                      <argument type="collection">
-                        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/UserBundle/Entity</argument>
-                      </argument>
                     </service>
                   </argument>
                   <argument>UserBundle\Entity</argument>
@@ -3711,6 +3548,23 @@
     <service id="jms_serializer.constraint_violation_handler" class="JMS\Serializer\Handler\ConstraintViolationHandler">
       <tag name="jms_serializer.subscribing_handler"/>
     </service>
+    <service id="jms_serializer.metadata_factory" class="Metadata\MetadataFactory" public="false">
+      <argument type="service">
+        <service class="Metadata\Driver\LazyLoadingDriver" public="false">
+          <argument type="service" id="service_container"/>
+          <argument>jms_serializer.metadata_driver</argument>
+        </service>
+      </argument>
+      <argument>Metadata\ClassHierarchyMetadata</argument>
+      <argument>true</argument>
+      <call method="setCache">
+        <argument type="service">
+          <service class="Metadata\Cache\FileCache" public="false">
+            <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev/jms_serializer</argument>
+          </service>
+        </argument>
+      </call>
+    </service>
     <service id="jms_serializer.unserialize_object_constructor" class="JMS\Serializer\Construction\UnserializeObjectConstructor" public="false"/>
     <service id="jms_serializer.templating.helper.serializer" class="JMS\SerializerBundle\Templating\SerializerHelper">
       <tag name="templating.helper" alias="jms_serializer"/>
@@ -3743,153 +3597,6 @@
     <service id="jms_serializer.yaml_serialization_visitor" class="JMS\Serializer\YamlSerializationVisitor">
       <tag name="jms_serializer.serialization_visitor" format="yml"/>
       <argument type="service" id="jms_serializer.naming_strategy"/>
-    </service>
-    <service id="fos_user.security.interactive_login_listener" class="FOS\UserBundle\EventListener\LastLoginListener">
-      <tag name="kernel.event_subscriber"/>
-      <argument type="service" id="fos_user.user_manager"/>
-    </service>
-    <service id="fos_user.security.login_manager" class="FOS\UserBundle\Security\LoginManager">
-      <argument type="service" id="security.token_storage"/>
-      <argument type="service" id="security.user_checker.main"/>
-      <argument type="service" id="security.authentication.session_strategy"/>
-      <argument type="service" id="request_stack"/>
-      <argument>null</argument>
-    </service>
-    <service id="fos_user.user_provider.username" class="FOS\UserBundle\Security\UserProvider" public="false">
-      <argument type="service" id="fos_user.user_manager"/>
-    </service>
-    <service id="fos_user.util.user_manipulator" class="FOS\UserBundle\Util\UserManipulator">
-      <argument type="service" id="fos_user.user_manager"/>
-      <argument type="service" id="debug.event_dispatcher"/>
-      <argument type="service" id="request_stack"/>
-    </service>
-    <service id="fos_user.util.password_updater" class="FOS\UserBundle\Util\PasswordUpdater" public="false">
-      <argument type="service" id="security.encoder_factory"/>
-    </service>
-    <service id="fos_user.util.canonical_fields_updater" class="FOS\UserBundle\Util\CanonicalFieldsUpdater" public="false">
-      <argument type="service" id="fos_user.util.email_canonicalizer"/>
-      <argument type="service" id="fos_user.util.email_canonicalizer"/>
-    </service>
-    <service id="fos_user.listener.authentication" class="FOS\UserBundle\EventListener\AuthenticationListener">
-      <tag name="kernel.event_subscriber"/>
-      <argument type="service" id="fos_user.security.login_manager"/>
-      <argument>main</argument>
-    </service>
-    <service id="fos_user.listener.flash" class="FOS\UserBundle\EventListener\FlashListener">
-      <tag name="kernel.event_subscriber"/>
-      <argument type="service" id="session"/>
-      <argument type="service" id="translator"/>
-    </service>
-    <service id="fos_user.username_form_type" class="FOS\UserBundle\Form\Type\UsernameFormType">
-      <tag name="form.type" alias="fos_user_username"/>
-      <argument type="service">
-        <service class="FOS\UserBundle\Form\DataTransformer\UserToUsernameTransformer" public="false">
-          <argument type="service" id="fos_user.user_manager"/>
-        </service>
-      </argument>
-    </service>
-    <service id="fos_user.profile.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
-      <argument type="service" id="form.factory"/>
-      <argument>fos_user_profile_form</argument>
-      <argument>FOS\UserBundle\Form\Type\ProfileFormType</argument>
-      <argument type="collection">
-        <argument>Profile</argument>
-        <argument>Default</argument>
-      </argument>
-    </service>
-    <service id="fos_user.profile.form.type" class="FOS\UserBundle\Form\Type\ProfileFormType">
-      <tag name="form.type" alias="fos_user_profile"/>
-      <argument>AppBundle\Entity\User</argument>
-    </service>
-    <service id="fos_user.registration.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
-      <argument type="service" id="form.factory"/>
-      <argument>fos_user_registration_form</argument>
-      <argument>FOS\UserBundle\Form\Type\RegistrationFormType</argument>
-      <argument type="collection">
-        <argument>Registration</argument>
-        <argument>Default</argument>
-      </argument>
-    </service>
-    <service id="fos_user.registration.form.type" class="FOS\UserBundle\Form\Type\RegistrationFormType">
-      <tag name="form.type" alias="fos_user_registration"/>
-      <argument>AppBundle\Entity\User</argument>
-    </service>
-    <service id="fos_user.change_password.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
-      <argument type="service" id="form.factory"/>
-      <argument>fos_user_change_password_form</argument>
-      <argument>FOS\UserBundle\Form\Type\ChangePasswordFormType</argument>
-      <argument type="collection">
-        <argument>ChangePassword</argument>
-        <argument>Default</argument>
-      </argument>
-    </service>
-    <service id="fos_user.change_password.form.type" class="FOS\UserBundle\Form\Type\ChangePasswordFormType">
-      <tag name="form.type" alias="fos_user_change_password"/>
-      <argument>AppBundle\Entity\User</argument>
-    </service>
-    <service id="fos_user.resetting.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
-      <argument type="service" id="form.factory"/>
-      <argument>fos_user_resetting_form</argument>
-      <argument>FOS\UserBundle\Form\Type\ResettingFormType</argument>
-      <argument type="collection">
-        <argument>ResetPassword</argument>
-        <argument>Default</argument>
-      </argument>
-    </service>
-    <service id="fos_user.resetting.form.type" class="FOS\UserBundle\Form\Type\ResettingFormType">
-      <tag name="form.type" alias="fos_user_resetting"/>
-      <argument>AppBundle\Entity\User</argument>
-    </service>
-    <service id="fos_user.listener.resetting" class="FOS\UserBundle\EventListener\ResettingListener">
-      <tag name="kernel.event_subscriber"/>
-      <argument type="service" id="router"/>
-      <argument>86400</argument>
-    </service>
-    <service id="fos_oauth_server.client_manager.default" class="FOS\OAuthServerBundle\Entity\ClientManager">
-      <argument type="service" id="fos_oauth_server.entity_manager"/>
-      <argument>UserBundle\Entity\Client</argument>
-    </service>
-    <service id="fos_oauth_server.access_token_manager.default" class="FOS\OAuthServerBundle\Entity\AccessTokenManager">
-      <argument type="service" id="fos_oauth_server.entity_manager"/>
-      <argument>UserBundle\Entity\AccesToken</argument>
-    </service>
-    <service id="fos_oauth_server.refresh_token_manager.default" class="FOS\OAuthServerBundle\Entity\RefreshTokenManager">
-      <argument type="service" id="fos_oauth_server.entity_manager"/>
-      <argument>UserBundle\Entity\RefreshToken</argument>
-    </service>
-    <service id="fos_oauth_server.auth_code_manager.default" class="FOS\OAuthServerBundle\Entity\AuthCodeManager">
-      <argument type="service" id="fos_oauth_server.entity_manager"/>
-      <argument>UserBundle\Entity\AuthCode</argument>
-    </service>
-    <service id="fos_oauth_server.entity_manager" class="Doctrine\ORM\EntityManager" public="false">
-      <argument>null</argument>
-      <factory service="doctrine" method="getManager"/>
-    </service>
-    <service id="fos_oauth_server.server" class="OAuth2\OAuth2">
-      <argument type="service" id="fos_oauth_server.storage"/>
-      <argument type="collection"/>
-    </service>
-    <service id="fos_oauth_server.controller.token" class="FOS\OAuthServerBundle\Controller\TokenController">
-      <argument type="service" id="fos_oauth_server.server"/>
-    </service>
-    <service id="fos_oauth_server.authorize.form" class="Symfony\Component\Form\Form">
-      <argument>fos_oauth_server_authorize_form</argument>
-      <argument>FOS\OAuthServerBundle\Form\Type\AuthorizeFormType</argument>
-      <argument>null</argument>
-      <argument type="collection">
-        <argument key="validation_groups" type="collection">
-          <argument>Authorize</argument>
-          <argument>Default</argument>
-        </argument>
-      </argument>
-      <factory service="form.factory" method="createNamed"/>
-    </service>
-    <service id="fos_oauth_server.authorize.form.type" class="FOS\OAuthServerBundle\Form\Type\AuthorizeFormType">
-      <tag name="form.type" alias="fos_oauth_server_authorize"/>
-    </service>
-    <service id="fos_oauth_server.authorize.form.handler.default" class="FOS\OAuthServerBundle\Form\Handler\AuthorizeFormHandler">
-      <argument type="service" id="fos_oauth_server.authorize.form"/>
-      <argument type="service" id="request_stack" on-invalid="ignore"/>
     </service>
     <service id="lexik_form_filter.query_builder_updater" class="Lexik\Bundle\FormFilterBundle\Filter\FilterBuilderUpdater">
       <argument type="service" id="lexik_form_filter.form_data_extractor"/>
@@ -3967,6 +3674,218 @@
       <tag name="kernel.event_listener" event="lexik_filter.apply_filters.orm" method="onApplyFilterCondition"/>
       <argument>and</argument>
     </service>
+    <service id="lexik_jwt_authentication.encoder.default" class="Lexik\Bundle\JWTAuthenticationBundle\Encoder\DefaultEncoder">
+      <argument type="service">
+        <service class="Lexik\Bundle\JWTAuthenticationBundle\Services\JWSProvider\DefaultJWSProvider" public="false">
+          <argument type="service" id="lexik_jwt_authentication.key_loader"/>
+          <argument>openssl</argument>
+          <argument>RS256</argument>
+          <argument>3600</argument>
+          <autowiring-type>Lexik\Bundle\JWTAuthenticationBundle\Services\JWSProvider\JWSProviderInterface</autowiring-type>
+        </service>
+      </argument>
+      <autowiring-type>Lexik\Bundle\JWTAuthenticationBundle\Encoder\JWTEncoderInterface</autowiring-type>
+    </service>
+    <service id="lexik_jwt_authentication.encoder.lcobucci" class="Lexik\Bundle\JWTAuthenticationBundle\Encoder\DefaultEncoder">
+      <argument type="service">
+        <service class="Lexik\Bundle\JWTAuthenticationBundle\Services\JWSProvider\LcobucciJWSProvider" public="false">
+          <argument type="service">
+            <service class="Lexik\Bundle\JWTAuthenticationBundle\Services\KeyLoader\RawKeyLoader" public="false">
+              <argument>null</argument>
+              <argument>null</argument>
+              <argument></argument>
+            </service>
+          </argument>
+          <argument>openssl</argument>
+          <argument>RS256</argument>
+          <argument>3600</argument>
+        </service>
+      </argument>
+    </service>
+    <service id="lexik_jwt_authentication.jwt_manager" class="Lexik\Bundle\JWTAuthenticationBundle\Services\JWTManager">
+      <argument type="service" id="lexik_jwt_authentication.encoder.default"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+      <call method="setUserIdentityField">
+        <argument>username</argument>
+      </call>
+    </service>
+    <service id="lexik_jwt_authentication.jwt_token_authenticator" class="Lexik\Bundle\JWTAuthenticationBundle\Security\Guard\JWTTokenAuthenticator">
+      <argument type="service" id="lexik_jwt_authentication.jwt_manager"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service">
+        <service class="Lexik\Bundle\JWTAuthenticationBundle\TokenExtractor\ChainTokenExtractor" public="false">
+          <argument type="collection">
+            <argument type="service" id="lexik_jwt_authentication.extractor.authorization_header_extractor"/>
+          </argument>
+          <autowiring-type>Lexik\Bundle\JWTAuthenticationBundle\TokenExtractor\TokenExtractorInterface</autowiring-type>
+        </service>
+      </argument>
+    </service>
+    <service id="lexik_jwt_authentication.handler.authentication_success" class="Lexik\Bundle\JWTAuthenticationBundle\Security\Http\Authentication\AuthenticationSuccessHandler">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="service" id="lexik_jwt_authentication.jwt_manager"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
+    <service id="lexik_jwt_authentication.handler.authentication_failure" class="Lexik\Bundle\JWTAuthenticationBundle\Security\Http\Authentication\AuthenticationFailureHandler">
+      <tag name="monolog.logger" channel="security"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
+    <service id="lexik_jwt_authentication.extractor.authorization_header_extractor" class="Lexik\Bundle\JWTAuthenticationBundle\TokenExtractor\AuthorizationHeaderTokenExtractor">
+      <argument>Bearer</argument>
+      <argument>Authorization</argument>
+    </service>
+    <service id="lexik_jwt_authentication.extractor.query_parameter_extractor" class="Lexik\Bundle\JWTAuthenticationBundle\TokenExtractor\QueryParameterTokenExtractor">
+      <argument></argument>
+    </service>
+    <service id="lexik_jwt_authentication.extractor.cookie_extractor" class="Lexik\Bundle\JWTAuthenticationBundle\TokenExtractor\CookieTokenExtractor">
+      <argument></argument>
+    </service>
+    <service id="nelmio_api_doc.formatter.markdown_formatter" class="Nelmio\ApiDocBundle\Formatter\MarkdownFormatter"/>
+    <service id="nelmio_api_doc.formatter.simple_formatter" class="Nelmio\ApiDocBundle\Formatter\SimpleFormatter"/>
+    <service id="nelmio_api_doc.formatter.html_formatter" class="Nelmio\ApiDocBundle\Formatter\HtmlFormatter">
+      <call method="setTemplatingEngine">
+        <argument type="service" id="templating"/>
+      </call>
+      <call method="setMotdTemplate">
+        <argument>NelmioApiDocBundle::Components/motd.html.twig</argument>
+      </call>
+      <call method="setApiName">
+        <argument>API documentation</argument>
+      </call>
+      <call method="setEnableSandbox">
+        <argument>true</argument>
+      </call>
+      <call method="setEndpoint">
+        <argument>null</argument>
+      </call>
+      <call method="setRequestFormatMethod">
+        <argument>format_param</argument>
+      </call>
+      <call method="setRequestFormats">
+        <argument type="collection">
+          <argument key="json">application/json</argument>
+          <argument key="xml">application/xml</argument>
+        </argument>
+      </call>
+      <call method="setDefaultRequestFormat">
+        <argument>json</argument>
+      </call>
+      <call method="setAcceptType">
+        <argument>null</argument>
+      </call>
+      <call method="setBodyFormats">
+        <argument type="collection">
+          <argument>form</argument>
+          <argument>json</argument>
+        </argument>
+      </call>
+      <call method="setDefaultBodyFormat">
+        <argument>form</argument>
+      </call>
+      <call method="setAuthentication">
+        <argument>null</argument>
+      </call>
+      <call method="setDefaultSectionsOpened">
+        <argument>true</argument>
+      </call>
+    </service>
+    <service id="nelmio_api_doc.formatter.swagger_formatter" class="Nelmio\ApiDocBundle\Formatter\SwaggerFormatter">
+      <argument>dot_notation</argument>
+      <call method="setBasePath">
+        <argument>/api</argument>
+      </call>
+      <call method="setApiVersion">
+        <argument>0.1</argument>
+      </call>
+      <call method="setSwaggerVersion">
+        <argument>1.2</argument>
+      </call>
+      <call method="setInfo">
+        <argument type="collection">
+          <argument key="title">Symfony2</argument>
+          <argument key="description">My awesome Symfony2 app!</argument>
+          <argument key="TermsOfServiceUrl">null</argument>
+          <argument key="contact">null</argument>
+          <argument key="license">null</argument>
+          <argument key="licenseUrl">null</argument>
+        </argument>
+      </call>
+    </service>
+    <service id="nelmio_api_doc.doc_comment_extractor" class="Nelmio\ApiDocBundle\Util\DocCommentExtractor"/>
+    <service id="nelmio_api_doc.extractor.api_doc_extractor" class="Nelmio\ApiDocBundle\Extractor\ApiDocExtractor">
+      <argument type="service" id="service_container"/>
+      <argument type="service" id="router"/>
+      <argument type="service" id="annotation_reader"/>
+      <argument type="service" id="nelmio_api_doc.doc_comment_extractor"/>
+      <argument type="service">
+        <service class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
+          <argument type="service" id="kernel"/>
+        </service>
+      </argument>
+      <argument type="collection">
+        <argument type="service">
+          <service class="Nelmio\ApiDocBundle\Extractor\Handler\FosRestHandler" public="false">
+            <tag name="nelmio_api_doc.extractor.handler"/>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="Nelmio\ApiDocBundle\Extractor\Handler\JmsSecurityExtraHandler" public="false">
+            <tag name="nelmio_api_doc.extractor.handler"/>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="Nelmio\ApiDocBundle\Extractor\Handler\SensioFrameworkExtraHandler" public="false">
+            <tag name="nelmio_api_doc.extractor.handler"/>
+          </service>
+        </argument>
+        <argument type="service">
+          <service class="Nelmio\ApiDocBundle\Extractor\Handler\PhpDocHandler" public="false">
+            <tag name="nelmio_api_doc.extractor.handler"/>
+            <argument type="service" id="nelmio_api_doc.doc_comment_extractor"/>
+          </service>
+        </argument>
+      </argument>
+      <argument type="collection"/>
+      <call method="addParser">
+        <argument type="service" id="nelmio_api_doc.parser.json_serializable_parser"/>
+      </call>
+      <call method="addParser">
+        <argument type="service" id="nelmio_api_doc.parser.collection_parser"/>
+      </call>
+      <call method="addParser">
+        <argument type="service" id="nelmio_api_doc.parser.form_errors_parser"/>
+      </call>
+      <call method="addParser">
+        <argument type="service" id="nelmio_api_doc.parser.form_type_parser"/>
+      </call>
+      <call method="addParser">
+        <argument type="service" id="nelmio_api_doc.parser.validation_parser"/>
+      </call>
+      <call method="addParser">
+        <argument type="service" id="nelmio_api_doc.parser.jms_metadata_parser"/>
+      </call>
+    </service>
+    <service id="nelmio_api_doc.form.extension.description_form_type_extension" class="Nelmio\ApiDocBundle\Form\Extension\DescriptionFormTypeExtension">
+      <tag name="form.type_extension" alias="form" extended_type="Symfony\Component\Form\Extension\Core\Type\FormType" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
+    </service>
+    <service id="nelmio_api_doc.twig.extension.extra_markdown" class="Nelmio\ApiDocBundle\Twig\Extension\MarkdownExtension">
+      <tag name="twig.extension"/>
+    </service>
+    <service id="nelmio_api_doc.parser.collection_parser" class="Nelmio\ApiDocBundle\Parser\CollectionParser">
+      <tag name="nelmio_api_doc.extractor.parser"/>
+    </service>
+    <service id="nelmio_api_doc.parser.form_errors_parser" class="Nelmio\ApiDocBundle\Parser\FormErrorsParser">
+      <tag name="nelmio_api_doc.extractor.parser"/>
+    </service>
+    <service id="nelmio_api_doc.parser.json_serializable_parser" class="Nelmio\ApiDocBundle\Parser\JsonSerializableParser">
+      <tag name="nelmio_api_doc.extractor.parser" priority="1"/>
+    </service>
+    <service id="nelmio_api_doc.event_listener.request" class="Nelmio\ApiDocBundle\EventListener\RequestListener">
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
+      <argument type="service" id="nelmio_api_doc.extractor.api_doc_extractor"/>
+      <argument type="service" id="nelmio_api_doc.formatter.html_formatter"/>
+      <argument>_doc</argument>
+    </service>
     <service id="petkopara_multi_search.builder" class="Petkopara\MultiSearchBundle\Service\MultiSearchBuilderService"/>
     <service id="fos_rest.view.exception_wrapper_handler" class="FOS\RestBundle\View\ExceptionWrapperHandler"/>
     <service id="fos_rest.serializer.exception_wrapper_serialize_handler" class="FOS\RestBundle\Serializer\ExceptionWrapperSerializeHandler">
@@ -3989,7 +3908,7 @@
       <tag name="routing.loader"/>
       <argument type="service" id="file_locator"/>
       <argument type="service" id="fos_rest.routing.loader.processor"/>
-      <argument>true</argument>
+      <argument>false</argument>
       <argument type="collection">
         <argument key="json">false</argument>
         <argument key="xml">false</argument>
@@ -4001,7 +3920,7 @@
       <tag name="routing.loader"/>
       <argument type="service" id="file_locator"/>
       <argument type="service" id="fos_rest.routing.loader.processor"/>
-      <argument>true</argument>
+      <argument>false</argument>
       <argument type="collection">
         <argument key="json">false</argument>
         <argument key="xml">false</argument>
@@ -4017,7 +3936,7 @@
       <argument type="service" id="annotation_reader"/>
       <argument type="service" id="fos_rest.request.param_fetcher.reader"/>
       <argument type="service" id="fos_rest.inflector.doctrine"/>
-      <argument>true</argument>
+      <argument>false</argument>
       <argument type="collection">
         <argument key="json">false</argument>
         <argument key="xml">false</argument>
@@ -4059,10 +3978,156 @@
         <argument>null</argument>
       </call>
     </service>
-    <service id="fos_rest.param_fetcher_listener" class="FOS\RestBundle\EventListener\ParamFetcherListener">
-      <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController" priority="5"/>
-      <argument type="service" id="service_container"/>
-      <argument>false</argument>
+    <service id="fos_user.security.interactive_login_listener" class="FOS\UserBundle\EventListener\LastLoginListener">
+      <tag name="kernel.event_subscriber"/>
+      <argument type="service" id="fos_user.user_manager"/>
+    </service>
+    <service id="fos_user.security.login_manager" class="FOS\UserBundle\Security\LoginManager">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.user_checker.api"/>
+      <argument type="service">
+        <service class="Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy" public="false">
+          <argument>migrate</argument>
+        </service>
+      </argument>
+      <argument type="service" id="request_stack"/>
+      <argument>null</argument>
+    </service>
+    <service id="fos_user.user_provider.username" class="FOS\UserBundle\Security\UserProvider" public="false">
+      <argument type="service" id="fos_user.user_manager"/>
+    </service>
+    <service id="fos_user.util.user_manipulator" class="FOS\UserBundle\Util\UserManipulator">
+      <argument type="service" id="fos_user.user_manager"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="request_stack"/>
+    </service>
+    <service id="fos_user.util.password_updater" class="FOS\UserBundle\Util\PasswordUpdater" public="false">
+      <argument type="service" id="security.encoder_factory"/>
+    </service>
+    <service id="fos_user.util.canonical_fields_updater" class="FOS\UserBundle\Util\CanonicalFieldsUpdater" public="false">
+      <argument type="service" id="fos_user.util.email_canonicalizer"/>
+      <argument type="service" id="fos_user.util.email_canonicalizer"/>
+    </service>
+    <service id="fos_user.listener.authentication" class="FOS\UserBundle\EventListener\AuthenticationListener">
+      <tag name="kernel.event_subscriber"/>
+      <argument type="service" id="fos_user.security.login_manager"/>
+      <argument>api</argument>
+    </service>
+    <service id="fos_user.listener.flash" class="FOS\UserBundle\EventListener\FlashListener">
+      <tag name="kernel.event_subscriber"/>
+      <argument type="service" id="session"/>
+      <argument type="service" id="translator"/>
+    </service>
+    <service id="fos_user.username_form_type" class="FOS\UserBundle\Form\Type\UsernameFormType">
+      <tag name="form.type" alias="fos_user_username"/>
+      <argument type="service">
+        <service class="FOS\UserBundle\Form\DataTransformer\UserToUsernameTransformer" public="false">
+          <argument type="service" id="fos_user.user_manager"/>
+        </service>
+      </argument>
+    </service>
+    <service id="fos_user.profile.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
+      <argument type="service" id="form.factory"/>
+      <argument>fos_user_profile_form</argument>
+      <argument>FOS\UserBundle\Form\Type\ProfileFormType</argument>
+      <argument type="collection">
+        <argument>Profile</argument>
+        <argument>Default</argument>
+      </argument>
+    </service>
+    <service id="fos_user.profile.form.type" class="FOS\UserBundle\Form\Type\ProfileFormType">
+      <tag name="form.type" alias="fos_user_profile"/>
+      <argument>AppBundle\Entity\User</argument>
+    </service>
+    <service id="fos_user.registration.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
+      <argument type="service" id="form.factory"/>
+      <argument>fos_user_registration_form</argument>
+      <argument>FOS\UserBundle\Form\Type\RegistrationFormType</argument>
+      <argument type="collection">
+        <argument>Registration</argument>
+        <argument>Default</argument>
+      </argument>
+    </service>
+    <service id="fos_user.registration.form.type" class="FOS\UserBundle\Form\Type\RegistrationFormType">
+      <tag name="form.type" alias="fos_user_registration"/>
+      <argument>AppBundle\Entity\User</argument>
+    </service>
+    <service id="fos_user.change_password.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
+      <argument type="service" id="form.factory"/>
+      <argument>fos_user_change_password_form</argument>
+      <argument>FOS\UserBundle\Form\Type\ChangePasswordFormType</argument>
+      <argument type="collection">
+        <argument>ChangePassword</argument>
+        <argument>Default</argument>
+      </argument>
+    </service>
+    <service id="fos_user.change_password.form.type" class="FOS\UserBundle\Form\Type\ChangePasswordFormType">
+      <tag name="form.type" alias="fos_user_change_password"/>
+      <argument>AppBundle\Entity\User</argument>
+    </service>
+    <service id="fos_user.resetting.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
+      <argument type="service" id="form.factory"/>
+      <argument>fos_user_resetting_form</argument>
+      <argument>FOS\UserBundle\Form\Type\ResettingFormType</argument>
+      <argument type="collection">
+        <argument>ResetPassword</argument>
+        <argument>Default</argument>
+      </argument>
+    </service>
+    <service id="fos_user.resetting.form.type" class="FOS\UserBundle\Form\Type\ResettingFormType">
+      <tag name="form.type" alias="fos_user_resetting"/>
+      <argument>AppBundle\Entity\User</argument>
+    </service>
+    <service id="fos_user.listener.resetting" class="FOS\UserBundle\EventListener\ResettingListener">
+      <tag name="kernel.event_subscriber"/>
+      <argument type="service" id="router"/>
+      <argument>86400</argument>
+    </service>
+    <service id="fos_oauth_server.client_manager.default" class="FOS\OAuthServerBundle\Entity\ClientManager">
+      <argument type="service" id="fos_oauth_server.entity_manager"/>
+      <argument>UserBundle\Entity\Client</argument>
+    </service>
+    <service id="fos_oauth_server.access_token_manager.default" class="FOS\OAuthServerBundle\Entity\AccessTokenManager">
+      <argument type="service" id="fos_oauth_server.entity_manager"/>
+      <argument>UserBundle\Entity\AccessToken</argument>
+    </service>
+    <service id="fos_oauth_server.refresh_token_manager.default" class="FOS\OAuthServerBundle\Entity\RefreshTokenManager">
+      <argument type="service" id="fos_oauth_server.entity_manager"/>
+      <argument>UserBundle\Entity\RefreshToken</argument>
+    </service>
+    <service id="fos_oauth_server.auth_code_manager.default" class="FOS\OAuthServerBundle\Entity\AuthCodeManager">
+      <argument type="service" id="fos_oauth_server.entity_manager"/>
+      <argument>UserBundle\Entity\AuthCode</argument>
+    </service>
+    <service id="fos_oauth_server.entity_manager" class="Doctrine\ORM\EntityManager" public="false">
+      <argument>null</argument>
+      <factory service="doctrine" method="getManager"/>
+    </service>
+    <service id="fos_oauth_server.server" class="OAuth2\OAuth2">
+      <argument type="service" id="fos_oauth_server.storage"/>
+      <argument type="collection"/>
+    </service>
+    <service id="fos_oauth_server.controller.token" class="FOS\OAuthServerBundle\Controller\TokenController">
+      <argument type="service" id="fos_oauth_server.server"/>
+    </service>
+    <service id="fos_oauth_server.authorize.form" class="Symfony\Component\Form\Form">
+      <argument>fos_oauth_server_authorize_form</argument>
+      <argument>FOS\OAuthServerBundle\Form\Type\AuthorizeFormType</argument>
+      <argument>null</argument>
+      <argument type="collection">
+        <argument key="validation_groups" type="collection">
+          <argument>Authorize</argument>
+          <argument>Default</argument>
+        </argument>
+      </argument>
+      <factory service="form.factory" method="createNamed"/>
+    </service>
+    <service id="fos_oauth_server.authorize.form.type" class="FOS\OAuthServerBundle\Form\Type\AuthorizeFormType">
+      <tag name="form.type" alias="fos_oauth_server_authorize"/>
+    </service>
+    <service id="fos_oauth_server.authorize.form.handler.default" class="FOS\OAuthServerBundle\Form\Handler\AuthorizeFormHandler">
+      <argument type="service" id="fos_oauth_server.authorize.form"/>
+      <argument type="service" id="request_stack" on-invalid="ignore"/>
     </service>
     <service id="data_collector.dump" class="Symfony\Component\HttpKernel\DataCollector\DumpDataCollector">
       <tag name="data_collector" id="dump" template="@Debug/Profiler/dump.html.twig" priority="240"/>
@@ -4193,6 +4258,9 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
+      </call>
     </service>
     <service id="monolog.logger.translation" class="Symfony\Bridge\Monolog\Logger">
       <argument>translation</argument>
@@ -4201,6 +4269,9 @@
       </call>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
       </call>
     </service>
     <service id="monolog.logger.templating" class="Symfony\Bridge\Monolog\Logger">
@@ -4211,6 +4282,9 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
+      </call>
     </service>
     <service id="monolog.logger.profiler" class="Symfony\Bridge\Monolog\Logger">
       <argument>profiler</argument>
@@ -4219,6 +4293,9 @@
       </call>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
       </call>
     </service>
     <service id="monolog.logger.router" class="Symfony\Bridge\Monolog\Logger">
@@ -4229,6 +4306,9 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
+      </call>
     </service>
     <service id="monolog.logger.php" class="Symfony\Bridge\Monolog\Logger">
       <argument>php</argument>
@@ -4238,11 +4318,14 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
+      </call>
     </service>
     <service id="monolog.logger.event" class="Symfony\Bridge\Monolog\Logger">
       <argument>event</argument>
       <call method="pushHandler">
-        <argument type="service" id="monolog.handler.null_internal"/>
+        <argument type="service" id="monolog.handler.debug"/>
       </call>
     </service>
     <service id="monolog.logger.security" class="Symfony\Bridge\Monolog\Logger">
@@ -4253,14 +4336,39 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
+      </call>
     </service>
     <service id="monolog.logger.doctrine" class="Symfony\Bridge\Monolog\Logger">
       <argument>doctrine</argument>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
+      </call>
+    </service>
+    <service id="monolog.handler.debug" class="Symfony\Bridge\Monolog\Handler\DebugHandler">
+      <argument>100</argument>
+      <argument>true</argument>
     </service>
     <service id="monolog.handler.null_internal" class="Monolog\Handler\NullHandler"/>
+    <service id="nelmio_api_doc.parser.form_type_parser" class="Nelmio\ApiDocBundle\Parser\FormTypeParser">
+      <tag name="nelmio_api_doc.extractor.parser"/>
+      <argument type="service" id="form.factory"/>
+      <argument>true</argument>
+    </service>
+    <service id="nelmio_api_doc.parser.validation_parser" class="Nelmio\ApiDocBundle\Parser\ValidationParser">
+      <tag name="nelmio_api_doc.extractor.parser"/>
+      <argument type="service" id="validator"/>
+    </service>
+    <service id="nelmio_api_doc.parser.jms_metadata_parser" class="Nelmio\ApiDocBundle\Parser\JmsMetadataParser">
+      <tag name="nelmio_api_doc.extractor.parser"/>
+      <argument type="service" id="jms_serializer.metadata_factory"/>
+      <argument type="service" id="jms_serializer.naming_strategy"/>
+      <argument type="service" id="nelmio_api_doc.doc_comment_extractor"/>
+    </service>
     <service id="session.storage.filesystem" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage">
       <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev/sessions</argument>
       <argument>MOCKSESSID</argument>
@@ -4320,9 +4428,11 @@
     <service id="security.encoder_factory" class="Symfony\Component\Security\Core\Encoder\EncoderFactory">
       <argument type="collection">
         <argument key="FOS\UserBundle\Model\UserInterface" type="collection">
-          <argument key="class">%security.encoder.bcrypt.class%</argument>
+          <argument key="class">%security.encoder.digest.class%</argument>
           <argument key="arguments" type="collection">
-            <argument>13</argument>
+            <argument>sha512</argument>
+            <argument>true</argument>
+            <argument>5000</argument>
           </argument>
         </argument>
       </argument>
@@ -4330,7 +4440,7 @@
     <service id="security.password_encoder" class="Symfony\Component\Security\Core\Encoder\UserPasswordEncoder">
       <argument type="service" id="security.encoder_factory"/>
     </service>
-    <service id="security.user_checker.main" class="Symfony\Component\Security\Core\User\UserChecker"/>
+    <service id="security.user_checker.api" class="Symfony\Component\Security\Core\User\UserChecker"/>
     <service id="twig.loader" class="Symfony\Bundle\TwigBundle\Loader\FilesystemLoader">
       <tag name="twig.loader"/>
       <argument type="service" id="templating.locator"/>
@@ -4356,16 +4466,12 @@
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/views</argument>
-        <argument>FOSUser</argument>
-      </call>
-      <call method="addPath">
-        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/views</argument>
-        <argument>FOSOAuthServer</argument>
-      </call>
-      <call method="addPath">
         <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/views</argument>
         <argument>LexikFormFilter</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/nelmio/api-doc-bundle/Nelmio/ApiDocBundle/Resources/views</argument>
+        <argument>NelmioApiDoc</argument>
       </call>
       <call method="addPath">
         <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/petkopara/multi-search-bundle/Resources/views</argument>
@@ -4374,6 +4480,14 @@
       <call method="addPath">
         <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/petkopara/crud-generator-bundle/Resources/views</argument>
         <argument>PetkoparaCrudGenerator</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/views</argument>
+        <argument>FOSUser</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/views</argument>
+        <argument>FOSOAuthServer</argument>
       </call>
       <call method="addPath">
         <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/UserBundle/Resources/views</argument>
@@ -4412,6 +4526,9 @@
       </call>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.debug"/>
       </call>
       <autowiring-type>Psr\Log\LoggerInterface</autowiring-type>
     </service>
@@ -4496,14 +4613,16 @@
                       <argument key="Symfony\Bundle\SwiftmailerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/swiftmailer-bundle/Resources/config/serializer</argument>
                       <argument key="Doctrine\Bundle\DoctrineBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/doctrine/doctrine-bundle/Resources/config/serializer</argument>
                       <argument key="Sensio\Bundle\FrameworkExtraBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/sensio/framework-extra-bundle/Resources/config/serializer</argument>
-                      <argument key="AppBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/AppBundle/Resources/config/serializer</argument>
                       <argument key="JMS\SerializerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer</argument>
-                      <argument key="FOS\UserBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/serializer</argument>
-                      <argument key="FOS\OAuthServerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/config/serializer</argument>
                       <argument key="Lexik\Bundle\FormFilterBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/config/serializer</argument>
+                      <argument key="Lexik\Bundle\JWTAuthenticationBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/jwt-authentication-bundle/Resources/config/serializer</argument>
+                      <argument key="Nelmio\ApiDocBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/nelmio/api-doc-bundle/Nelmio/ApiDocBundle/Resources/config/serializer</argument>
                       <argument key="Petkopara\MultiSearchBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/petkopara/multi-search-bundle/Resources/config/serializer</argument>
                       <argument key="Petkopara\CrudGeneratorBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/petkopara/crud-generator-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\RestBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer</argument>
+                      <argument key="FOS\UserBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/serializer</argument>
+                      <argument key="FOS\OAuthServerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/config/serializer</argument>
+                      <argument key="AppBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/AppBundle/Resources/config/serializer</argument>
                       <argument key="UserBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/UserBundle/Resources/config/serializer</argument>
                       <argument key="ShopBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/ShopBundle/Resources/config/serializer</argument>
                       <argument key="StageBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/StageBundle/Resources/config/serializer</argument>
@@ -4528,14 +4647,16 @@
                       <argument key="Symfony\Bundle\SwiftmailerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/swiftmailer-bundle/Resources/config/serializer</argument>
                       <argument key="Doctrine\Bundle\DoctrineBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/doctrine/doctrine-bundle/Resources/config/serializer</argument>
                       <argument key="Sensio\Bundle\FrameworkExtraBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/sensio/framework-extra-bundle/Resources/config/serializer</argument>
-                      <argument key="AppBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/AppBundle/Resources/config/serializer</argument>
                       <argument key="JMS\SerializerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer</argument>
-                      <argument key="FOS\UserBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/serializer</argument>
-                      <argument key="FOS\OAuthServerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/config/serializer</argument>
                       <argument key="Lexik\Bundle\FormFilterBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/config/serializer</argument>
+                      <argument key="Lexik\Bundle\JWTAuthenticationBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/jwt-authentication-bundle/Resources/config/serializer</argument>
+                      <argument key="Nelmio\ApiDocBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/nelmio/api-doc-bundle/Nelmio/ApiDocBundle/Resources/config/serializer</argument>
                       <argument key="Petkopara\MultiSearchBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/petkopara/multi-search-bundle/Resources/config/serializer</argument>
                       <argument key="Petkopara\CrudGeneratorBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/petkopara/crud-generator-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\RestBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer</argument>
+                      <argument key="FOS\UserBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/serializer</argument>
+                      <argument key="FOS\OAuthServerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/config/serializer</argument>
+                      <argument key="AppBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/AppBundle/Resources/config/serializer</argument>
                       <argument key="UserBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/UserBundle/Resources/config/serializer</argument>
                       <argument key="ShopBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/ShopBundle/Resources/config/serializer</argument>
                       <argument key="StageBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/StageBundle/Resources/config/serializer</argument>
@@ -4560,14 +4681,16 @@
                       <argument key="Symfony\Bundle\SwiftmailerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/symfony/swiftmailer-bundle/Resources/config/serializer</argument>
                       <argument key="Doctrine\Bundle\DoctrineBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/doctrine/doctrine-bundle/Resources/config/serializer</argument>
                       <argument key="Sensio\Bundle\FrameworkExtraBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/sensio/framework-extra-bundle/Resources/config/serializer</argument>
-                      <argument key="AppBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/AppBundle/Resources/config/serializer</argument>
                       <argument key="JMS\SerializerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer</argument>
-                      <argument key="FOS\UserBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/serializer</argument>
-                      <argument key="FOS\OAuthServerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/config/serializer</argument>
                       <argument key="Lexik\Bundle\FormFilterBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/form-filter-bundle/Resources/config/serializer</argument>
+                      <argument key="Lexik\Bundle\JWTAuthenticationBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/lexik/jwt-authentication-bundle/Resources/config/serializer</argument>
+                      <argument key="Nelmio\ApiDocBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/nelmio/api-doc-bundle/Nelmio/ApiDocBundle/Resources/config/serializer</argument>
                       <argument key="Petkopara\MultiSearchBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/petkopara/multi-search-bundle/Resources/config/serializer</argument>
                       <argument key="Petkopara\CrudGeneratorBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/petkopara/crud-generator-bundle/Resources/config/serializer</argument>
                       <argument key="FOS\RestBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer</argument>
+                      <argument key="FOS\UserBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/user-bundle/Resources/config/serializer</argument>
+                      <argument key="FOS\OAuthServerBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/vendor/friendsofsymfony/oauth-server-bundle/Resources/config/serializer</argument>
+                      <argument key="AppBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/AppBundle/Resources/config/serializer</argument>
                       <argument key="UserBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/UserBundle/Resources/config/serializer</argument>
                       <argument key="ShopBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/ShopBundle/Resources/config/serializer</argument>
                       <argument key="StageBundle">/Users/hugosanslaville/Documents/projetMercredi/application_anem/src/StageBundle/Resources/config/serializer</argument>
@@ -4607,25 +4730,7 @@
       <argument type="service" id="jms_serializer.unserialize_object_constructor"/>
     </service>
     <service id="jms_serializer" class="JMS\Serializer\Serializer">
-      <argument type="service">
-        <service class="Metadata\MetadataFactory" public="false">
-          <argument type="service">
-            <service class="Metadata\Driver\LazyLoadingDriver" public="false">
-              <argument type="service" id="service_container"/>
-              <argument>jms_serializer.metadata_driver</argument>
-            </service>
-          </argument>
-          <argument>Metadata\ClassHierarchyMetadata</argument>
-          <argument>true</argument>
-          <call method="setCache">
-            <argument type="service">
-              <service class="Metadata\Cache\FileCache" public="false">
-                <argument>/Users/hugosanslaville/Documents/projetMercredi/application_anem/app/cache/dev/jms_serializer</argument>
-              </service>
-            </argument>
-          </call>
-        </service>
-      </argument>
+      <argument type="service" id="jms_serializer.metadata_factory"/>
       <argument type="service" id="jms_serializer.handler_registry"/>
       <argument type="service" id="jms_serializer.unserialize_object_constructor"/>
       <argument type="service">
@@ -4683,6 +4788,37 @@
         </service>
       </argument>
     </service>
+    <service id="lexik_jwt_authentication.key_loader" class="Lexik\Bundle\JWTAuthenticationBundle\Services\KeyLoader\OpenSSLKeyLoader">
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument></argument>
+    </service>
+    <service id="fos_rest.view_handler" class="FOS\RestBundle\View\ViewHandler">
+      <argument type="collection">
+        <argument key="json">false</argument>
+        <argument key="xml">false</argument>
+        <argument key="html">true</argument>
+      </argument>
+      <argument>400</argument>
+      <argument>204</argument>
+      <argument>false</argument>
+      <argument type="collection">
+        <argument key="html">302</argument>
+      </argument>
+      <argument>twig</argument>
+      <call method="setExclusionStrategyGroups">
+        <argument></argument>
+      </call>
+      <call method="setExclusionStrategyVersion">
+        <argument></argument>
+      </call>
+      <call method="setSerializeNullStrategy">
+        <argument>false</argument>
+      </call>
+      <call method="setContainer">
+        <argument type="service" id="service_container"/>
+      </call>
+    </service>
     <service id="fos_user.mailer" class="FOS\UserBundle\Mailer\Mailer">
       <argument type="service" id="swiftmailer.mailer.default"/>
       <argument type="service" id="router"/>
@@ -4720,34 +4856,8 @@
       <argument type="service" id="fos_oauth_server.access_token_manager.default"/>
       <argument type="service" id="fos_oauth_server.refresh_token_manager.default"/>
       <argument type="service" id="fos_oauth_server.auth_code_manager.default"/>
-      <argument>null</argument>
+      <argument type="service" id="fos_user.user_provider.username" on-invalid="null"/>
       <argument type="service" id="security.encoder_factory"/>
-    </service>
-    <service id="fos_rest.view_handler" class="FOS\RestBundle\View\ViewHandler">
-      <argument type="collection">
-        <argument key="json">false</argument>
-        <argument key="xml">false</argument>
-        <argument key="html">true</argument>
-      </argument>
-      <argument>400</argument>
-      <argument>204</argument>
-      <argument>false</argument>
-      <argument type="collection">
-        <argument key="html">302</argument>
-      </argument>
-      <argument>twig</argument>
-      <call method="setExclusionStrategyGroups">
-        <argument></argument>
-      </call>
-      <call method="setExclusionStrategyVersion">
-        <argument></argument>
-      </call>
-      <call method="setSerializeNullStrategy">
-        <argument>false</argument>
-      </call>
-      <call method="setContainer">
-        <argument type="service" id="service_container"/>
-      </call>
     </service>
     <service id="session.storage" alias="session.storage.native"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher"/>
@@ -4763,16 +4873,17 @@
     <service id="doctrine.orm.default_result_cache" alias="doctrine_cache.providers.doctrine.orm.default_result_cache"/>
     <service id="doctrine.orm.default_query_cache" alias="doctrine_cache.providers.doctrine.orm.default_query_cache"/>
     <service id="serializer" alias="jms_serializer"/>
+    <service id="lexik_jwt_authentication.encoder" alias="lexik_jwt_authentication.encoder.default"/>
+    <service id="fos_rest.router" alias="router"/>
+    <service id="fos_rest.templating" alias="templating"/>
+    <service id="fos_rest.exception_handler" alias="fos_rest.view.exception_wrapper_handler"/>
+    <service id="fos_rest.inflector" alias="fos_rest.inflector.doctrine"/>
     <service id="fos_user.util.username_canonicalizer" alias="fos_user.util.email_canonicalizer"/>
     <service id="fos_oauth_server.client_manager" alias="fos_oauth_server.client_manager.default"/>
     <service id="fos_oauth_server.access_token_manager" alias="fos_oauth_server.access_token_manager.default"/>
     <service id="fos_oauth_server.refresh_token_manager" alias="fos_oauth_server.refresh_token_manager.default"/>
     <service id="fos_oauth_server.auth_code_manager" alias="fos_oauth_server.auth_code_manager.default"/>
     <service id="fos_oauth_server.authorize.form.handler" alias="fos_oauth_server.authorize.form.handler.default"/>
-    <service id="fos_rest.router" alias="router"/>
-    <service id="fos_rest.templating" alias="templating"/>
-    <service id="fos_rest.exception_handler" alias="fos_rest.view.exception_wrapper_handler"/>
-    <service id="fos_rest.inflector" alias="fos_rest.inflector.doctrine"/>
     <service id="console.command.sensiolabs_security_command_securitycheckercommand" alias="sensio_distribution.security_checker.command"/>
     <service id="fos_rest.serializer" alias="jms_serializer"/>
   </services>

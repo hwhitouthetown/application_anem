@@ -1,5 +1,5 @@
 #app/routing_rest.yml
 users :
   type: rest
-  resource:     "UserBundle:Default"
+  resource:     "UserBundle:Api"
   name_prefix:  api_user_

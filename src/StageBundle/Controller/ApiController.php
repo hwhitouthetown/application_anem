@@ -40,10 +40,10 @@ class ApiController extends Controller
       $entreprise->setNom($request->get('nom'));
       $entreprise->setAdresse($request->get('adresse'));
       $entreprise->setNumtel($request->get('tel'));
-      $em->persist($projet);
+      $em->persist($entreprise);
       $em->flush();
       $serializer = $this->container->get('serializer');
-      return new Response($serializer->serialize($projet, 'json', SerializationContext::create()->enableMaxDepthChecks()));
+      return new Response($serializer->serialize($entreprise, 'json', SerializationContext::create()->enableMaxDepthChecks()));
     }
     public function getUserAction(){
       $repository = $this

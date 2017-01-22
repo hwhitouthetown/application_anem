@@ -38,7 +38,7 @@ class ApiController extends Controller
       $message = new Message();
       $message->setMessage($request->get('message'));
       $message->setDate(new \DateTime());
-      $message->setIdetudiant($utilisateur)
+      $message->setIdetudiant($utilisateur);
       $em->persist($message);
       $em->flush();
       $serializer = $this->container->get('serializer');

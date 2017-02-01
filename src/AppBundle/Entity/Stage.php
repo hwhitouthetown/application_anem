@@ -37,6 +37,8 @@ class Stage
      */
     private $idetudiant;
 
+    private $competences;
+
 
     /**
      * Set intitule
@@ -166,5 +168,34 @@ class Stage
     public function getIdetudiant()
     {
         return $this->idetudiant;
+    }
+
+    /**
+     * Gets the value of competences.
+     *
+     * @return mixed
+     */
+    public function getCompetences()
+    {
+        return $this->competences;
+    }
+
+    /**
+     * Sets the value of competences.
+     *
+     * @param mixed $competences the competences
+     *
+     * @return self
+     */
+    public function setCompetences($competences)
+    {
+        $this->competences = $competences;
+
+        return $this;
+    }
+
+    public function addCompetences(\AppBundle\Entity\Competences $competences)
+    {
+        $this->competences[] = $competences;
     }
 }

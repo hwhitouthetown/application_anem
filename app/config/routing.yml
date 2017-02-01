@@ -1,3 +1,11 @@
+app_stage:
+    resource: "@AppBundle/Controller/StageController.php"
+    type:     annotation
+
+app_competence:
+    resource: "@AppBundle/Controller/CompetenceController.php"
+    type:     annotation
+
 app_user:
     resource: "@AppBundle/Controller/UserController.php"
     type:     annotation

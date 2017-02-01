@@ -1,4 +1,4 @@
 git add -A;
-sudo rm -rf app/cache;
+rm -rf app/cache;
 git commit;
 git push;

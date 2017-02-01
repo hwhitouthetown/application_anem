@@ -10,31 +10,31 @@ use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrap3View;
 
-use AppBundle\Entity\Faireparti;
+use AppBundle\Entity\Produit;
 
 /**
- * Faireparti controller.
+ * Produit controller.
  *
- * @Route("/faireparti")
+ * @Route("/produit")
  */
-class FairepartiController extends Controller
+class ProduitController extends Controller
 {
     /**
-     * Lists all Faireparti entities.
+     * Lists all Produit entities.
      *
-     * @Route("/", name="faireparti")
+     * @Route("/", name="produit")
      * @Method("GET")
      */
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $queryBuilder = $em->getRepository('AppBundle:Faireparti')->createQueryBuilder('e');
+        $queryBuilder = $em->getRepository('AppBundle:Produit')->createQueryBuilder('e');
         
         list($filterForm, $queryBuilder) = $this->filter($queryBuilder, $request);
-        list($fairepartis, $pagerHtml) = $this->paginator($queryBuilder, $request);
+        list($produits, $pagerHtml) = $this->paginator($queryBuilder, $request);
         
-        return $this->render('faireparti/index.html.twig', array(
-            'fairepartis' => $fairepartis,
+        return $this->render('produit/index.html.twig', array(
+            'produits' => $produits,
             'pagerHtml' => $pagerHtml,
             'filterForm' => $filterForm->createView(),
 
@@ -48,11 +48,11 @@ class FairepartiController extends Controller
     protected function filter($queryBuilder, Request $request)
     {
         $session = $request->getSession();
-        $filterForm = $this->createForm('AppBundle\Form\FairepartiFilterType');
+        $filterForm = $this->createForm('AppBundle\Form\ProduitFilterType');
 
         // Reset filter
         if ($request->get('filter_action') == 'reset') {
-            $session->remove('FairepartiControllerFilter');
+            $session->remove('ProduitControllerFilter');
         }
 
         // Filter action
@@ -65,12 +65,12 @@ class FairepartiController extends Controller
                 $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
                 // Save filter to session
                 $filterData = $filterForm->getData();
-                $session->set('FairepartiControllerFilter', $filterData);
+                $session->set('ProduitControllerFilter', $filterData);
             }
         } else {
             // Get filter from session
-            if ($session->has('FairepartiControllerFilter')) {
-                $filterData = $session->get('FairepartiControllerFilter');
+            if ($session->has('ProduitControllerFilter')) {
+                $filterData = $session->get('ProduitControllerFilter');
                 
                 foreach ($filterData as $key => $filter) { //fix for entityFilterType that is loaded from session
                     if (is_object($filter)) {
@@ -78,7 +78,7 @@ class FairepartiController extends Controller
                     }
                 }
                 
-                $filterForm = $this->createForm('AppBundle\Form\FairepartiFilterType', $filterData);
+                $filterForm = $this->createForm('AppBundle\Form\ProduitFilterType', $filterData);
                 $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
             }
         }
@@ -115,7 +115,7 @@ class FairepartiController extends Controller
         {
             $requestParams = $request->query->all();
             $requestParams['pcg_page'] = $page;
-            return $me->generateUrl('faireparti', $requestParams);
+            return $me->generateUrl('produit', $requestParams);
         };
 
         // Paginator - view
@@ -132,47 +132,47 @@ class FairepartiController extends Controller
     
 
     /**
-     * Displays a form to create a new Faireparti entity.
+     * Displays a form to create a new Produit entity.
      *
-     * @Route("/new", name="faireparti_new")
+     * @Route("/new", name="produit_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
     
-        $faireparti = new Faireparti();
-        $form   = $this->createForm('AppBundle\Form\FairepartiType', $faireparti);
+        $produit = new Produit();
+        $form   = $this->createForm('AppBundle\Form\ProduitType', $produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($faireparti);
+            $em->persist($produit);
             $em->flush();
             
-            $editLink = $this->generateUrl('faireparti_edit', array('id' => $faireparti->getId()));
-            $this->get('session')->getFlashBag()->add('success', "<a href='$editLink'>New faireparti was created successfully.</a>" );
+            $editLink = $this->generateUrl('produit_edit', array('id' => $produit->getId()));
+            $this->get('session')->getFlashBag()->add('success', "<a href='$editLink'>New produit was created successfully.</a>" );
             
-            $nextAction=  $request->get('submit') == 'save' ? 'faireparti' : 'faireparti_new';
+            $nextAction=  $request->get('submit') == 'save' ? 'produit' : 'produit_new';
             return $this->redirectToRoute($nextAction);
         }
-        return $this->render('faireparti/new.html.twig', array(
-            'faireparti' => $faireparti,
+        return $this->render('produit/new.html.twig', array(
+            'produit' => $produit,
             'form'   => $form->createView(),
         ));
     }
     
 
     /**
-     * Finds and displays a Faireparti entity.
+     * Finds and displays a Produit entity.
      *
-     * @Route("/{id}", name="faireparti_show")
+     * @Route("/{id}", name="produit_show")
      * @Method("GET")
      */
-    public function showAction(Faireparti $faireparti)
+    public function showAction(Produit $produit)
     {
-        $deleteForm = $this->createDeleteForm($faireparti);
-        return $this->render('faireparti/show.html.twig', array(
-            'faireparti' => $faireparti,
+        $deleteForm = $this->createDeleteForm($produit);
+        return $this->render('produit/show.html.twig', array(
+            'produit' => $produit,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -180,27 +180,27 @@ class FairepartiController extends Controller
     
 
     /**
-     * Displays a form to edit an existing Faireparti entity.
+     * Displays a form to edit an existing Produit entity.
      *
-     * @Route("/{id}/edit", name="faireparti_edit")
+     * @Route("/{id}/edit", name="produit_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Faireparti $faireparti)
+    public function editAction(Request $request, Produit $produit)
     {
-        $deleteForm = $this->createDeleteForm($faireparti);
-        $editForm = $this->createForm('AppBundle\Form\FairepartiType', $faireparti);
+        $deleteForm = $this->createDeleteForm($produit);
+        $editForm = $this->createForm('AppBundle\Form\ProduitType', $produit);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($faireparti);
+            $em->persist($produit);
             $em->flush();
             
             $this->get('session')->getFlashBag()->add('success', 'Edited Successfully!');
-            return $this->redirectToRoute('faireparti_edit', array('id' => $faireparti->getId()));
+            return $this->redirectToRoute('produit_edit', array('id' => $produit->getId()));
         }
-        return $this->render('faireparti/edit.html.twig', array(
-            'faireparti' => $faireparti,
+        return $this->render('produit/edit.html.twig', array(
+            'produit' => $produit,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -209,70 +209,70 @@ class FairepartiController extends Controller
     
 
     /**
-     * Deletes a Faireparti entity.
+     * Deletes a Produit entity.
      *
-     * @Route("/{id}", name="faireparti_delete")
+     * @Route("/{id}", name="produit_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Faireparti $faireparti)
+    public function deleteAction(Request $request, Produit $produit)
     {
     
-        $form = $this->createDeleteForm($faireparti);
+        $form = $this->createDeleteForm($produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($faireparti);
+            $em->remove($produit);
             $em->flush();
-            $this->get('session')->getFlashBag()->add('success', 'The Faireparti was deleted successfully');
+            $this->get('session')->getFlashBag()->add('success', 'The Produit was deleted successfully');
         } else {
-            $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the Faireparti');
+            $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the Produit');
         }
         
-        return $this->redirectToRoute('faireparti');
+        return $this->redirectToRoute('produit');
     }
     
     /**
-     * Creates a form to delete a Faireparti entity.
+     * Creates a form to delete a Produit entity.
      *
-     * @param Faireparti $faireparti The Faireparti entity
+     * @param Produit $produit The Produit entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Faireparti $faireparti)
+    private function createDeleteForm(Produit $produit)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('faireparti_delete', array('id' => $faireparti->getId())))
+            ->setAction($this->generateUrl('produit_delete', array('id' => $produit->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
     }
     
     /**
-     * Delete Faireparti by id
+     * Delete Produit by id
      *
-     * @Route("/delete/{id}", name="faireparti_by_id_delete")
+     * @Route("/delete/{id}", name="produit_by_id_delete")
      * @Method("GET")
      */
-    public function deleteByIdAction(Faireparti $faireparti){
+    public function deleteByIdAction(Produit $produit){
         $em = $this->getDoctrine()->getManager();
         
         try {
-            $em->remove($faireparti);
+            $em->remove($produit);
             $em->flush();
-            $this->get('session')->getFlashBag()->add('success', 'The Faireparti was deleted successfully');
+            $this->get('session')->getFlashBag()->add('success', 'The Produit was deleted successfully');
         } catch (Exception $ex) {
-            $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the Faireparti');
+            $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the Produit');
         }
 
-        return $this->redirect($this->generateUrl('faireparti'));
+        return $this->redirect($this->generateUrl('produit'));
 
     }
     
 
     /**
     * Bulk Action
-    * @Route("/bulk-action/", name="faireparti_bulk_action")
+    * @Route("/bulk-action/", name="produit_bulk_action")
     * @Method("POST")
     */
     public function bulkAction(Request $request)
@@ -283,22 +283,22 @@ class FairepartiController extends Controller
         if ($action == "delete") {
             try {
                 $em = $this->getDoctrine()->getManager();
-                $repository = $em->getRepository('AppBundle:Faireparti');
+                $repository = $em->getRepository('AppBundle:Produit');
 
                 foreach ($ids as $id) {
-                    $faireparti = $repository->find($id);
-                    $em->remove($faireparti);
+                    $produit = $repository->find($id);
+                    $em->remove($produit);
                     $em->flush();
                 }
 
-                $this->get('session')->getFlashBag()->add('success', 'fairepartis was deleted successfully!');
+                $this->get('session')->getFlashBag()->add('success', 'produits was deleted successfully!');
 
             } catch (Exception $ex) {
-                $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the fairepartis ');
+                $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the produits ');
             }
         }
 
-        return $this->redirect($this->generateUrl('faireparti'));
+        return $this->redirect($this->generateUrl('produit'));
     }
     
 

@@ -1,3 +1,23 @@
+app_user:
+    resource: "@AppBundle/Controller/UserController.php"
+    type:     annotation
+
+app_entreprise:
+    resource: "@AppBundle/Controller/EntrepriseController.php"
+    type:     annotation
+
+app_promotion:
+    resource: "@AppBundle/Controller/PromotionController.php"
+    type:     annotation
+
+app_faireparti:
+    resource: "@AppBundle/Controller/FairepartiController.php"
+    type:     annotation
+
+app_produit:
+    resource: "@AppBundle/Controller/ProduitController.php"
+    type:     annotation
+
 app_stage:
     resource: "@AppBundle/Controller/StageController.php"
     type:     annotation

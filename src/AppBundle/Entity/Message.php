@@ -61,7 +61,7 @@ class Message
      */
     public function setMessage($message)
     {
-        $this->intitule = $intitule;
+        $this->message = $message;
 
         return $this;
     }

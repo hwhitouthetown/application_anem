@@ -1,3 +1,7 @@
+app_stage:
+    resource: "@AppBundle/Controller/StageController.php"
+    type:     annotation
+
 # app/config/routing.yml
 NelmioApiDocBundle:
     resource: "@NelmioApiDocBundle/Resources/config/routing.yml"

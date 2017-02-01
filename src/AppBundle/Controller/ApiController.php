@@ -13,7 +13,7 @@ use FOS\RestBundle\Controller\Annotations\QueryParam;
 use JMS\Serializer\SerializationContext;
 
 
-
+use AppBundle\Entity\Message;
 
 /**
  * @Route("/api")
@@ -35,9 +35,11 @@ class ApiController extends Controller
     public function postSendMessageAction(Request $request){
       $em = $this->getDoctrine()->getManager();
       $utilisateur = $em->getRepository('AppBundle:User')->findOneById(intval($request->get('idutilisateur')));
-      $utilisateur->setMessage($request->get('message'));
-      $utilisateur->setDate(new \DateTime());
-      $em->persist($utilisateur);
+      $message = new Message();
+      $message->setMessage($request->get('message'));
+      $message->setDate(new \DateTime());
+      $message->setIdetudiant($utilisateur);
+      $em->persist($message);
       $em->flush();
       $serializer = $this->container->get('serializer');
       return new Response($serializer->serialize($utilisateur, 'json', SerializationContext::create()->enableMaxDepthChecks()));

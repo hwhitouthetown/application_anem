@@ -27,6 +27,10 @@ class StageFilterType extends AbstractType
                     'class' => 'AppBundle\Entity\User',
                     'choice_label' => 'id',
             )) 
+            ->add('competences', Filters\EntityFilterType::class, array(
+                    'class' => 'AppBundle\Entity\Competence',
+                    'choice_label' => 'id',
+            )) 
         ;
         $builder->setMethod("GET");
 

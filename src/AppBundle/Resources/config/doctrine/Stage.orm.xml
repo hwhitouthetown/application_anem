@@ -33,5 +33,15 @@
         <join-column name="idEtudiant" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
+    <many-to-many field="competences" target-entity="Competence">
+            <join-table name="stage_competence">
+                <join-columns>
+                    <join-column name="idStage" referenced-column-name="id" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="idCompetence" referenced-column-name="id" />
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
   </entity>
 </doctrine-mapping>

@@ -35,6 +35,13 @@ class StageType extends AbstractType
                 'required' => false
  
             )) 
+            ->add('competences', EntityType::class, array(
+                'class' => 'AppBundle\Entity\Competence',
+                'choice_label' => 'id',
+
+                'expanded' => true,
+                'multiple' => true
+            )) 
         ;
     }
     

@@ -65,7 +65,6 @@ class ApiController extends Controller
       $reports = $serializer->serialize($stages, 'json', SerializationContext::create()->enableMaxDepthChecks());
       return new Response($reports);
     }
-
     public function getStagebyentrepriseAction($idEntreprise){
       $repository = $this
       ->getDoctrine()
@@ -79,5 +78,17 @@ class ApiController extends Controller
       $reports = $serializer->serialize($stages, 'json', SerializationContext::create()->enableMaxDepthChecks());
       return new Response($reports);
     }
+    public function getStagebyetudiantAction($idEtudiant){
+      $repository = $this
+      ->getDoctrine()
+      ->getManager()
+      ->getRepository('AppBundle:Stage');
+      $stages = $repository->findOneByIdetudiant((int) $idEtudiant);
+      if ($stages == NULL) {
+        $stages = array();
+      }
+      $serializer = $this->container->get('serializer');
+      $reports = $serializer->serialize($stages, 'json', SerializationContext::create()->enableMaxDepthChecks());
+      return new Response($reports);
+    }
 }
-

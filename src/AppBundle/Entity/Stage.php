@@ -194,7 +194,7 @@ class Stage
         return $this;
     }
 
-    public function addCompetences(\AppBundle\Entity\Competences $competences)
+    public function addCompetences(\AppBundle\Entity\Competence $competences)
     {
         $this->competences[] = $competences;
     }

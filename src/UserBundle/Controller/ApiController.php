@@ -24,12 +24,46 @@ class ApiController extends Controller
 
     public function getDemosAction()
     {
-
-
         $data = array("hello" => "world");
         $view = $this->view($data);
         return $this->handleView($view);
     }
+
+
+ public function getIdByNameAction(Request $request){
+
+  $repository = $this->getDoctrine()->getRepository('AppBundle:User');
+
+  $identifiant = $request->get('username');
+
+  // dynamic method names to find a single product based on a column value
+  $user = $repository->findUserIdByUsername($identifiant);
+
+
+
+  $serializer = $this->container->get('serializer');
+  $reports = $serializer->serialize($user, 'json', SerializationContext::create()->enableMaxDepthChecks());
+      return new Response($reports);
+
+  }  
+
+  public function getClientIdentificationAction(){
+
+
+  $clientManager = $this->container->get('fos_oauth_server.client_manager.default');
+  $client = $clientManager->createClient();
+  $client->setRedirectUris(array('http://www.example.com'));
+  $client->setAllowedGrantTypes(array('token', 'authorization_code','password'));
+  $clientManager->updateClient($client);
+
+
+   $serializer = $this->container->get('serializer');
+      $reports = $serializer->serialize($client, 'json', SerializationContext::create()->enableMaxDepthChecks());
+      return new Response($reports);
+
+  }  
+
+
 
 
   public function postRegisterAction(Request $request)

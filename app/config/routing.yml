@@ -38,6 +38,9 @@ NelmioApiDocBundle:
 fos_oauth_server_token:
     resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
 
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    
 rest: 
     type: rest 
     resource: "routing_rest.yml"

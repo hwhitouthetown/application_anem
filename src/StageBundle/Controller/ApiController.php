@@ -12,6 +12,7 @@ use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use JMS\Serializer\SerializationContext;
 use AppBundle\Entity\Entreprise;
+use AppBundle\Entity\Stage;
 
 
 

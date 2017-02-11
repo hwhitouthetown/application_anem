@@ -10,4 +10,9 @@ namespace AppBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function findUserIdByUsername($username){
+		
+		$qb = $this->createQueryBuilder('u')->select('u.id','u.nom','u.prenom','u.email','u.url')->where('u.username = :username')->setParameter('username',$username)->getQuery(); 
+		return $qb->getResult();
+	}
 }

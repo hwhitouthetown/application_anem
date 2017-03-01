@@ -12,6 +12,11 @@ use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use JMS\Serializer\SerializationContext;
 use AppBundle\Entity\Produit;
+use AppBundle\Entity\Commande;
+
+/**
+ * @Route("/api/shop")
+ */
 
 class ApiController extends Controller
 {
@@ -23,6 +28,28 @@ class ApiController extends Controller
       $produits = $repository->findAll();
       $serializer = $this->container->get('serializer');
       $reports = $serializer->serialize($produits, 'json', SerializationContext::create()->enableMaxDepthChecks());
+      return new Response($reports);
+    }
+
+    public function getCommandeAction(){
+      $repository = $this
+      ->getDoctrine()
+      ->getManager()
+      ->getRepository('AppBundle:Commande');
+      $commandes = $repository->findAll();
+      $serializer = $this->container->get('serializer');
+      $reports = $serializer->serialize($commandes, 'json', SerializationContext::create()->enableMaxDepthChecks());
+      return new Response($reports);
+    }
+
+     public function getUserAction(){
+      $repository = $this
+      ->getDoctrine()
+      ->getManager()
+      ->getRepository('AppBundle:User');
+      $users = $repository->findAll();
+      $serializer = $this->container->get('serializer');
+      $reports = $serializer->serialize($users, 'json', SerializationContext::create()->enableMaxDepthChecks());
       return new Response($reports);
     }
 

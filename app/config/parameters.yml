@@ -5,10 +5,15 @@ parameters:
     database_name: rdelaporte_anem
     database_user: 90305_lespd
     database_password: lemdpdespd
+    
     mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
+    mailer_host: smtp.gmail.com
+    mailer_user: anem.serveur@gmail.com
+    mailer_password: anem2017
+    mailer_auth_mode: login
+    mailer_port: 587
+    mailer_encryption: tls
+
     secret: ad1821efe6bb62db506594c150048348700e33a0
     jwt_private_key_path: '%kernel.root_dir%/../var/jwt/private.pem'
     jwt_public_key_path: '%kernel.root_dir%/../var/jwt/public.pem'

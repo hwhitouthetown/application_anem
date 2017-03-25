@@ -38,7 +38,7 @@ class UserController extends Controller
             'pagerHtml' => $pagerHtml,
             'filterForm' => $filterForm->createView(),
 
-        ));
+        )); 
     }
 
     /**

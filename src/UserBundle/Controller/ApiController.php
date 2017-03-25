@@ -11,7 +11,7 @@ use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use JMS\Serializer\SerializationContext;
 
-
+use Symfony\Component\Templating\EngineInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use UserBundle\Entity\AccessToken;
 
@@ -129,7 +129,7 @@ class ApiController extends FOSController
 
     $username = $request->get('username');
     $password = $request->get('password');
-    $nom = $request->get('nom');
+    $nom = $request->get('nom');  
     $prenom = $request->get('prenom');
 
 
@@ -140,23 +140,45 @@ class ApiController extends FOSController
     if($userManager->findUserByUsername($username)!=null){
       $response = "User already exists"; 
       $statusCode = 469; 
-    } else {
+    } else { 
       $user = $userManager->createUser();
       $user->setUsername($username);
       $user->setEmail($username);
       $user->setPlainPassword($password);
       $user->setEnabled(false);
       $userManager->updateUser($user);
-    } 
 
-    $em = $this->getDoctrine()->getManager();
-    $user = $em->getRepository('AppBundle:User')->findOneByUsername($username);
+      $em = $this->getDoctrine()->getManager();
+      $user = $em->getRepository('AppBundle:User')->findOneByUsername($username);
 
-    $user->setNom($nom);
-    $user->setPrenom($prenom);
-    $user->enabled(false);
-    $em->flush();
+      $user->setNom($nom);
+      $user->setPrenom($prenom);
+      $user->setEnabled(false);
+      $em->flush();
 
+      // Envoi message // 
+      
+    $message = \Swift_Message::newInstance()
+    ->setSubject('Confirmation demande création de compte')
+    ->setFrom('donotreply@anem.com')
+    ->setReplyTo('anemnantes@gmail.com')
+    ->setTo($user->getEmail())
+    ->setContentType('text/html')
+    ->setBody('Chèr(e)'. $user->getPrenom() .' ton compte a bien été crée, il sera actif dès lors que les administrateurs auront validé ton inscription, tu receveras une confirmation d\'activation à cet e-mail');
+
+      $response = $user->getEmail();
+ 
+    if (! $this->get('mailer')->send($message)) {
+    // Il y a eu un problème donc on traite l'erreur
+      $response = ('Le mail n\'a pas pu être envoyé');
+      $code = 500;
+    }
+
+
+    //EngineInterface $engine = $this->get('templating');
+    }
+
+ 
 
     return new JsonResponse($response, $statusCode); 
 

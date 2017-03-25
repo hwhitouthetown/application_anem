@@ -1,5 +1,4 @@
 <?php
-
 namespace UserBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -14,28 +13,21 @@ use JMS\Serializer\SerializationContext;
 
 
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use FOS\OAuthServerBundle\Model;
-
+use UserBundle\Entity\AccessToken;
 
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Form\Factory\FactoryInterface;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
+use FOS\UserBundle\Controller\SecurityController as FOSController;
+
 
 /**
  * @Route("/api")
  */
-class ApiController extends Controller
+class ApiController extends FOSController
 {
-
-
-    public function getDemosAction()
-    {
-        $data = array("hello" => "world");
-        $view = $this->view($data);
-        return $this->handleView($view);
-    }
 
 
  public function getIdByNameAction(Request $request){
@@ -55,37 +47,79 @@ class ApiController extends Controller
 
   }  
 
-  public function getCheckClientIdentificationAction(Request $request){
+
+  public function getLogineAction(Request $request){
+
+    $response = ""; 
+
+     $username = $request->get("username"); 
+     $password = $request->get("password"); 
+
+     $userManager = $this->get('fos_user.user_manager');
+     $user = $userManager->createUser();
+     $user = $userManager->findUserByUsername($username);
+
+     if($user!=null){
+
+        $encoder_service = $this->get('security.encoder_factory');
+        $encoder = $encoder_service->getEncoder($user);
+        $encoded_pass = $encoder->encodePassword($password, $user->getSalt());
 
 
-  $repository = $this->getDoctrine()->getRepository('UserBundle:Client');
-  $identifiant = $request->get('identifiant');
-  $random_id = $request->get('random');
-  $secret = $request->get('secret');
+        if($encoded_pass == $user->getPassword()){
+          // Mot de passe ok, on génère un token // 
 
-  $response = "ok"; 
-  $statusCode = "200";
+          $tokenObject = new AccessToken(); 
+          $token = bin2hex(random_bytes(86));
 
-  $client = $repository->findOneById($identifiant);
+          $tokenObject->setUser($user);
 
-  if($client == null){
-     $response = "Invalid client informations";
-     $statusCode = 206; 
-  } else {
+          $tokenObject->setToken($token);
 
-    if($client->getRandomId() == $random_id && $client->getSecret() == $secret){
-      $response = "ok"; 
-    } else {
+          var_dump($tokenObject);
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($tokenObject);
+          $em->flush(); 
 
-     $response = "Invalid client informations ";
-     $statusCode = 206; 
 
-    }
+          $response = $token;   
 
+        } else {
+          $response = "Incorrect password";
+        }
+
+    
+     } else {
+       $response = "Unknow username"; 
+     }
+
+      return new JsonResponse($response,200);
   }
 
-  return new JsonResponse($response, $statusCode);
-  }  
+
+  public function getCheckIdentificationAction(Request $request){
+
+    $token = $request->get('token');
+
+  $repository = $this
+  ->getDoctrine()
+  ->getManager()
+  ->getRepository('UserBundle:AccessToken');
+
+    $statusCode = 200; 
+    $response = "ok"; 
+    $object = $repository->findOneByToken($token);
+
+    if($object ==null){
+
+      $statusCode = 406;
+      $response = "invalid token";
+
+    }
+ 
+ return new JsonResponse($response, $statusCode); 
+
+  }
 
 
  public function postRegisterAction(Request $request){
@@ -111,7 +145,7 @@ class ApiController extends Controller
       $user->setUsername($username);
       $user->setEmail($username);
       $user->setPlainPassword($password);
-      $user->setEnabled(true);
+      $user->setEnabled(false);
       $userManager->updateUser($user);
     } 
 
@@ -120,49 +154,11 @@ class ApiController extends Controller
 
     $user->setNom($nom);
     $user->setPrenom($prenom);
+    $user->enabled(false);
     $em->flush();
-
 
 
     return new JsonResponse($response, $statusCode); 
 
   }  
-
-
-
-  public function getClientIdentificationAction(){
-
-
-  $clientManager = $this->container->get('fos_oauth_server.client_manager.default');
-  $client = $clientManager->createClient();
-  $client->setRedirectUris(array('http://www.example.com'));
-  $client->setAllowedGrantTypes(array('token', 'authorization_code','password'));
-  $clientManager->updateClient($client);
-
-
-   $serializer = $this->container->get('serializer');
-      $reports = $serializer->serialize($client, 'json', SerializationContext::create()->enableMaxDepthChecks());
-      return new Response($reports);
-
-  }  
-
-
-
-  
-
-
-  protected function generateToken($user, $statusCode = 200)
-  {
-      // Generate the token
-      $token = $this->get('lexik_jwt_authentication.jwt_manager')->create($user);
-
-      $response = array(
-          'token' => $token,
-          'user'  => $user // Assuming $user is serialized, else you can call getters manually
-      );
-
-      return new JsonResponse($response, $statusCode); // Return a 201 Created with the JWT.
-  }
-
-
 }

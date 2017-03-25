@@ -30,7 +30,6 @@ class AppKernel extends Kernel
             
             new FOS\RestBundle\FOSRestBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
 
             new AppBundle\AppBundle(),
             new UserBundle\UserBundle(),

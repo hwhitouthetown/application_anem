@@ -85,11 +85,3 @@ fos_user:
                                                         # our particular context, but still required by "FOSUserBundle"
     user_class: AppBundle\Entity\User
 
-fos_oauth_server:
-    db_driver:           orm
-    client_class:        UserBundle\Entity\Client
-    access_token_class:  UserBundle\Entity\AccessToken
-    refresh_token_class: UserBundle\Entity\RefreshToken
-    auth_code_class:     UserBundle\Entity\AuthCode
-    service:
-        user_provider: fos_user.user_provider.username           # This property will be used when valid credentials are given to load the user upon access token creation

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="UserBundle\Entity\AccessToken" table="oauth2_access_token">
+  <entity name="UserBundle\Entity\AccessToken" table="access_token">
     <indexes>
-      <index name="IDX_B6A2DD6819EB6921" columns="client_id"/>
       <index name="IDX_B6A2DD68A76ED395" columns="user_id"/>
     </indexes>
     <unique-constraints>
@@ -11,15 +10,14 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <many-to-one field="client" target-entity="Client" fetch="LAZY">
-      <join-columns>
-        <join-column name="client_id" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="user" target-entity="AppBundle\Entity\User" fetch="LAZY">
       <join-columns>
         <join-column name="user_id" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
+     <field name="client" column="client_id" type="integer" length="11" nullable="true" unique="false" />
+      <field name="token" column="token" type="string" length="255" nullable="false" unique="false" />
+       <field name="expiresAt" column="expires_at" type="integer" length="11" nullable="true" unique="false" />
+        <field name="scope" column="scope" type="string" length="255" nullable="true" unique="false" />
   </entity>
 </doctrine-mapping>

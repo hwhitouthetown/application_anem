@@ -16,7 +16,7 @@ class UserFilterType extends AbstractType
         $builder
             ->add('nom', Filters\TextFilterType::class)
             ->add('prenom', Filters\TextFilterType::class)
-            ->add('url', Filters\TextFilterType::class)
+            ->add('enable', Filters\TextFilterType::class)
             ->add('id', Filters\NumberFilterType::class)
         
         ;

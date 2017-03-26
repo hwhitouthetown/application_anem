@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="user" path="/">
+        <default key="_controller">AppBundle:User:index</default>
+    </route>
+
+    <route id="user_show" path="/{id}/show">
+        <default key="_controller">AppBundle:User:show</default>
+    </route>
+
+    <route id="user_new" path="/new">
+        <default key="_controller">AppBundle:User:new</default>
+    </route>
+
+    <route id="user_create" path="/create">
+        <default key="_controller">AppBundle:User:create</default>
+        <requirement key="_method">post</requirement>
+    </route>
+
+    <route id="user_edit" path="/{id}/edit">
+        <default key="_controller">AppBundle:User:edit</default>
+    </route>
+
+    <route id="user_update" path="/{id}/update">
+        <default key="_controller">AppBundle:User:update</default>
+        <requirement key="_method">post|put</requirement>
+    </route>
+
+    <route id="user_delete" path="/{id}/delete">
+        <default key="_controller">AppBundle:User:delete</default>
+        <requirement key="_method">post|delete</requirement>
+    </route>
+        
+    <route id="user_by_id_delete" path="/delete/{id}">
+        <default key="_controller">AppBundle:User:deleteById</default>
+        <requirement key="_method">get</requirement>
+    </route>
+
+    <route id="user_bulk_action" path="/bulk-action">
+        <default key="_controller">AppBundle:User:bulk</default>
+        <requirement key="_method">post</requirement>
+    </route>
+
+</routes>
+

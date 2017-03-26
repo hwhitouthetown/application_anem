@@ -10,6 +10,9 @@ use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrap3View;
 
+use FOS\UserBundle\Model\UserInterface;
+use FOS\UserBundle\Model\UserManagerInterface;
+
 use AppBundle\Entity\User;
 
 /**
@@ -38,7 +41,39 @@ class UserController extends Controller
             'pagerHtml' => $pagerHtml,
             'filterForm' => $filterForm->createView(),
 
-        )); 
+        ));
+    }
+
+
+       /**
+     * Lists all User entities unactivate.
+     *
+     * @Route("/unactivate", name="user_unactivate")
+     * @Method("GET")
+     */
+    public function indexUnactivateAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $queryBuilder = $em->getRepository('AppBundle:User')->createQueryBuilder('e');
+        
+        $userManager = $this->get('fos_user.user_manager');
+        $users = $userManager->findUsers();
+
+        foreach ($users as $user){
+            if(!$user->isEnable()){
+                    $usersResult[] = $user;
+                }
+            }
+
+        list($filterForm, $queryBuilder) = $this->filter($queryBuilder, $request);
+        list($users, $pagerHtml) = $this->paginator($queryBuilder, $request);
+        
+        return $this->render('user/index.html.twig', array(
+            'users' => $usersResult,
+            'pagerHtml' => $pagerHtml,
+            'filterForm' => $filterForm->createView(),
+
+        ));
     }
 
     /**
@@ -175,9 +210,7 @@ class UserController extends Controller
             'user' => $user,
             'delete_form' => $deleteForm->createView(),
         ));
-    }
-    
-    
+    }    
 
     /**
      * Displays a form to edit an existing User entity.
@@ -205,6 +238,33 @@ class UserController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
+
+     /**
+     * Displays a form to edit an existing User entity.
+     *
+     * @Route("/{id}/activate", name="user_actidesactivate")
+     * @Method({"GET", "POST"})
+     */
+    public function actidesactivateAction(Request $request, User $user)
+    {
+        
+
+        if($user->isEnable()){
+            $user->setEnable(false);
+        } else {
+            $user->setEnable(true);
+        }
+
+        $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+    
+        return $this->redirectToRoute('user');
+        
+    }
+    
     
     
 

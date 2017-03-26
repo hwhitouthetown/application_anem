@@ -2,6 +2,9 @@
 
 namespace AppBundle\Repository;
 
+use FOS\UserBundle\Model\UserInterface;
+use FOS\UserBundle\Model\UserManagerInterface;
+
 /**
  * UserRepository
  *
@@ -14,5 +17,22 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 		
 		$qb = $this->createQueryBuilder('u')->select('u.id','u.nom','u.prenom','u.email','u.url')->where('u.username = :username')->setParameter('username',$username)->getQuery(); 
 		return $qb->getResult();
+	}
+
+	public function findUserByEnable($enable){
+	
+			$usersResult = array();		
+/**
+            $userManager = $this->get('fos_user.user_manager');
+            $users = $userManager->findAll();
+
+            foreach ($users as $user){
+            	if($user->getEnable()==$enable){
+            		$usersResult[] = $user;
+            	}
+            }
+            **/
+
+        return $usersResult;    
 	}
 }

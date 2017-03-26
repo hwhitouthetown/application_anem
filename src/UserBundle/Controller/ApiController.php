@@ -48,13 +48,14 @@ class ApiController extends FOSController
   }  
 
 
-  public function getLogineAction(Request $request){
+  public function getLoginAction(Request $request){
 
     $response = ""; 
 
      $username = $request->get("username"); 
      $password = $request->get("password"); 
 
+     
      $userManager = $this->get('fos_user.user_manager');
      $user = $userManager->createUser();
      $user = $userManager->findUserByUsername($username);

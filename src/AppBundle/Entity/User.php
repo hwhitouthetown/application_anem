@@ -134,10 +134,7 @@ class User extends BaseUser
 
 
     public function isEnable(){
-
-         parent::isEnabled();
-         return $this; 
-
+        return parent::isEnabled();
     }
 
       public function setEnable($enable){

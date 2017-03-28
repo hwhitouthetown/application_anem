@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="jumbotron row-offset-3">
+    {{ form_start(form) }}
+  {{ form_errors(form) }}
+    <fieldset>
+    <!-- Form Name -->
+    <legend>Import fichier stage (xslx)</legend>
+
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="annee">Année scolaire</label>
+      <div class="col-md-4">
+        <select id="annee" name="annee" class="form-control">
+          <option value="1">Option one</option>
+          <option value="2">Option two</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="promo">Promotion</label>
+      <div class="col-md-4">
+        <select id="promo" name="promo" class="form-control">
+          <option value="1">Option one</option>
+          <option value="2">Option two</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- File Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="fichier">Fichier</label>
+      <div class="col-md-4">
+        <input id="fichier" name="fichier" class="input-file" type="file">
+      </div>
+    </div>
+    <!-- Button -->
+
+        <button type="submit" id="import" name="import" class="btn btn-primary col-lg-offset-3 col-lg-6">Importer</button>
+
+    </fieldset>
+    {{ form_row(form.submit, { 'label': 'Importer' }) }}
+    {{ form_end(form) }}
+  </div>
+</div>

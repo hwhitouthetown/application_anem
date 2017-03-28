@@ -1,0 +1,2 @@
+phpdoc -d ./Test -t ./Test/docs/api -configuration --ignore "bootstrap/*,TinySort/*,font-awesome/*,html2pdf/*,js/*,multiselect/*"
+

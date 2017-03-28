@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Documentation</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">Documentation</a>
+            </div>
+            <ul class="nav navbar-right top-nav">
+                <li>
+                    <a href="../"> <i class="glyphicon glyphicon-arrow-left"></i> Retour à l'application</a>
+                </li>
+            </ul>
+
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <a href="identification.html"><i class="fa fa-fw fa-dashboard"></i> Identification</a>
+                    </li>
+                    <li>
+                        <a href="accueil.html"><i class="fa fa-fw fa-desktop"></i> Suivi dossier</a>
+                    </li>
+                    <li>
+                        <a href="créationDossier.html"><i class="fa fa-fw fa-file"></i> Création de dossier</a>
+                    </li>
+                     <li class="active">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-table"></i> Tableau de bord <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="tableau.html">Tableau</a>
+                            </li>
+                            <li>
+                                <a href="pdf.html">Génération de PDF</a>
+                            </li>
+                            <li>
+                                <a href="annéeSuivante.html">Passage à l'année suivante</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#utilisateur"><i class="fa fa-fw fa-wrench"></i> Gestion des utilisateurs <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="utilisateur" class="collapse">
+                            <li>
+                                <a href="tableauUtil.html">Tableau utilisateurs</a>
+                            </li>
+                            <li>
+                                <a href="modifUtil.html">Modification utilisateurs</a>
+                            </li>
+                            <li>
+                                <a href="créationUtil.html">Création utilisateurs</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#agence"><i class="fa fa-fw fa-wrench"></i> Gestion des agences <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="agence" class="collapse">
+                             <li>
+                                <a href="tableauAgence.html">Présentation agences</a>
+                            </li>
+                            <li>
+                                <a href="créationAgence.html">Création agences</a>
+                            </li>
+                        </ul>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Génération de PDF
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <a href="index.html">Documentation</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-desktop"></i> Tableau de bord
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-desktop"></i> Génération de PDF
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <i class="fa fa-info-circle"></i>  <strong>Documentation administrateur, </strong>destinée aux administrateurs de l'application. Vous avez accès aux sections citées ci-dessous uniquement si vous êtes connecté en tant qu'administrateur.
+                        </div>
+                    </div>
+                </div>
+              
+             
+                      <!-- /.section -->
+                        <div class="row">
+                                <h2 style="text-align:center;">Le bouton</h2>                           
+                        </div>
+                        <!-- /.row -->
+                        <div class='row'>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Sous le tableau de suivi vous pouvez apercevoir le bouton suivant  : </h3>
+                                </div>
+                                <div class="panel-body">
+                                    <img src="img/generePdf.png" class="img-responsive center-block" >
+                                </div>
+                                <p>Il permet de générer un fichier PDF du tableau de suivi.</p>
+                            </div>
+                        </div>
+                        <!-- /.section -->
+                        <div class="row">
+                                <h2 style="text-align:center;">Le fichier PDF</h2>                           
+                        </div>
+                        <!-- /.row -->
+                        <div class='row'>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Ce bouton permet de générer le fichier suivant : </h3>
+                                </div>
+                                <div class="panel-body">
+                                    <img src="img/pdfSuiv.png" class="img-responsive center-block" >
+                                </div>
+                                <p>Ce PDF reprend le tableau de suivi et peut être enregistré et imprimé.</p>
+                            </div>
+                        </div>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

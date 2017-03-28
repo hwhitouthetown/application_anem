@@ -1,0 +1,1422 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>API Documentation » \dao</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">API Documentation</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/controleur.html"><i class="icon-folder-open"></i> controleur</a></li>
+<li><a href="../packages/modele.html"><i class="icon-folder-open"></i> modele</a></li>
+<li><a href="../packages/vue.html"><i class="icon-folder-open"></i> vue</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">12</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<div xmlns:php="http://php.net/xsl" class="btn-toolbar">
+<div class="btn-group visibility" data-toggle="buttons-checkbox">
+<button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button>
+</div>
+<div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+</div>
+<ul xmlns:php="http://php.net/xsl" class="side-nav nav nav-list">
+<li class="nav-header">
+<i title="Methods" class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct() :: Constructeur vide"><span class="description">Constructeur vide</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_changementAgenceUtilisateur" title="changementAgenceUtilisateur() :: Méthode qui permet de changer l'agence de l'utilisateur"><span class="description">Méthode qui permet de changer l'agence de l'utilisateur</span><pre>changementAgenceUtilisateur()</pre></a></li>
+<li class="method public "><a href="#method_changementAnnee" title="changementAnnee() :: Mise à jour de l'année"><span class="description">Mise à jour de l'année</span><pre>changementAnnee()</pre></a></li>
+<li class="method public "><a href="#method_changementDate" title="changementDate() :: Mise à jour d'une date"><span class="description">Mise à jour d'une date</span><pre>changementDate()</pre></a></li>
+<li class="method public "><a href="#method_changementEtat" title="changementEtat() :: Change l'état d'un dossier"><span class="description">Change l'état d'un dossier</span><pre>changementEtat()</pre></a></li>
+<li class="method public "><a href="#method_changementMdpUtilisateur" title="changementMdpUtilisateur() :: Changer le mot de passe d'un utilisateur"><span class="description">Changer le mot de passe d'un utilisateur</span><pre>changementMdpUtilisateur()</pre></a></li>
+<li class="method public "><a href="#method_changementNomAgence" title="changementNomAgence() :: Mise à jour nom agence"><span class="description">Mise à jour nom agence</span><pre>changementNomAgence()</pre></a></li>
+<li class="method public "><a href="#method_changementNomUtilisateur" title="changementNomUtilisateur() :: Méthode qui permet changer le nom d'un utilisateur"><span class="description">Méthode qui permet changer le nom d'un utilisateur</span><pre>changementNomUtilisateur()</pre></a></li>
+<li class="method public "><a href="#method_changementPrenomUtilisateur" title="changementPrenomUtilisateur() :: Changer le prenom d'un utilisateur"><span class="description">Changer le prenom d'un utilisateur</span><pre>changementPrenomUtilisateur()</pre></a></li>
+<li class="method public "><a href="#method_changementRelance" title="changementRelance() :: Mise à jour de la date de relance"><span class="description">Mise à jour de la date de relance</span><pre>changementRelance()</pre></a></li>
+<li class="method public "><a href="#method_connexion" title="connexion() :: méthode qui permet de se connecter à la base"><span class="description">méthode qui permet de se connecter à la base</span><pre>connexion()</pre></a></li>
+<li class="method public "><a href="#method_createAgence" title="createAgence() :: Créer une nouvelle agence"><span class="description">Créer une nouvelle agence</span><pre>createAgence()</pre></a></li>
+<li class="method public "><a href="#method_createCommentaire" title="createCommentaire() :: Créer un nouveau commentaire avec une place et un id Dossier"><span class="description">Créer un nouveau commentaire avec une place et un id Dossier</span><pre>createCommentaire()</pre></a></li>
+<li class="method public "><a href="#method_createDates" title="createDates() :: Créer une date pour un dossier"><span class="description">Créer une date pour un dossier</span><pre>createDates()</pre></a></li>
+<li class="method public "><a href="#method_createDossier" title="createDossier() :: Créer un nouveau dossier"><span class="description">Créer un nouveau dossier</span><pre>createDossier()</pre></a></li>
+<li class="method public "><a href="#method_createUser" title="createUser() :: Créer un nouvel utilisateur"><span class="description">Créer un nouvel utilisateur</span><pre>createUser()</pre></a></li>
+<li class="method public "><a href="#method_deconnexion" title="deconnexion() :: méthode qui permet de se déconnecter de la base"><span class="description">méthode qui permet de se déconnecter de la base</span><pre>deconnexion()</pre></a></li>
+<li class="method public "><a href="#method_deleteAgence" title="deleteAgence() :: Supprime une agence"><span class="description">Supprime une agence</span><pre>deleteAgence()</pre></a></li>
+<li class="method public "><a href="#method_deleteCommentaire" title="deleteCommentaire() :: Supprime un commentaire"><span class="description">Supprime un commentaire</span><pre>deleteCommentaire()</pre></a></li>
+<li class="method public "><a href="#method_deleteDossier" title="deleteDossier() :: Supprime un dossier"><span class="description">Supprime un dossier</span><pre>deleteDossier()</pre></a></li>
+<li class="method public "><a href="#method_deleteUser" title="deleteUser() :: Supprime un utilisateur"><span class="description">Supprime un utilisateur</span><pre>deleteUser()</pre></a></li>
+<li class="method public "><a href="#method_etatPrecedent" title="etatPrecedent() :: Reviens à l'état précédent d'un dossier"><span class="description">Reviens à l'état précédent d'un dossier</span><pre>etatPrecedent()</pre></a></li>
+<li class="method public "><a href="#method_getAgence" title="getAgence() :: récupère l'agence d'un utilisateur grâce à son nom et son prénom"><span class="description">récupère l'agence d'un utilisateur grâce à son nom et son prénom</span><pre>getAgence()</pre></a></li>
+<li class="method public "><a href="#method_getAgenceParId" title="getAgenceParId() :: Récupère una agence par son id"><span class="description">Récupère una agence par son id</span><pre>getAgenceParId()</pre></a></li>
+<li class="method public "><a href="#method_getAnnee" title="getAnnee() :: Récupère l'année courante de l'application
+Attention elle peut différer de l'année réel, elle dépend de l'action de l'administrateur"><span class="description">Récupère l'année courante de l'application
+Attention elle peut différer de l'année réel, elle dépend de l'action de l'administrateur</span><pre>getAnnee()</pre></a></li>
+<li class="method public "><a href="#method_getCommentaireParDossier" title="getCommentaireParDossier() :: Récupère les commentaires d'un dossier grâce à son id"><span class="description">Récupère les commentaires d'un dossier grâce à son id</span><pre>getCommentaireParDossier()</pre></a></li>
+<li class="method public "><a href="#method_getDatesParDossier" title="getDatesParDossier() :: Récupère les dates d'un dossier, grâce à son id"><span class="description">Récupère les dates d'un dossier, grâce à son id</span><pre>getDatesParDossier()</pre></a></li>
+<li class="method public "><a href="#method_getDossierParId" title="getDossierParId() :: Récupère un dossier avec son id"><span class="description">Récupère un dossier avec son id</span><pre>getDossierParId()</pre></a></li>
+<li class="method public "><a href="#method_getDroit" title="getDroit() :: Récupère le droit d'un utilisateur"><span class="description">Récupère le droit d'un utilisateur</span><pre>getDroit()</pre></a></li>
+<li class="method public "><a href="#method_getEtatDossier" title="getEtatDossier() :: Récupère l'état d'un dossier"><span class="description">Récupère l'état d'un dossier</span><pre>getEtatDossier()</pre></a></li>
+<li class="method public "><a href="#method_getEtatParId" title="getEtatParId() :: Récupère un etat par son id"><span class="description">Récupère un etat par son id</span><pre>getEtatParId()</pre></a></li>
+<li class="method public "><a href="#method_getEtatParNom" title="getEtatParNom() :: Récupère un état, (id, nom) par son nom"><span class="description">Récupère un état, (id, nom) par son nom</span><pre>getEtatParNom()</pre></a></li>
+<li class="method public "><a href="#method_getIdAgence" title="getIdAgence() :: Récupère une agence par son id"><span class="description">Récupère une agence par son id</span><pre>getIdAgence()</pre></a></li>
+<li class="method public "><a href="#method_getIdDossier" title="getIdDossier() :: Récupère L'id d'un dossier avec le nom et le prenom"><span class="description">Récupère L'id d'un dossier avec le nom et le prenom</span><pre>getIdDossier()</pre></a></li>
+<li class="method public "><a href="#method_getIdUtilisateur" title="getIdUtilisateur() :: Récupère L'id d'un utilisateur avec le nom et le prenom"><span class="description">Récupère L'id d'un utilisateur avec le nom et le prenom</span><pre>getIdUtilisateur()</pre></a></li>
+<li class="method public "><a href="#method_getListeAgence" title="getListeAgence() :: Récupère toutes les agences"><span class="description">Récupère toutes les agences</span><pre>getListeAgence()</pre></a></li>
+<li class="method public "><a href="#method_getListeCommentairesParDossier" title="getListeCommentairesParDossier() :: Récupère les commentaires d'un dossier par son id"><span class="description">Récupère les commentaires d'un dossier par son id</span><pre>getListeCommentairesParDossier()</pre></a></li>
+<li class="method public "><a href="#method_getListeDossier" title="getListeDossier() :: Récupère une liste contenant tous les dossiers"><span class="description">Récupère une liste contenant tous les dossiers</span><pre>getListeDossier()</pre></a></li>
+<li class="method public "><a href="#method_getListeDossierByAgence" title="getListeDossierByAgence() :: Récupère une liste contenant tous les dossiers par agence"><span class="description">Récupère une liste contenant tous les dossiers par agence</span><pre>getListeDossierByAgence()</pre></a></li>
+<li class="method public "><a href="#method_getListeDossierParAnnee" title="getListeDossierParAnnee() :: Récupère une liste contenant tous les dossiers d'une année"><span class="description">Récupère une liste contenant tous les dossiers d'une année</span><pre>getListeDossierParAnnee()</pre></a></li>
+<li class="method public "><a href="#method_getListeEmploye" title="getListeEmploye() :: Récupère tous les utilisateur sauf s'ils sont de type admin"><span class="description">Récupère tous les utilisateur sauf s'ils sont de type admin</span><pre>getListeEmploye()</pre></a></li>
+<li class="method public "><a href="#method_getListeEmployeByAgence" title="getListeEmployeByAgence() :: Récupère une liste contenant tous les employe par agence"><span class="description">Récupère une liste contenant tous les employe par agence</span><pre>getListeEmployeByAgence()</pre></a></li>
+<li class="method public "><a href="#method_getListeNomDossier" title="getListeNomDossier() :: Récupère tous les noms des dossiers"><span class="description">Récupère tous les noms des dossiers</span><pre>getListeNomDossier()</pre></a></li>
+<li class="method public "><a href="#method_getListeSuiviDossier" title="getListeSuiviDossier() :: Récupère une liste contenant les dossiers pour le tableau de suivi"><span class="description">Récupère une liste contenant les dossiers pour le tableau de suivi</span><pre>getListeSuiviDossier()</pre></a></li>
+<li class="method public "><a href="#method_getListeUtilisateur" title="getListeUtilisateur() :: Récupère tous les utilisateurs"><span class="description">Récupère tous les utilisateurs</span><pre>getListeUtilisateur()</pre></a></li>
+<li class="method public "><a href="#method_getMdp" title="getMdp() :: Récupère le mot de passe (crypté) d'un utilisateur"><span class="description">Récupère le mot de passe (crypté) d'un utilisateur</span><pre>getMdp()</pre></a></li>
+<li class="method public "><a href="#method_getUtilisateurParID" title="getUtilisateurParID() :: Récupère Le nom d'un utilisateur avec l'id"><span class="description">Récupère Le nom d'un utilisateur avec l'id</span><pre>getUtilisateurParID()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i title="Properties" class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul><li class="property private "><a href="#property__connexion" title="$_connexion() :: variable de connexion"><span class="description"></span><pre>$_connexion</pre></a></li></ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a xmlns:php="http://php.net/xsl" id="\dao"></a><ul xmlns:php="http://php.net/xsl" class="breadcrumb">
+<li>
+<a href="../index.html"><i title="Classes" class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/dao.html">dao</a>
+</li>
+</ul>
+<div xmlns:php="http://php.net/xsl" class="element class">
+<p class="short_description">Liens entre la base de données et le php</p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>author</th>
+<td><a href="">baptiste</a></td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/modele.html">modele</a></td>
+</tr>
+</table>
+<h3>
+<i title="Methods" class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct " data-toggle="collapse" data-target=".method___construct .collapse" title="public">
+<h2>Constructeur vide</h2>
+<pre>__construct() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_changementAgenceUtilisateur"></a><div class="element clickable method public method_changementAgenceUtilisateur " data-toggle="collapse" data-target=".method_changementAgenceUtilisateur .collapse" title="public">
+<h2>Méthode qui permet de changer l'agence de l'utilisateur</h2>
+<pre>changementAgenceUtilisateur(integer $id, integer $idAgence) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$id</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$idAgence</h4>
+<code>integer</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_changementAnnee"></a><div class="element clickable method public method_changementAnnee " data-toggle="collapse" data-target=".method_changementAnnee .collapse" title="public">
+<h2>Mise à jour de l'année</h2>
+<pre>changementAnnee() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_changementDate"></a><div class="element clickable method public method_changementDate " data-toggle="collapse" data-target=".method_changementDate .collapse" title="public">
+<h2>Mise à jour d'une date</h2>
+<pre>changementDate(integer $idDossier, \DateTime $valeur, string $date) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$idDossier</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$valeur</h4>
+<code>\DateTime</code>
+</div>
+<div class="subelement argument">
+<h4>$date</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_changementEtat"></a><div class="element clickable method public method_changementEtat " data-toggle="collapse" data-target=".method_changementEtat .collapse" title="public">
+<h2>Change l'état d'un dossier</h2>
+<pre>changementEtat(integer $idEtat, integer $idDossier, string $commentaire, array&lt;mixed,\DateTime&gt; $listeDate, \DateTime $relance, integer $part) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$idEtat</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$idDossier</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$commentaire</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$listeDate</h4>
+<code>array&lt;mixed,\DateTime&gt;</code>
+</div>
+<div class="subelement argument">
+<h4>$relance</h4>
+<code>\DateTime</code>
+</div>
+<div class="subelement argument">
+<h4>$part</h4>
+<code>integer</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_changementMdpUtilisateur"></a><div class="element clickable method public method_changementMdpUtilisateur " data-toggle="collapse" data-target=".method_changementMdpUtilisateur .collapse" title="public">
+<h2>Changer le mot de passe d'un utilisateur</h2>
+<pre>changementMdpUtilisateur(integer $id, string $nouveauMdp) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$id</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$nouveauMdp</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_changementNomAgence"></a><div class="element clickable method public method_changementNomAgence " data-toggle="collapse" data-target=".method_changementNomAgence .collapse" title="public">
+<h2>Mise à jour nom agence</h2>
+<pre>changementNomAgence(string $ancienNom, string $nouveauNom) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$ancienNom</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$nouveauNom</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_changementNomUtilisateur"></a><div class="element clickable method public method_changementNomUtilisateur " data-toggle="collapse" data-target=".method_changementNomUtilisateur .collapse" title="public">
+<h2>Méthode qui permet changer le nom d'un utilisateur</h2>
+<pre>changementNomUtilisateur(integer $id, string $nouveauNom) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$id</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$nouveauNom</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_changementPrenomUtilisateur"></a><div class="element clickable method public method_changementPrenomUtilisateur " data-toggle="collapse" data-target=".method_changementPrenomUtilisateur .collapse" title="public">
+<h2>Changer le prenom d'un utilisateur</h2>
+<pre>changementPrenomUtilisateur(integer $id, string $nouveauPrenom) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$id</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$nouveauPrenom</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_changementRelance"></a><div class="element clickable method public method_changementRelance " data-toggle="collapse" data-target=".method_changementRelance .collapse" title="public">
+<h2>Mise à jour de la date de relance</h2>
+<pre>changementRelance(integer $idDossier, \DateTime $valeur, string $com) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$idDossier</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$valeur</h4>
+<code>\DateTime</code>
+</div>
+<div class="subelement argument">
+<h4>$com</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_connexion"></a><div class="element clickable method public method_connexion " data-toggle="collapse" data-target=".method_connexion .collapse" title="public">
+<h2>méthode qui permet de se connecter à la base</h2>
+<pre>connexion() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_createAgence"></a><div class="element clickable method public method_createAgence " data-toggle="collapse" data-target=".method_createAgence .collapse" title="public">
+<h2>Créer une nouvelle agence</h2>
+<pre>createAgence(string $nom) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$nom</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_createCommentaire"></a><div class="element clickable method public method_createCommentaire " data-toggle="collapse" data-target=".method_createCommentaire .collapse" title="public">
+<h2>Créer un nouveau commentaire avec une place et un id Dossier</h2>
+<pre>createCommentaire(integer $place, integer $idDossier, string $texte) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$place</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$idDossier</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$texte</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_createDates"></a><div class="element clickable method public method_createDates " data-toggle="collapse" data-target=".method_createDates .collapse" title="public">
+<h2>Créer une date pour un dossier</h2>
+<pre>createDates(integer $idDossier, \DateTime $relance, \DateTime $PriseContact) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$idDossier</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$relance</h4>
+<code>\DateTime</code>
+</div>
+<div class="subelement argument">
+<h4>$PriseContact</h4>
+<code>\DateTime</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_createDossier"></a><div class="element clickable method public method_createDossier " data-toggle="collapse" data-target=".method_createDossier .collapse" title="public">
+<h2>Créer un nouveau dossier</h2>
+<pre>createDossier(integer $idAgence, integer $idUtilisateur, string $nom, string $prenom, integer $part, string $apporteur, string $commentaire, \DateTime $relance, \DateTime $PriseContact) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$idAgence</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$idUtilisateur</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$nom</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$prenom</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$part</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$apporteur</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$commentaire</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$relance</h4>
+<code>\DateTime</code>
+</div>
+<div class="subelement argument">
+<h4>$PriseContact</h4>
+<code>\DateTime</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_createUser"></a><div class="element clickable method public method_createUser " data-toggle="collapse" data-target=".method_createUser .collapse" title="public">
+<h2>Créer un nouvel utilisateur</h2>
+<pre>createUser(string $nom, string $prenom, string $mdp, integer $idAgence, string $droit) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$nom</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$prenom</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$mdp</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$idAgence</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$droit</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_deconnexion"></a><div class="element clickable method public method_deconnexion " data-toggle="collapse" data-target=".method_deconnexion .collapse" title="public">
+<h2>méthode qui permet de se déconnecter de la base</h2>
+<pre>deconnexion() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_deleteAgence"></a><div class="element clickable method public method_deleteAgence " data-toggle="collapse" data-target=".method_deleteAgence .collapse" title="public">
+<h2>Supprime une agence</h2>
+<pre>deleteAgence(string $nom) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$nom</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_deleteCommentaire"></a><div class="element clickable method public method_deleteCommentaire " data-toggle="collapse" data-target=".method_deleteCommentaire .collapse" title="public">
+<h2>Supprime un commentaire</h2>
+<pre>deleteCommentaire(integer $idDossier, integer $place) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$idDossier</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$place</h4>
+<code>integer</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_deleteDossier"></a><div class="element clickable method public method_deleteDossier " data-toggle="collapse" data-target=".method_deleteDossier .collapse" title="public">
+<h2>Supprime un dossier</h2>
+<pre>deleteDossier(integer $idDossier) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$idDossier</h4>
+<code>integer</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_deleteUser"></a><div class="element clickable method public method_deleteUser " data-toggle="collapse" data-target=".method_deleteUser .collapse" title="public">
+<h2>Supprime un utilisateur</h2>
+<pre>deleteUser(string $nom, string $prenom) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$nom</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$prenom</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_etatPrecedent"></a><div class="element clickable method public method_etatPrecedent " data-toggle="collapse" data-target=".method_etatPrecedent .collapse" title="public">
+<h2>Reviens à l'état précédent d'un dossier</h2>
+<pre>etatPrecedent(integer $idEtat, integer $idDossier) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$idEtat</h4>
+<code>integer</code>
+</div>
+<div class="subelement argument">
+<h4>$idDossier</h4>
+<code>integer</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_getAgence"></a><div class="element clickable method public method_getAgence " data-toggle="collapse" data-target=".method_getAgence .collapse" title="public">
+<h2>récupère l'agence d'un utilisateur grâce à son nom et son prénom</h2>
+<pre>getAgence(string $nom, string $prenom) : \agence</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$nom</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$prenom</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\agence</code></div>
+</div></div>
+</div>
+<a id="method_getAgenceParId"></a><div class="element clickable method public method_getAgenceParId " data-toggle="collapse" data-target=".method_getAgenceParId .collapse" title="public">
+<h2>Récupère una agence par son id</h2>
+<pre>getAgenceParId(integer $idAgence) : \agence</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$idAgence</h4>
+<code>integer</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\agence</code></div>
+</div></div>
+</div>
+<a id="method_getAnnee"></a><div class="element clickable method public method_getAnnee " data-toggle="collapse" data-target=".method_getAnnee .collapse" title="public">
+<h2>Récupère l'année courante de l'application
+Attention elle peut différer de l'année réel, elle dépend de l'action de l'administrateur</h2>
+<pre>getAnnee() : \Ambigous</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Ambigous</code><></div>
+</div></div>
+</div>
+<a id="method_getCommentaireParDossier"></a><div class="element clickable method public method_getCommentaireParDossier " data-toggle="collapse" data-target=".method_getCommentaireParDossier .collapse" title="public">
+<h2>Récupère les commentaires d'un dossier grâce à son id</h2>
+<pre>getCommentaireParDossier(integer $idDossier) : \commentaire[]:</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$idDossier</h4>
+<code>integer</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\commentaire[]:</code></div>
+</div></div>
+</div>
+<a id="method_getDatesParDossier"></a><div class="element clickable method public method_getDatesParDossier " data-toggle="collapse" data-target=".method_getDatesParDossier .collapse" title="public">
+<h2>Récupère les dates d'un dossier, grâce à son id</h2>
+<pre>getDatesParDossier(integer $idDossier) : \dates</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$idDossier</h4>
+<code>integer</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\dates</code></div>
+</div></div>
+</div>
+<a id="method_getDossierParId"></a><div class="element clickable method public method_getDossierParId " data-toggle="collapse" data-target=".method_getDossierParId .collapse" title="public">
+<h2>Récupère un dossier avec son id</h2>
+<pre>getDossierParId(integer $id) : \dossier</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$id</h4>
+<code>integer</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\dossier</code></div>
+</div></div>
+</div>
+<a id="method_getDroit"></a><div class="element clickable method public method_getDroit " data-toggle="collapse" data-target=".method_getDroit .collapse" title="public">
+<h2>Récupère le droit d'un utilisateur</h2>
+<pre>getDroit(string $nom, string $prenom) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$nom</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$prenom</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>$droit</div>
+</div></div>
+</div>
+<a id="method_getEtatDossier"></a><div class="element clickable method public method_getEtatDossier " data-toggle="collapse" data-target=".method_getEtatDossier .collapse" title="public">
+<h2>Récupère l'état d'un dossier</h2>
+<pre>getEtatDossier(integer $idDossier) : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$idDossier</h4>
+<code>integer</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>integer</code></div>
+</div></div>
+</div>
+<a id="method_getEtatParId"></a><div class="element clickable method public method_getEtatParId " data-toggle="collapse" data-target=".method_getEtatParId .collapse" title="public">
+<h2>Récupère un etat par son id</h2>
+<pre>getEtatParId(integer $idEtat) : \etat</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$idEtat</h4>
+<code>integer</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\etat</code></div>
+</div></div>
+</div>
+<a id="method_getEtatParNom"></a><div class="element clickable method public method_getEtatParNom " data-toggle="collapse" data-target=".method_getEtatParNom .collapse" title="public">
+<h2>Récupère un état, (id, nom) par son nom</h2>
+<pre>getEtatParNom(string $nom) : \etat</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$nom</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\etat</code></div>
+</div></div>
+</div>
+<a id="method_getIdAgence"></a><div class="element clickable method public method_getIdAgence " data-toggle="collapse" data-target=".method_getIdAgence .collapse" title="public">
+<h2>Récupère une agence par son id</h2>
+<pre>getIdAgence(string $nom) : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$nom</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>integer</code></div>
+</div></div>
+</div>
+<a id="method_getIdDossier"></a><div class="element clickable method public method_getIdDossier " data-toggle="collapse" data-target=".method_getIdDossier .collapse" title="public">
+<h2>Récupère L'id d'un dossier avec le nom et le prenom</h2>
+<pre>getIdDossier(string $nom, string $prenom) : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$nom</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$prenom</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>integer</code></div>
+</div></div>
+</div>
+<a id="method_getIdUtilisateur"></a><div class="element clickable method public method_getIdUtilisateur " data-toggle="collapse" data-target=".method_getIdUtilisateur .collapse" title="public">
+<h2>Récupère L'id d'un utilisateur avec le nom et le prenom</h2>
+<pre>getIdUtilisateur(string $nom, string $prenom) : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$nom</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$prenom</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>integer</code></div>
+</div></div>
+</div>
+<a id="method_getListeAgence"></a><div class="element clickable method public method_getListeAgence " data-toggle="collapse" data-target=".method_getListeAgence .collapse" title="public">
+<h2>Récupère toutes les agences</h2>
+<pre>getListeAgence() : array&lt;mixed,\multitype:agence&gt;</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>array&lt;mixed,\multitype:agence&gt;</code></div>
+</div></div>
+</div>
+<a id="method_getListeCommentairesParDossier"></a><div class="element clickable method public method_getListeCommentairesParDossier " data-toggle="collapse" data-target=".method_getListeCommentairesParDossier .collapse" title="public">
+<h2>Récupère les commentaires d'un dossier par son id</h2>
+<pre>getListeCommentairesParDossier(integer $idDossier) : array&lt;mixed,\multitype:commentaire&gt;</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$idDossier</h4>
+<code>integer</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>array&lt;mixed,\multitype:commentaire&gt;</code></div>
+</div></div>
+</div>
+<a id="method_getListeDossier"></a><div class="element clickable method public method_getListeDossier " data-toggle="collapse" data-target=".method_getListeDossier .collapse" title="public">
+<h2>Récupère une liste contenant tous les dossiers</h2>
+<pre>getListeDossier() : array&lt;mixed,\multitype:dossier&gt;</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>array&lt;mixed,\multitype:dossier&gt;</code></div>
+</div></div>
+</div>
+<a id="method_getListeDossierByAgence"></a><div class="element clickable method public method_getListeDossierByAgence " data-toggle="collapse" data-target=".method_getListeDossierByAgence .collapse" title="public">
+<h2>Récupère une liste contenant tous les dossiers par agence</h2>
+<pre>getListeDossierByAgence(integer $idAgence) : array&lt;mixed,\multitype:dossier&gt;</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$idAgence</h4>
+<code>integer</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>array&lt;mixed,\multitype:dossier&gt;</code></div>
+</div></div>
+</div>
+<a id="method_getListeDossierParAnnee"></a><div class="element clickable method public method_getListeDossierParAnnee " data-toggle="collapse" data-target=".method_getListeDossierParAnnee .collapse" title="public">
+<h2>Récupère une liste contenant tous les dossiers d'une année</h2>
+<pre>getListeDossierParAnnee(integer $annee) : array&lt;mixed,\multitype:dossier&gt;</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$annee</h4>
+<code>integer</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>array&lt;mixed,\multitype:dossier&gt;</code></div>
+</div></div>
+</div>
+<a id="method_getListeEmploye"></a><div class="element clickable method public method_getListeEmploye " data-toggle="collapse" data-target=".method_getListeEmploye .collapse" title="public">
+<h2>Récupère tous les utilisateur sauf s'ils sont de type admin</h2>
+<pre>getListeEmploye() : array&lt;mixed,\multitype:utilisateur&gt;</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>array&lt;mixed,\multitype:utilisateur&gt;</code></div>
+</div></div>
+</div>
+<a id="method_getListeEmployeByAgence"></a><div class="element clickable method public method_getListeEmployeByAgence " data-toggle="collapse" data-target=".method_getListeEmployeByAgence .collapse" title="public">
+<h2>Récupère une liste contenant tous les employe par agence</h2>
+<pre>getListeEmployeByAgence(integer $idAgence) : array&lt;mixed,\multitype:utilisateur&gt;</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$idAgence</h4>
+<code>integer</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>array&lt;mixed,\multitype:utilisateur&gt;</code></div>
+</div></div>
+</div>
+<a id="method_getListeNomDossier"></a><div class="element clickable method public method_getListeNomDossier " data-toggle="collapse" data-target=".method_getListeNomDossier .collapse" title="public">
+<h2>Récupère tous les noms des dossiers</h2>
+<pre>getListeNomDossier() : \multitype:</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\multitype:</code>string[]</div>
+</div></div>
+</div>
+<a id="method_getListeSuiviDossier"></a><div class="element clickable method public method_getListeSuiviDossier " data-toggle="collapse" data-target=".method_getListeSuiviDossier .collapse" title="public">
+<h2>Récupère une liste contenant les dossiers pour le tableau de suivi</h2>
+<pre>getListeSuiviDossier() : array&lt;mixed,\multitype:dossier&gt;</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>array&lt;mixed,\multitype:dossier&gt;</code></div>
+</div></div>
+</div>
+<a id="method_getListeUtilisateur"></a><div class="element clickable method public method_getListeUtilisateur " data-toggle="collapse" data-target=".method_getListeUtilisateur .collapse" title="public">
+<h2>Récupère tous les utilisateurs</h2>
+<pre>getListeUtilisateur() : array&lt;mixed,\multitype:utilisateur&gt;</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>array&lt;mixed,\multitype:utilisateur&gt;</code></div>
+</div></div>
+</div>
+<a id="method_getMdp"></a><div class="element clickable method public method_getMdp " data-toggle="collapse" data-target=".method_getMdp .collapse" title="public">
+<h2>Récupère le mot de passe (crypté) d'un utilisateur</h2>
+<pre>getMdp(string $nom, string $prenom) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$nom</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$prenom</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>$mdp</div>
+</div></div>
+</div>
+<a id="method_getUtilisateurParID"></a><div class="element clickable method public method_getUtilisateurParID " data-toggle="collapse" data-target=".method_getUtilisateurParID .collapse" title="public">
+<h2>Récupère Le nom d'un utilisateur avec l'id</h2>
+<pre>getUtilisateurParID(integer $id) : \utilisateur</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$id</h4>
+<code>integer</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\ConnexionException</code></th>
+<td></td>
+</tr>
+<tr>
+<th><code>\TableAccesException</code></th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\utilisateur</code></div>
+</div></div>
+</div>
+<h3>
+<i title="Properties" class="icon-custom icon-property"></i> Properties</h3>
+<a id="property__connexion"> </a><div class="element clickable property private property__connexion" data-toggle="collapse" data-target=".property__connexion .collapse" title="private">
+<h2>variable de connexion</h2>
+<pre>$_connexion : \PDO</pre>
+<div class="row collapse"><div class="detail-description">
+<h3>Default</h3>
+<div class="subelement argument"></div>
+</div></div>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.8.2</a> and<br>
+            generated on 2015-06-09T14:43:11+02:00.<br></footer></div>
+</div>
+</body>
+</html>

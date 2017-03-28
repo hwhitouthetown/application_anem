@@ -52,49 +52,25 @@
                         <a href="identification.html"><i class="fa fa-fw fa-dashboard"></i> Identification</a>
                     </li>
                     <li>
-                        <a href="accueil.html"><i class="fa fa-fw fa-desktop"></i> Suivi dossier</a>
+                        <a href="accueil.html"><i class="fa fa-fw fa-desktop"></i> Users</a>
                     </li>
                     <li>
-                        <a href="créationDossier.html"><i class="fa fa-fw fa-file"></i> Création de dossier</a>
+                        <a href="créationDossier.html"><i class="fa fa-fw fa-file"></i> Stages</a>
                     </li>
                      <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-table"></i> Tableau de bord <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-table"></i> Boutique <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="tableau.html">Tableau</a>
+                                <a href="tableau.html">Commandes</a>
                             </li>
                             <li>
-                                <a href="pdf.html">Génération de PDF</a>
-                            </li>
-                            <li>
-                                <a href="annéeSuivante.html">Passage à l'année suivante</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#utilisateur"><i class="fa fa-fw fa-wrench"></i> Gestion des utilisateurs <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="utilisateur" class="collapse">
-                            <li>
-                                <a href="tableauUtil.html">Tableau utilisateurs</a>
-                            </li>
-                            <li>
-                                <a href="modifUtil.html">Modification utilisateurs</a>
-                            </li>
-                            <li>
-                                <a href="créationUtil.html">Création utilisateurs</a>
+                                <a href="pdf.html">Produits</a>
                             </li>
                         </ul>
                     </li>
                     <li class="active">
-                        <a href="javascript:;" data-toggle="collapse" data-target="#agence"><i class="fa fa-fw fa-wrench"></i> Gestion des agences <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="agence" class="collapse">
-                             <li>
-                                <a href="tableauAgence.html">Présentation agences</a>
-                            </li>
-                            <li>
-                                <a href="créationAgence.html">Création agences</a>
-                            </li>
-                        </ul>
+                        <a href="modifAgence.html" data-target="#utilisateur"><i class="fa fa-fw fa-wrench"></i> Entreprises</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -108,92 +84,170 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Modification agences
+                            Entreprises
                         </h1>
                         <ol class="breadcrumb">
                             <li>
                                 <a href="index.html">Documentation</a>
                             </li>
-                            <li>
-                                <i class="fa fa-desktop"></i> Gestion des agences
-                            </li>
                             <li class="active">
-                                <i class="fa fa-desktop"></i> Modification agences
+                                <i class="fa fa-desktop"></i> Entreprises
                             </li>
                         </ol>
                     </div>
                 </div>
-             <!-- /.row -->
+                <!-- /.row -->
+
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i>  <strong>Documentation administrateur, </strong>destiné aux administrateurs de l'application. Vous avez accès au sections cités ci-dessous uniquement si vous êtes connecté en tant qu'administrateur.
+                            <i class="fa fa-info-circle"></i>  <strong>Ceci est la documentation logiciel, </strong>destinée aux administrateurs de l'application. Vous y trouverez toutes les informations utiles à son administration.
                         </div>
                     </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                  <div class="row">
+                          <h2 style="text-align:center;">Vue globale</h2>
+                  </div>
+                  <div class='row'>
+                      <div class="panel panel-default">
+                          <div class="panel-heading">
+                              <h3 class="panel-title">Lorsque vous arrivez sur l'interface de gestion des entreprises, le tableau suivant apparait : </h3>
+                          </div>
+                          <div class="panel-body">
+                              <img src="img/ViewEntreprise.png" class="img-responsive center-block" >
+                              Pour supprimer une entreprise il suffit de cliquer sur <img src="img/Suppr.png">, <img src="img/View.png"> pour visualiser tout les détails de l'entreprise et <img src="img/Edit.png" > pour le modifier.
+                               Vous pouvez aussi selectionner plusieurs entreprises et les supprimer d'un seul coup.
+                          </div>
+                      </div>
+                  </div>
                 </div>
                 <!-- /.row -->
                 <div class="row">
                     <div class="col-lg-6">
                       <!-- /.section -->
                         <div class="row">
-                                <h2 style="text-align:center;">Formulaire</h2>                           
+                                <h2 style="text-align:center;">Formulaire d'édition</h2>
                         </div>
                         <!-- /.row -->
                         <div class='row'>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Lorsque vous cliquez sur le bouton "création de dossier", le formulaire suivant apparait : </h3>
+                                    <h3 class="panel-title">Lorsque vous cliquez sur le bouton d'édition d'une entreprise, le formulaire suivant apparait : </h3>
                                 </div>
                                 <div class="panel-body">
-                                    <img src="img/creationUtil.png" class="img-responsive center-block" >
+                                    <img src="img/EditEntreprise.png" class="img-responsive center-block" >
+                                    (une fois les nouvelles donnés enregistrées un message vert s'affiche)
                                 </div>
                             </div>
                         </div>
                     </div>
-                <!-- /.section -->
+                    <!-- /.section -->
                     <div class="col-lg-6">
                         <div class="row">
-                            <div class="col-lg-12">                       
-                                <h2 style="text-align:center;">Erreurs de saisie</h2>                           
+                            <div class="col-lg-12">
+                                <h2 style="text-align:center;">Les différents boutons</h2>
                             </div>
                         </div>
                         <div class="row">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Le contenu du champs est valide : </h3>
+                                    <h3 class="panel-title">Une fois les nouvelles informations entrées, vous pouvez valider en cliquant sur le bouton suivant : </h3>
                                 </div>
                                 <div class="panel-body">
-                                    <img src="img/inputVert.png" class="img-responsive center-block" >
+                                    <img src="img/EditStage2.png" class="img-responsive center-block" >
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                              <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Le contenu du champs n'est pas valide, la création est donc impossible : </h3>
+                                    <h3 class="panel-title">Pour retourner à la vue global c'est le bouton suivant : </h3>
                                 </div>
                                 <div class="panel-body">
-                                    <img src="img/inputRouge.png" class="img-responsive center-block" >
+                                    <img src="img/Back.png" class="img-responsive center-block" >
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Une fois que les champs obligatoires sont correctement rempli, le bouton envoyer devient accessible :</h3>
+                                    <h3 class="panel-title">Vous pouvez directement créer une nouvelle entreprise :</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <img src="img/envoyerDebloc.png" class="img-responsive center-block" >
+                                    <img src="img/NewButton.png" class="img-responsive center-block" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Ou supprimer l'entreprise au besoin :</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <img src="img/DeleteButton.png" class="img-responsive center-block" >
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+              </div>
+              <!-- /.row -->
+              <div class="row">
+                  <div class="col-lg-6">
+                    <!-- /.section -->
+                      <div class="row">
+                              <h2 style="text-align:center;">Formulaire de création</h2>
+                      </div>
+                      <!-- /.row -->
+                      <div class='row'>
+                          <div class="panel panel-default">
+                              <div class="panel-heading">
+                                  <h3 class="panel-title">Lorsque vous cliquez sur le bouton de création, le formulaire suivant apparait : </h3>
+                              </div>
+                              <div class="panel-body">
+                                  <img src="img/NewStage1.png" class="img-responsive center-block" >
+                                  (une fois les nouvelles donnés enregistrées un message vert s'affiche)
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- /.section -->
+                  <div class="col-lg-6">
+                      <div class="row">
+                          <div class="col-lg-12">
+                              <h2 style="text-align:center;">Les différents boutons</h2>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="panel panel-default">
+                              <div class="panel-heading">
+                                  <h3 class="panel-title">Une fois les informations entrées, vous pouvez enregistrer avec le bouton "save", ou enregistrer et en créer un nouveau en cliquant sur le second bouton : </h3>
+                              </div>
+                              <div class="panel-body">
+                                  <img src="img/Save.png" class="img-responsive center-block" >
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                           <div class="panel panel-default">
+                              <div class="panel-heading">
+                                  <h3 class="panel-title">Pour retourner à la vue global c'est le bouton suivant : </h3>
+                              </div>
+                              <div class="panel-body">
+                                  <img src="img/Back.png" class="img-responsive center-block" >
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+            </div>
             </div>
             <!-- /.container-fluid -->
+
         </div>
         <!-- /#page-wrapper -->
+
     </div>
     <!-- /#wrapper -->
 

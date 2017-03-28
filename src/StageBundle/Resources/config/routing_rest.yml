@@ -3,3 +3,7 @@ stages :
   type: rest
   resource:     "StageBundle:Api"
   name_prefix:  api_stage_
+import :
+  type: rest
+  resource:     "StageBundle:Api"
+  name_prefix:  api_import_

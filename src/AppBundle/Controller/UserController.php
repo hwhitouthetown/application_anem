@@ -56,6 +56,8 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('AppBundle:User')->createQueryBuilder('e');
         
+        $usersResult = array();
+
         $userManager = $this->get('fos_user.user_manager');
         $users = $userManager->findUsers();
 
@@ -260,19 +262,19 @@ class UserController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
+        $em->persist($user);
+        $em->flush();
 
 
-    $message = \Swift_Message::newInstance()
-    ->setSubject('Modification du compte')
-    ->setFrom('donotreply@anem.com')
-    ->setReplyTo('anemnantes@gmail.com')
-    ->setTo($user->getEmail())
-    ->setContentType('text/html')
-    ->setBody('Chèr(e)'. $user->getPrenom() . ' ton compte ' .$variant);
+        $message = \Swift_Message::newInstance()
+        ->setSubject('Modification du compte')
+        ->setFrom('donotreply@anem.com')
+        ->setReplyTo('anemnantes@gmail.com')
+        ->setTo($user->getEmail())
+        ->setContentType('text/html')
+        ->setBody('Chèr(e)'. $user->getPrenom() . ' ton compte ' .$variant);
  
-    $this->get('mailer')->send($message);   
+        $this->get('mailer')->send($message);   
 
     
         return $this->redirectToRoute('user');

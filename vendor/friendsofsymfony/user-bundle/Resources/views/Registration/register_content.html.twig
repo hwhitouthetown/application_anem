@@ -1,8 +1,17 @@
-{% trans_default_domain 'FOSUserBundle' %}
-
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
+<div class = "container">
+	<div class="wrapper">
+	<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+<h3 class="form-signin-heading">Pour vous enregistrer, veuillez remplir le formulaire : </h3>
+			  <hr class="colorgraph"><br>
+    
+    {{ form_start(form) }}
+	{{ form_row(form.username, {'attr': {'class': 'form-control', 'placeholder': "Nom d'utilisateur"}}) }}
+	{{ form_row(form.email, {'attr': {'class': 'form-control', 'placeholder': "E-mail"}}) }}
+	{{ form_row(form.plainPassword.first, {'attr': {'class': 'form-control', 'placeholder': "Mot de passe"}}) }}
+	{{ form_row(form.plainPassword.second, {'attr': {'class': 'form-control', 'placeholder': "Confirmez"}}) }}
+	{{ form_end(form) }}
     <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+        <button class="btn btn-lg btn-success btn-block" id="_submit" name="_submit" type="Submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}">{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}</button> 
     </div>
-{{ form_end(form) }}
+</form>
+</div></div>

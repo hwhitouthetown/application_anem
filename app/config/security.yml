@@ -1,4 +1,5 @@
 security:
+    access_denied_url: 
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
@@ -21,5 +22,5 @@ security:
             anonymous:    true
 
     access_control:
-        - { path: ^/admin, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
     

@@ -11,6 +11,9 @@ class DefaultController extends Controller
     {
         return $this->render('ShopBundle:Default:index.html.twig');
     }
+
+
+    
     public function getProduitAction(){
 		$repository = $this
 		->getDoctrine()

@@ -248,17 +248,31 @@ class UserController extends Controller
      */
     public function actidesactivateAction(Request $request, User $user)
     {
-        
+            $variant = ""; 
 
         if($user->isEnable()){
             $user->setEnable(false);
+            $variant = " a été désactivé par les modérateurs, pour plus d'informations merci de contacter les administrateurs"; 
+
         } else {
             $user->setEnable(true);
+            $variant = " a bien été activé par les modérateurs, à très bientôt sur notre application"; 
         }
 
         $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+
+
+    $message = \Swift_Message::newInstance()
+    ->setSubject('Modification du compte')
+    ->setFrom('donotreply@anem.com')
+    ->setReplyTo('anemnantes@gmail.com')
+    ->setTo($user->getEmail())
+    ->setContentType('text/html')
+    ->setBody('Chèr(e)'. $user->getPrenom() . ' ton compte ' .$variant);
+ 
+    $this->get('mailer')->send($message);   
 
     
         return $this->redirectToRoute('user');
@@ -281,6 +295,7 @@ class UserController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $em = $this->getDoctrine()->getManager();
             $em->remove($user);
             $em->flush();

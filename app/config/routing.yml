@@ -65,20 +65,23 @@ app_commande:
 
 app_user:
     resource: "@AppBundle/Controller/UserController.php"
+    prefix: /admin/
     type:     annotation
 
 app_competence:
     resource: "@AppBundle/Controller/CompetenceController.php"
+    prefix: /admin/
     type:     annotation
 
 stage:
     resource: "@StageBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin/stage/
 
 shop:
     resource: "@ShopBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin/
 
 app:
-    resource: "@AppBundle/Controller/"
+    resource: "@AppBundle/Controller/WelcomeController.php"
+    prefix: /
     type:     annotation

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="UserBundle\Entity\AccessToken" table="access_token">
+  <entity name="UserBundle\Entity\AccessToken" table="access_token" repository-class="UserBundle\Repository\AccessTokenRepository">
     <indexes>
       <index name="IDX_B6A2DD68A76ED395" columns="user_id"/>
     </indexes>

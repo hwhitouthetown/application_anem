@@ -126,14 +126,23 @@ class User extends BaseUser
     }
 
 
+      public function setPlainPassword($password){
+         parent::setPlainPassword($password);
+
+         return $this; 
+    }
+
+
     public function isEnable(){
 
-        return parent::isEnabled();
+         parent::isEnabled();
+         return $this; 
 
     }
 
       public function setEnable($enable){
-        return parent::setEnabled($enable);
+            parent::setEnabled($enable);
+            return $this; 
 
     }
     

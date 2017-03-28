@@ -6,3 +6,9 @@ services:
   app.mailer: 
     class: AppBundle\Service\Mailer
     arguments: [mailer]
+
+  app.security:
+    class: AppBundle\Service\Security
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - UserBundle\Repository\AccessTokenRepository

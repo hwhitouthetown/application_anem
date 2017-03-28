@@ -15,6 +15,8 @@ use Symfony\Component\Templating\EngineInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use UserBundle\Entity\AccessToken;
 
+use \Doctrine\ORM\EntityRepository;
+
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Form\Factory\FactoryInterface;
 use FOS\UserBundle\FOSUserEvents;
@@ -48,7 +50,7 @@ class ApiController extends FOSController
   }  
 
 
-  public function getLoginAction(Request $request){
+  public function getConnectAction(Request $request){
 
     $response = ""; 
 
@@ -68,28 +70,10 @@ class ApiController extends FOSController
 
 
         if($encoded_pass == $user->getPassword()){
-          // Mot de passe ok, on génère un token // 
-
-          $tokenObject = new AccessToken(); 
-          $token = bin2hex(random_bytes(86));
-
-          $tokenObject->setUser($user);
-
-          $tokenObject->setToken($token);
-
-          var_dump($tokenObject);
-          $em = $this->getDoctrine()->getManager();
-          $em->persist($tokenObject);
-          $em->flush(); 
-
-
           $response = $token;   
-
         } else {
           $response = "Incorrect password";
         }
-
-    
      } else {
        $response = "Unknow username"; 
      }
@@ -101,26 +85,61 @@ class ApiController extends FOSController
   public function getCheckIdentificationAction(Request $request){
 
     $token = $request->get('token');
-
-  $repository = $this
-  ->getDoctrine()
-  ->getManager()
-  ->getRepository('UserBundle:AccessToken');
-
-    $statusCode = 200; 
-    $response = "ok"; 
-    $object = $repository->findOneByToken($token);
-
-    if($object ==null){
-
-      $statusCode = 406;
+    $code =  $this->forward('app.security:checkToken',array('token' =>$token));
+    if($code=="200"){
+      $code = 200;
+      $response = "ok";
+    } else {
+      $code = 206;
       $response = "invalid token";
-
+      return new JsonResponse($response,$code);
     }
- 
- return new JsonResponse($response, $statusCode); 
 
+    return new JsonResponse($response,$code);
   }
+
+
+
+ public function getUpdateAction(Request $request){
+
+    $response = "Ok";
+    $statusCode = 200; 
+
+    $username = $request->get('username');
+    $password = $request->get('password');
+    $nom = $request->get('nom');  
+    $prenom = $request->get('prenom');
+
+    $userManager = $this->get('fos_user.user_manager');
+    $em = $this->get('doctrine')->getManager();
+
+    $user = $userManager->findUserByUsername($username);
+    if($user!=null){
+    
+      if($password!=null&&$password!=""){
+        $user->setPlainPassword($password);
+      }
+
+      if($nom!=null&&$nom!=""){
+         $user->setNom($nom);
+      }
+
+      if($prenom!=null&&$prenom!=""){
+          $user->setPrenom($prenom);
+      }
+
+      $em->flush();
+
+      $reponse ="user updated"; 
+
+    } else { 
+      $response = "User do not exist"; 
+      $statusCode = 469; 
+    }
+
+    return new JsonResponse($response, $statusCode); 
+
+  }   
 
 
  public function postRegisterAction(Request $request){
@@ -157,7 +176,7 @@ class ApiController extends FOSController
       $user->setEnabled(false);
       $em->flush();
 
-      // Envoi message // 
+      // Envoi message au client // 
       
     $message = \Swift_Message::newInstance()
     ->setSubject('Confirmation demande création de compte')
@@ -166,20 +185,22 @@ class ApiController extends FOSController
     ->setTo($user->getEmail())
     ->setContentType('text/html')
     ->setBody('Chèr(e)'. $user->getPrenom() .' ton compte a bien été crée, il sera actif dès lors que les administrateurs auront validé ton inscription, tu receveras une confirmation d\'activation à cet e-mail');
-
-      $response = $user->getEmail();
  
-    if (! $this->get('mailer')->send($message)) {
-    // Il y a eu un problème donc on traite l'erreur
-      $response = ('Le mail n\'a pas pu être envoyé');
-      $code = 500;
-    }
+    $this->get('mailer')->send($message);
 
 
+      // Envoi notifaction au serveur // 
+    $message = \Swift_Message::newInstance()
+    ->setSubject('Confirmation demande création en attente')
+    ->setFrom('donotreply@anem.com')
+    ->setReplyTo('anemnantes@gmail.com')
+    ->setTo('anemnantes@gmail.com')
+    ->setContentType('text/html')
+    ->setBody($user->getNom() . "" . $user->getPrenom() .' a effectué une demande de création de compte');
+
+    $this->get('mailer')->send($message);
     //EngineInterface $engine = $this->get('templating');
     }
-
- 
 
     return new JsonResponse($response, $statusCode); 
 

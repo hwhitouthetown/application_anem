@@ -1,33 +1,41 @@
 app_user:
     resource: "@AppBundle/Controller/UserController.php"
+    prefix: /admin/
     type:     annotation
 
 app_stage:
     resource: "@AppBundle/Controller/StageController.php"
+    prefix: /admin/
     type:     annotation
 
 app_competence:
     resource: "@AppBundle/Controller/CompetenceController.php"
+    prefix: /admin/
     type:     annotation
 
 app_entreprise:
     resource: "@AppBundle/Controller/EntrepriseController.php"
+    prefix: /admin/
     type:     annotation
 
 app_promotion:
     resource: "@AppBundle/Controller/PromotionController.php"
+    prefix: /admin/
     type:     annotation
 
 app_faireparti:
     resource: "@AppBundle/Controller/FairepartiController.php"
+    prefix: /admin/
     type:     annotation
 
 app_produit:
     resource: "@AppBundle/Controller/ProduitController.php"
+    prefix: /admin/
     type:     annotation
 
 app_stage:
     resource: "@AppBundle/Controller/StageController.php"
+    prefix: /admin/
     type:     annotation
 
 # app/config/routing.yml
@@ -75,7 +83,7 @@ app_competence:
 
 stage:
     resource: "@StageBundle/Resources/config/routing.yml"
-    prefix:   /admin/stage/
+    prefix:   /admin/
 
 shop:
     resource: "@ShopBundle/Resources/config/routing.yml"

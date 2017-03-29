@@ -14,7 +14,7 @@ use FOS\RestBundle\Controller\Annotations\QueryParam;
 use JMS\Serializer\SerializationContext;
 use AppBundle\Entity\Entreprise;
 use AppBundle\Entity\Stage;
-require_once __DIR__.'/../Ressources/XLSXReader-master/XLSXReader.php';
+require_once __DIR__.'/../Resources/XLSXReader-master/XLSXReader.php';
 
 
 /**

@@ -66,10 +66,13 @@ class ImportController extends Controller
       return new Response($serializer->serialize($etudiant, 'json', SerializationContext::create()->enableMaxDepthChecks()));
     }
 
-    public function NewStageAction(String $nom, String $prenom, String $titre, String $entreprise, String $adresse, String $tel){
+    public function NewStageAction(String $nom, String $prenom, String $titre, String $entreprise, String $adresse, String $tel, String $promo, String $annee){
       $em = $this->getDoctrine()->getManager();
       $entreprise = NewEntrepriseAction($entreprise, $radresse, $tel);
       $etudiant = NewEtudiantAction($prenom, $nom);
+      $promotion = $em->getRepository('AppBundle:Promotion')->findOneBy(
+        array('titre' => $promo, 'anneeDebut' => $annee)
+      );
       //$stage = $em->getRepository('AppBundle:Stage')->findOneById(intval($request->post('id')));
       if (!isset($stage)) {
         $stage = new Stage();
@@ -131,7 +134,7 @@ class ImportController extends Controller
               $c++;
             }
             foreach ($stages as $stage) {
-             NewStageAction($stage['nom'], $stage['prenom'], $stage['titre'], $stage['entreprise'], $stage['adresse'], $stage['tel']);
+             NewStageAction($stage['nom'], $stage['prenom'], $stage['titre'], $stage['entreprise'], $stage['adresse'], $stage['tel'], $request->post('promo'), $request->post('annee'));
             }
           }
           $r++;

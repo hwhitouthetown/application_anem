@@ -1,8 +1,8 @@
 <div class="container">
   <div class="jumbotron row-offset-3">
-    {{ form_start(form) }}
-  {{ form_errors(form) }}
+    <form class="form-horizontal" action="csvParsing.php" method="get">
     <fieldset>
+
     <!-- Form Name -->
     <legend>Import fichier stage (xslx)</legend>
 
@@ -11,8 +11,9 @@
       <label class="col-md-4 control-label" for="annee">Année scolaire</label>
       <div class="col-md-4">
         <select id="annee" name="annee" class="form-control">
-          <option value="1">Option one</option>
-          <option value="2">Option two</option>
+          <option value="2015">2015</option>
+          <option value="2016">2016</option>
+          <option value="2017">2017</option>
         </select>
       </div>
     </div>
@@ -22,8 +23,9 @@
       <label class="col-md-4 control-label" for="promo">Promotion</label>
       <div class="col-md-4">
         <select id="promo" name="promo" class="form-control">
-          <option value="1">Option one</option>
-          <option value="2">Option two</option>
+          <option value="L3">L3</option>
+          <option value="M1">M1</option>
+          <option value="M2">M2</option>
         </select>
       </div>
     </div>
@@ -40,7 +42,6 @@
         <button type="submit" id="import" name="import" class="btn btn-primary col-lg-offset-3 col-lg-6">Importer</button>
 
     </fieldset>
-    {{ form_row(form.submit, { 'label': 'Importer' }) }}
-    {{ form_end(form) }}
+    </form>
   </div>
 </div>

@@ -17,14 +17,21 @@ use AppBundle\Entity\Stage;
 
 
 /**
- * @Route("/api/import")
+ * @Route("/import")
  */
 class ImportController extends Controller
 {
+
+  /**
+   *
+   * @Route("/", name="user")
+   * @Method("GET")
+   */
     public function indexAction()
     {
         return $this->render('StageBundle:Import:import.html.twig');
     }
+
 
     public function NewEntrepriseAction(Request $request){
       $em = $this->getDoctrine()->getManager();
@@ -59,6 +66,13 @@ class ImportController extends Controller
       return new Response($serializer->serialize($etudiant, 'json', SerializationContext::create()->enableMaxDepthChecks()));
     }
 
+
+    /**
+     * Lists all User entities.
+     *
+     * @Route("/import/new", name="import")
+     * @Method("POST")
+     */
     public function NewStageAction(Request $request){
       $em = $this->getDoctrine()->getManager();
       $stage = $em->getRepository('AppBundle:Stage')->findOneById(intval($request->get('id')));

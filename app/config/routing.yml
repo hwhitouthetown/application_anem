@@ -50,11 +50,11 @@ NelmioApiDocBundle:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-    
-rest: 
-    type: rest 
+
+rest:
+    type: rest
     resource: "routing_rest.yml"
-    prefix:   /api 
+    prefix:   /api
 
 app_fichesuivie:
     resource: "@AppBundle/Controller/FichesuivieController.php"
@@ -98,6 +98,11 @@ stage:
 shop:
     resource: "@ShopBundle/Resources/config/routing.yml"
     prefix:   /admin/
+
+import:
+    resource: "@StageBundle/Resources/ImportController.php"
+    prefix: /admin/
+
 
 app:
     resource: "@AppBundle/Controller/WelcomeController.php"

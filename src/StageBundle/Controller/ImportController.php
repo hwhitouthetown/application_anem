@@ -14,7 +14,7 @@ use FOS\RestBundle\Controller\Annotations\QueryParam;
 use JMS\Serializer\SerializationContext;
 use AppBundle\Entity\Entreprise;
 use AppBundle\Entity\Stage;
-
+require('Ressources/XLSXReader-master/XLSXReader.php');
 
 
 /**
@@ -24,7 +24,7 @@ class ImportController extends Controller
 {
   /**
    *
-   * @Route("/")
+   * @Route("/", name="import")
    * @Method("GET")
    */
     public function indexAction()
@@ -66,32 +66,75 @@ class ImportController extends Controller
       return new Response($serializer->serialize($etudiant, 'json', SerializationContext::create()->enableMaxDepthChecks()));
     }
 
-
-    /**
-     * Lists all User entities.
-     *
-     * @Route("/import/new", name="import")
-     * @Method("POST")
-     */
-    public function NewStageAction(Request $request){
+    public function NewStageAction(String $nom, String $prenom, String $titre, String $entreprise, String $adresse, String $tel){
       $em = $this->getDoctrine()->getManager();
-      $entreprise = NewEntrepriseAction($request->post('entreprise'), $request->post('adresse'), $request->post('tel'));
-      $etudiant = NewEtudiantAction($request->post('prenom'),$request->post('nom'));
-      $stage = $em->getRepository('AppBundle:Stage')->findOneById(intval($request->post('id')));
+      $entreprise = NewEntrepriseAction($entreprise, $radresse, $tel);
+      $etudiant = NewEtudiantAction($prenom, $nom);
+      //$stage = $em->getRepository('AppBundle:Stage')->findOneById(intval($request->post('id')));
       if (!isset($stage)) {
         $stage = new Stage();
       }
-      $stage->setIntitule($request->post('intitule'));
-      $stage->setDescription($request->post('description'));
-      $stage->setEtat($request->post('etat'));
-      $stage->setIdentreprise($em->getRepository('AppBundle:Entreprise')->findOneById(intval($request->post('entreprise'))));
-      $stage->setIdetudiant($em->getRepository('AppBundle:User')->findOneById(intval($request->post('user'))));
-      foreach ($request->post('competences') as $competence) {
-        $stage->addCompetences($em->getRepository('AppBundle:Competence')->findOneById($competence));
-      }
+      $stage->setIntitule($titre);
+      $stage->setDescription('');
+      $stage->setEtat('en cours');
+      $stage->setIdentreprise($entreprise);
+      $stage->setIdetudiant($etudiant);
       $em->persist($stage);
       $em->flush();
       $serializer = $this->container->get('serializer');
       return new Response($serializer->serialize($stage, 'json', SerializationContext::create()->enableMaxDepthChecks()));
+    }
+    /**
+     * Create new stage.
+     *
+     * @Route("/import/new", name="import")
+     * @Method("POST")
+     */
+    public function New(Request $request){
+        $file=$request->post('fichier');
+        $xlsx = new XLSXReader($file);
+
+        $sheets = $xlsx->getSheetNames();
+        print_r($sheets);
+        $data = $xlsx->getSheetData($sheets[1]);
+        $r=0;
+        foreach ($data as $row) {
+
+          if (!isset($rowT)){
+              $c=0;
+            foreach ($row as $cell) {
+              if($cell!=""){
+                if(stristr($cell, 'nom') != '' && !isset($colNom)){echo $cell;$colNom=$c;$rowT=$r;}
+                elseif(stristr($cell, 'prenom') != '' && !isset($colPrenom)){echo $cell;$colPrenom=$c;}
+                elseif(stristr($cell, 'titre') != '' && !isset($colTitre)){echo $cell;$colTitre=$c;}
+                elseif(stristr($cell, 'entreprise') != '' && !isset($colEntreprise)){echo $cell;$colEntreprise=$c;}
+                elseif(stristr($cell, 'adresse') != '' && !isset($colAdresse)){echo $cell;$colAdresse=$c;}
+                  elseif(stristr($cell, 'tel') != '' && !isset($colTel)){echo $cell;$colTel=$c;}
+                }
+                $c++;
+              }
+              echo "<br>";
+            }
+
+            else{
+                $c=0;
+              foreach ($row as $cell) {
+                  if($c==$colNom){$nom=$cell;}
+                  if($c==$colPrenom){$prenom=$cell;}
+                  if($c==$colTitre){$titre=$cell;}
+                  if($c==$colEntreprise){$entreprise=$cell;}
+                  if($c==$colAdresse){$adresse=$cell;}
+                  if($c==$colTel){$tel=$cell;}
+                  if(isset($nom) && isset($prenom) && isset($titre) && isset($entreprise) && isset($adresse) && isset($tel)){
+                    $stages = array('nom'=>$nom, 'prenom'=>$prenom, 'titre'=>$titre, 'entreprise'=>$entreprise, 'adresse'=>$adresse, 'tel'=>$tel);
+                  }
+              $c++;
+            }
+            foreach ($stages as $stage) {
+             NewStageAction($stage['nom'], $stage['prenom'], $stage['titre'], $stage['entreprise'], $stage['adresse'], $stage['tel']);
+            }
+          }
+          $r++;
+        }
     }
 }

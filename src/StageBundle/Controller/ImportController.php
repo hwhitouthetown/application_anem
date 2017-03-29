@@ -22,7 +22,6 @@ use AppBundle\Entity\Stage;
  */
 class ImportController extends Controller
 {
-
   /**
    *
    * @Route("/")
@@ -34,14 +33,14 @@ class ImportController extends Controller
     }
 
 
-    public function NewEntrepriseAction(Request $request){
+    public function NewEntrepriseAction(String $nom, String $adresse, String $tel){
       $em = $this->getDoctrine()->getManager();
-      $entreprise = $em->getRepository('AppBundle:Entreprise')->findOneByNom(intval($request->get('nom')));
+      $entreprise = $em->getRepository('AppBundle:Entreprise')->findOneByNom($nom);
       if (!isset($entreprise)) {
         $entreprise = new Entreprise();
-        $entreprise->setNom($request->get('nom'));
-        $entreprise->setAdresse($request->get('adresse'));
-        $entreprise->setNumtel($request->get('tel'));
+        $entreprise->setNom($nom);
+        $entreprise->setAdresse($adresse);
+        $entreprise->setNumtel($tel);
         $em->persist($entreprise);
         $em->flush();
         $serializer = $this->container->get('serializer');
@@ -49,16 +48,16 @@ class ImportController extends Controller
       return new Response($serializer->serialize($entreprise, 'json', SerializationContext::create()->enableMaxDepthChecks()));
     }
 
-    public function NewEtudiantAction(Request $request){
+    public function NewEtudiantAction(String $prenom, String $nom){
       $em = $this->getDoctrine()->getManager();
       $etudiant = $em->getRepository('AppBundle:Etudiant')->findOneBy(
-        array('nom' => intval($request->get('nom')), 'prenom' => intval($request->get('nom')))
+        array('nom' => $nom, 'prenom' => $prenom)
       );
       if (!isset($etudiant)) {
         $etudiant = new Etudiant();
 
       $etudiant->setNom('');
-      $etudiant->setPrenom($request->get('prenom'));
+      $etudiant->setPrenom($prenom);
       $etudiant->setEnabled(0);
       $em->persist($etudiant);
       $em->flush();
@@ -76,16 +75,18 @@ class ImportController extends Controller
      */
     public function NewStageAction(Request $request){
       $em = $this->getDoctrine()->getManager();
-      $stage = $em->getRepository('AppBundle:Stage')->findOneById(intval($request->get('id')));
+      $entreprise = NewEntrepriseAction($request->post('entreprise'), $request->post('adresse'), $request->post('tel'));
+      $etudiant = NewEtudiantAction($request->post('prenom'),$request->post('nom'));
+      $stage = $em->getRepository('AppBundle:Stage')->findOneById(intval($request->post('id')));
       if (!isset($stage)) {
         $stage = new Stage();
       }
-      $stage->setIntitule($request->get('intitule'));
-      $stage->setDescription($request->get('description'));
-      $stage->setEtat($request->get('etat'));
-      $stage->setIdentreprise($em->getRepository('AppBundle:Entreprise')->findOneById(intval($request->get('entreprise'))));
-      $stage->setIdetudiant($em->getRepository('AppBundle:User')->findOneById(intval($request->get('user'))));
-      foreach ($request->get('competences') as $competence) {
+      $stage->setIntitule($request->post('intitule'));
+      $stage->setDescription($request->post('description'));
+      $stage->setEtat($request->post('etat'));
+      $stage->setIdentreprise($em->getRepository('AppBundle:Entreprise')->findOneById(intval($request->post('entreprise'))));
+      $stage->setIdetudiant($em->getRepository('AppBundle:User')->findOneById(intval($request->post('user'))));
+      foreach ($request->post('competences') as $competence) {
         $stage->addCompetences($em->getRepository('AppBundle:Competence')->findOneById($competence));
       }
       $em->persist($stage);

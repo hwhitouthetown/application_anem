@@ -38,14 +38,26 @@ if (isset($_GET['file'])){
             if($c==$colAdresse){$adresse=$cell;}
             if($c==$colTel){$tel=$cell;}
             if(isset($nom) && isset($prenom) && isset($titre) && isset($entreprise) && isset($adresse) && isset($tel)){
-              $stages = array($nom, $prenom, $titre, $entreprise, $adresse, $tel);
+              $stages = array('nom'=>$nom, 'prenom'=>$prenom, 'titre'=>$titre, 'entreprise'=>$entreprise, 'adresse'=>$adresse, 'tel'=>$tel);
 
             }
 
         $c++;
       }
+      $url = 'http://robindelaporte.com/application_anem/web/app_dev.php/admin/import/new';
       foreach ($stages as $stage) {
-       echo "Stage -> ".$stage."<br>";
+       //echo "Stage -> ".$stage."<br>";
+
+$myvars = 'nom=' . $stage['nom'] . '&prenom=' . $stage['prenom'] . '&titre=' . $stage['titre'] . '&entreprise=' . $stage['entreprise'] . '&adresse=' . $stage['adresse'] .  '&tel=' . $stage['tel'];
+
+$ch = curl_init( $url );
+curl_setopt( $ch, CURLOPT_POST, 1);
+curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt( $ch, CURLOPT_HEADER, 0);
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+
+$response = curl_exec( $ch );
       }
       echo "\n";
     }

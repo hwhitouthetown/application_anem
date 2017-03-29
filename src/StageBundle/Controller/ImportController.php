@@ -25,7 +25,7 @@ class ImportController extends Controller
 
   /**
    *
-   * @Route("/", name="import")
+   * @Route("/")
    * @Method("GET")
    */
     public function indexAction()

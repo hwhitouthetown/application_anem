@@ -14,7 +14,7 @@ use FOS\RestBundle\Controller\Annotations\QueryParam;
 use JMS\Serializer\SerializationContext;
 use AppBundle\Entity\Entreprise;
 use AppBundle\Entity\Stage;
-require('Ressources/XLSXReader-master/XLSXReader.php');
+require('src/StageBundle/Ressources/XLSXReader-master/XLSXReader.php');
 
 
 /**

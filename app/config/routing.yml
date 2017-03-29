@@ -102,7 +102,7 @@ shop:
 import:
     resource: "@StageBundle/Controller/ImportController.php"
     prefix: /admin/
-
+    type:     annotation
 
 app:
     resource: "@AppBundle/Controller/WelcomeController.php"

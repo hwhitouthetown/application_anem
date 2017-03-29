@@ -93,7 +93,7 @@ class ImportController extends Controller
      * @Route("/import/new", name="import")
      * @Method("POST")
      */
-    public function New(Request $request){
+    public function NewImport(Request $request){
         $file=$request->post('fichier');
         $xlsx = new XLSXReader($file);
 

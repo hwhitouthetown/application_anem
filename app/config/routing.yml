@@ -1,3 +1,8 @@
+app_commande:
+    resource: "@AppBundle/Controller/CommandeController.php"
+    prefix: /admin/
+    type:     annotation
+
 app_user:
     resource: "@AppBundle/Controller/UserController.php"
     prefix: /admin/
@@ -53,22 +58,27 @@ rest:
 
 app_fichesuivie:
     resource: "@AppBundle/Controller/FichesuivieController.php"
+    prefix: /admin/
     type:     annotation
 
 app_faireparti:
     resource: "@AppBundle/Controller/FairepartiController.php"
+    prefix: /admin/
     type:     annotation
 
 app_entreprise:
     resource: "@AppBundle/Controller/EntrepriseController.php"
+    prefix: /admin/
     type:     annotation
 
 app_contenu:
     resource: "@AppBundle/Controller/ContenuController.php"
+    prefix: /admin/
     type:     annotation
 
 app_commande:
     resource: "@AppBundle/Controller/CommandeController.php"
+    prefix: /admin/
     type:     annotation
 
 app_user:

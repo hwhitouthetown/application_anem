@@ -140,7 +140,10 @@ class User extends BaseUser
       public function setEnable($enable){
             parent::setEnabled($enable);
             return $this; 
+    }
 
+      public function getEMail(){
+        return parent::getEMail();
     }
     
 }

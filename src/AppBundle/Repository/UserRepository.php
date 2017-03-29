@@ -22,7 +22,6 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 	public function findUserByEnable($enable){
 	
 			$usersResult = array();		
-/**
             $userManager = $this->get('fos_user.user_manager');
             $users = $userManager->findAll();
 
@@ -31,7 +30,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             		$usersResult[] = $user;
             	}
             }
-            **/
+            
 
         return $usersResult;    
 	}

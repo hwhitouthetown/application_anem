@@ -100,7 +100,7 @@ shop:
     prefix:   /admin/
 
 import:
-    resource: "@StageBundle/Resources/ImportController.php"
+    resource: "@StageBundle/Controller/ImportController.php"
     prefix: /admin/
 
 

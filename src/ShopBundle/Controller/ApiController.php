@@ -14,12 +14,19 @@ use JMS\Serializer\SerializationContext;
 use AppBundle\Entity\Produit;
 use AppBundle\Entity\Commande;
 
+
 /**
  * @Route("/api/shop")
  */
 
 class ApiController extends Controller
 {
+   
+  public function indexAction()
+    {
+      
+      return $this->render('ShopBundle:Default:index.html.twig');
+    }
     public function getProduitAction(){
       $repository = $this
       ->getDoctrine()

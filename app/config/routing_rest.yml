@@ -11,4 +11,3 @@ Rest_Stage :
 Rest_Shop :
   type : rest
   resource: "@ShopBundle/Resources/config/routing_rest.yml"
-  prefix : shop/

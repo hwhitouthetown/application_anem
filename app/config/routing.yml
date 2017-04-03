@@ -108,3 +108,5 @@ app:
     resource: "@AppBundle/Controller/WelcomeController.php"
     prefix: /
     type:     annotation
+
+

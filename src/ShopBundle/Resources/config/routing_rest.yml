@@ -1,5 +1,5 @@
 #app/routing_rest.yml
 shops :
   type: rest
-  resource:     "ShopBundle:Default"
+  resource:     "ShopBundle:Api"
   name_prefix:  api_shop_

@@ -19,6 +19,7 @@ use AppBundle\Entity\Stage;
 /**
  * @Route("/api/stage")
  */
+
 class ApiController extends Controller
 {
     public function getEntrepriseAction(){
